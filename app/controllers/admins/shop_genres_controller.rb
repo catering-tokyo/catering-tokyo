@@ -1,8 +1,5 @@
-class Admins::ShopsController < ApplicationController
+class Admins::ShopGenresController < ApplicationController
   def index
-  end
-
-  def new
   end
 
   def create
@@ -14,10 +11,6 @@ class Admins::ShopsController < ApplicationController
   def edit
   end
 
-  def update
-  end
-
   def destroy
   end
-
 end

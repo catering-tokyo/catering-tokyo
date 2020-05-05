@@ -2,9 +2,9 @@ class Admins::UsersController < ApplicationController
   def index
   end
 
-  def show
+  def update
   end
 
-  def edit
+  def show
   end
 end

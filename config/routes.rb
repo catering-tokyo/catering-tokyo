@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
 # user #
 
 # devise
@@ -13,16 +14,17 @@ Rails.application.routes.draw do
 root 'users/homes#top'
 get "homes/about" => "users/homes#about"
 namespace :users do
-  resources :inquiries, only:[:index, :new, :show]
-  resources :credit_cards, only:[:index, :new, :edit]
-  resources :messages, only:[:index, :show]
-  resources :favorites, only:[:index]
-  resources :addresses, only:[:index, :edit]
-  resources :orders, only:[:index, :new, :show] do
+  resources :reviews, only:[:create, :destroy]
+  resources :inquiries, only:[:index, :new, :create, :show]
+  resources :credit_cards, only:[:index, :new, :create, :edit, :update, :destroy]
+  resources :messages, only:[:index, :create, :show]
+  resources :favorites, only:[:index, :create, :destroy]
+  resources :addresses, only:[:index, :edit, :create, :update, :destroy]
+  resources :orders, only:[:index, :new, :create, :show] do
     get 'confirm' => 'users#confirm', as:'confirm'
     get 'thanks' => 'users#thanks', as:'thanks'
   end
-  resources :users, only:[:show, :edit] do
+  resources :users, only:[:show, :edit, :update, :destroy] do
     get 'favorites' => 'users#favorites', as:'favorites'
     get 'withdraw', on: :member
   end
@@ -44,11 +46,11 @@ end
 
 # 機能 #
 namespace :admins do
-  resources :inquiries, only:[:index, :new, :show, :edit]
-  resources :reviews, only:[:index, :show]
-  resources :genres, only:[:index, :edit]
-  resources :users, only:[:index, :show, :edit]
-  resources :shops, only:[:index, :new, :show]
+  resources :inquiries, only:[:index, :update, :show, :destroy]
+  resources :reviews, only:[:index, :show, :destroy]
+  resources :shop_genres, only:[:index, :create, :edit, :update, :destroy]
+  resources :users, only:[:index, :show, :update]
+  resources :shops
 end
 
 #----------------------------------------------
@@ -66,13 +68,13 @@ end
 
 
 namespace :shops do
-  resources :inquiries, only:[:index, :new, :show]
-  resources :messages, only:[:index, :show]
-  resources :orders, only:[:index, :show]
-  resources :informations, only:[:index, :new, :show, :edit]
-  resources :genres, only:[:index, :edit]
-  resources :courses, only:[:index, :new, :show, :edit]
-  resources :shops, only:[:show, :edit]
+  resources :inquiries, only:[:index, :new, :create, :show]
+  resources :messages, only:[:index, :show, :create]
+  resources :orders, only:[:index, :show ,:update]
+  resources :informations
+  resources :courses
+  resources :reviews, only:[:index]
+  resources :shops, only:[:show, :edit, :update]
 end
 
 

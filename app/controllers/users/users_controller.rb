@@ -5,6 +5,12 @@ class Users::UsersController < ApplicationController
   def edit
   end
 
+  def update
+  end
+
+  def destroy
+  end
+
   def withdraw
   end
 end

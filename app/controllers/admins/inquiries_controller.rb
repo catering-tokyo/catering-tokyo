@@ -5,9 +5,9 @@ class Admins::InquiriesController < ApplicationController
   def new
   end
 
-  def show
+  def update
   end
 
-  def edit
+  def show
   end
 end
