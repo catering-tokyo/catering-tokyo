@@ -19,5 +19,4 @@ class Admins::ShopsController < ApplicationController
 
   def destroy
   end
-
 end
