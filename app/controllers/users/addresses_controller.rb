@@ -4,10 +4,6 @@ class Users::AddressesController < ApplicationController
     @addresses = Address.where(user_id: current_user.id)
   end
 
-  def edit
-    @address = Address.find(params[:id])
-  end
-
   def create
     @address = Address.new(address_params)
     @address.user_id = current_user.id
@@ -21,7 +17,19 @@ class Users::AddressesController < ApplicationController
     end
   end
 
+  def edit
+    @address = Address.find(params[:id])
+  end
+
   def update
+    @address = Address.find(params[:id])
+    if @address.update(address_params)
+      flash[:success] = "編集が完了しました"
+      redirect_to users_addresses_path
+    else
+      flash.now[:danger] = "エラーです"
+      render 'edit'
+    end
   end
 
   def destroy

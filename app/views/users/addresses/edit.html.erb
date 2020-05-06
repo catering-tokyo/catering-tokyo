@@ -1,2 +1,40 @@
-<h1>Users::Addresses#edit</h1>
-<p>Find me in app/views/users/addresses/edit.html.erb</p>
+<% flash.each do |message_type, message| %>
+  <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+<% end %>
+
+<% if @address.errors.any? %>
+  <ul>
+  <% @address.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+<div class="container">
+	<h2>配送先編集</h2>
+	<%= form_for(@address, url:users_address_path(@address), method: :patch) do |f| %>
+		<div class="row">
+			<%= f.label :name, "宛名" %>（<span style="color: red;">※必須</span>）
+			<%= f.text_field :name, class:"form-control" %>
+		</div>
+
+		<div class="row">
+			<%= f.label :postal_code %>（<span style="color: red;">※必須,数字のみ</span>）
+			<%= f.number_field :postal_code, class:"form-control", placeholder:"例：1234567" %>
+		</div>
+
+		<div class="row">
+			<%= f.label :address %>（<span style="color: red;">※必須</span>）
+			<%= f.text_field :address, class:"form-control" %>
+		</div>
+
+		<div class="row">
+			<%= f.label :phone_number %>（<span style="color: red;">※必須,ハイフンありでもなしでも</span>）
+			<%= f.text_field :phone_number, class:"form-control", placeholder:"例：012-3456-7890 or 01234567890 or 012(3456)7890" %>
+		</div>
+
+		<div class="row">
+			<%= f.submit "登録する", class:"btn btn-primary mt-3" %>
+		</div>
+	<% end %>
+</div>
