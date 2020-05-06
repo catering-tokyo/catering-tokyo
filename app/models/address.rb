@@ -8,4 +8,6 @@ class Address < ApplicationRecord
 	validates :phone_number, presence: true,
                     		format: { with: VALID_PHONE_NUMBER_REGEX }
 
+  
+
 end
