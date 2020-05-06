@@ -149,9 +149,15 @@ ActiveRecord::Schema.define(version: 2020_05_03_044618) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name", null: false
-    t.string "phonnumber", null: false
+    t.string "phonenumber", null: false
     t.string "address", null: false
     t.string "shop_image_id", null: false
+    t.string "postal_code", null: false
+    t.integer "shop_genre_id", null: false
+    t.string "open_time", null: false
+    t.string "close_time", null: false
+    t.string "lunch_limit"
+    t.string "dinner_limit"
     t.float "latitude"
     t.float "longitude"
     t.datetime "created_at", null: false
