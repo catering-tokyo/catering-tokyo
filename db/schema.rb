@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(version: 2020_05_03_044618) do
     t.integer "shop_id", null: false
     t.text "introduction", null: false
     t.string "name", null: false
-    t.string "course_image_id", null: false
-    t.integer "people_number", null: false
+    t.string "course_image_id"
+    t.integer "people_number"
     t.integer "maximum_people", null: false
     t.integer "minimum_people", null: false
     t.integer "price", null: false
@@ -151,7 +151,7 @@ ActiveRecord::Schema.define(version: 2020_05_03_044618) do
     t.string "name", null: false
     t.string "phonenumber", null: false
     t.string "address", null: false
-    t.string "shop_image_id", null: false
+    t.string "shop_image_id"
     t.string "postal_code", null: false
     t.integer "shop_genre_id", null: false
     t.string "open_time", null: false
