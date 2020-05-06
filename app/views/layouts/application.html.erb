@@ -7,14 +7,67 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/8092f4eb00.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
-    おはよ
-    潜影蛇手
-    多重影分身
-    konnichiha
-    わさびのり
+
+    <div class=" head-all">
+      <% if user_signed_in? && !request.fullpath.include?("admins") %>
+      <nav>
+        <ul>
+        <li>
+        </li>
+        <li class="nav-list"><%= link_to "MyPage", users_user_path(current_user.id), class: "head-list" %></li>
+        <li class="nav-list"><%= link_to "About", homes_about_path, class: "head-list" %></li>
+        <li class="nav-list"><%= link_to "予約履歴", users_orders_path, class: "head-list" %></li>
+        <li class="nav-list"><%= link_to "お問い合わせはこちら", new_users_inquiry_path, class: "head-list" %></li>
+        <li class="nav-list"><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "head-list" %></li>
+        </ul>
+      </nav>
+
+      <% elsif admin_signed_in? && request.fullpath.include?("admins") %>
+      <nav>
+        <ul>
+        <li class="nav-list"><%= link_to "" %></li>
+        <li class="nav-list"><%= link_to "" %></li>
+        <li class="nav-list"><%= link_to "" %></li>
+        <li class="nav-list"><%= link_to "" %></li>
+        <li class="nav-list"><%= link_to "Logout", destroy_admin_session_path, method: :delete, class: "head-list" %></li>
+        </ul>
+      </nav>
+
+      <% elsif shop_signed_in? && request.fullpath.include?("shops") %>
+      <nav>
+        <ul>
+        <li class="nav-list"><%= link_to "" %></li>
+        <li class="nav-list"><%= link_to "" %></li>
+        <li class="nav-list"><%= link_to "" %></li>
+        <li class="nav-list"><%= link_to "" %></li>
+        <li class="nav-list"><%= link_to "Logout", destroy_shop_session_path, method: :delete, class: "head-list" %></li>
+        </ul>
+      </nav>
+
+      <% else %>
+      <ul>
+        <li class="nav-list"><%= link_to "About", homes_about_path, class: "head-list" %></li>
+        <li class="nav-list"><%= link_to "会員登録はこちら", new_user_registration_path, class: "head-list" %></li>
+        <li class="nav-list"><%= link_to "会員の方はこちら", new_user_session_path, class: "head-list" %></li>
+      </ul>
+      <% end %>
+    </div>
     <%= yield %>
+
+    <footer>
+      <div id="footer">
+        <div class="copyright">© 2020 Respawn</div>
+      </div>
+      <div>
+        <%= link_to "お店の方はこちら", new_shop_session_path, class: "head-list" %></li>
+      </div>
+      <div>
+        <%= link_to "管理者の方はこちら", new_admin_session_path, class: "head-list" %></li>
+      </div>
+    </footer>
   </body>
 </html>
