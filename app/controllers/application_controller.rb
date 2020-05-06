@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
 			 admins_top_path
 		when User
 			 root_path
+		when Shop
+			 shops_shop_path(:id)
 		end
 	end
 
@@ -15,6 +17,8 @@ class ApplicationController < ActionController::Base
       		new_admin_session_path
     	elsif  resource == :user
       		root_path
+      	elsif resource == :shop
+      		new_shop_session_path
     	end
 	end
 
