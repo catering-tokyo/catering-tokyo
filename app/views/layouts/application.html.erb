@@ -21,7 +21,7 @@
         <li class="nav-list"><%= link_to "MyPage", users_user_path(current_user.id), class: "head-list" %></li>
         <li class="nav-list"><%= link_to "About", homes_about_path, class: "head-list" %></li>
         <li class="nav-list"><%= link_to "予約履歴", users_orders_path, class: "head-list" %></li>
-        <li class="nav-list"><%= link_to '投稿する', new_users_item_path, class: "head-list" %></li>
+        <li class="nav-list"><%= link_to "お問い合わせはこちら", new_users_inquiry_path, class: "head-list" %></li>
         <li class="nav-list"><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "head-list" %></li>
         </ul>
       </nav>
@@ -37,7 +37,7 @@
         </ul>
       </nav>
 
-      <% elsif shop_signed_in? && request.fullpath.include?("shop") %>
+      <% elsif shop_signed_in? && request.fullpath.include?("shops") %>
       <nav>
         <ul>
         <li class="nav-list"><%= link_to "" %></li>
