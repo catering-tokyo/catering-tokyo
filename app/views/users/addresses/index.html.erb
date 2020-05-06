@@ -1,25 +1,29 @@
+<% flash.each do |message_type, message| %>
+  <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+<% end %>
+
 <div class="container">
 	<h2>配送先登録</h2>
 
 	<%= form_for(@address, url:users_addresses_path(@address)) do |f| %>
 		<div class="row">
-			<%= f.label :name, "宛名" %>
+			<%= f.label :name, "宛名" %>（<span style="color: red;">※必須</span>）
 			<%= f.text_field :name, class:"form-control" %>
 		</div>
 
 		<div class="row">
-			<%= f.label :postal_code %>
-			<%= f.number_field :postal_code, class:"form-control" %>
+			<%= f.label :postal_code %>（<span style="color: red;">※必須,数字のみ</span>）
+			<%= f.number_field :postal_code, class:"form-control", placeholder:"例：1234567" %>
 		</div>
 
 		<div class="row">
-			<%= f.label :address %>
+			<%= f.label :address %>（<span style="color: red;">※必須</span>）
 			<%= f.text_field :address, class:"form-control" %>
 		</div>
 
 		<div class="row">
-			<%= f.label :phone_number %>
-			<%= f.text_field :phone_number, class:"form-control" %>
+			<%= f.label :phone_number %>（<span style="color: red;">※必須,ハイフンありでもなしでも</span>）
+			<%= f.text_field :phone_number, class:"form-control", placeholder:"例：012-3456-7890 or 01234567890 or 012(3456)7890" %>
 		</div>
 
 		<div class="row">
@@ -29,21 +33,26 @@
 
 	<h2>配送先一覧</h2>
 
-	<% @addresses.each do |address| %>
-		<table class="table">
-			<tr>
-				<th>宛名</th>
-				<th>郵便番号</th>
-				<th>住所</th>
-				<th>電話番号</th>
-			</tr>
+	<table class="table">
+		<tr>
+			<th>宛名</th>
+			<th>郵便番号</th>
+			<th>住所</th>
+			<th>電話番号</th>
+			<th>
+		</tr>
 
+		<% @addresses.each do |address| %>
 			<tr>
 				<td><%= address.name %></td>
 				<td><%= address.postal_code %></td>
 				<td><%= address.address %></td>
 				<td><%= address.phone_number %></td>
+				<td>
+					<%= link_to "編集", edit_users_address_path(address), class:"btn btn-info" %>
+					<%= link_to "削除", users_address_path(address), class:"btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %>
+				</td>
 			</tr>
-		</table>
-	<% end %>
+		<% end %>
+	</table>
 </div>
