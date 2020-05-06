@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 		when User
 			 root_path
 		when Shop
-			 shops_shop_path(shop_id)
+			 shops_shop_path(:id)
 		end
 	end
 
