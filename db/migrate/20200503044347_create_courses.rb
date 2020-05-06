@@ -6,9 +6,9 @@ class CreateCourses < ActiveRecord::Migration[5.2]
 
       t.text :introduction, null: false
       t.string :name, null: false
-      t.string :course_image_id, null: false
+      t.string :course_image_id
 
-      t.integer :people_number, null: false
+      t.integer :people_number
       t.integer :maximum_people, null: false
       t.integer :minimum_people, null: false
       t.integer :price, null: false
