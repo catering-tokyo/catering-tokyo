@@ -1,2 +1,49 @@
-<h1>Users::Addresses#index</h1>
-<p>Find me in app/views/users/addresses/index.html.erb</p>
+<div class="container">
+	<h2>配送先登録</h2>
+
+	<%= form_for(@address, url:users_addresses_path(@address)) do |f| %>
+		<div class="row">
+			<%= f.label :name, "宛名" %>
+			<%= f.text_field :name, class:"form-control" %>
+		</div>
+
+		<div class="row">
+			<%= f.label :postal_code %>
+			<%= f.number_field :postal_code, class:"form-control" %>
+		</div>
+
+		<div class="row">
+			<%= f.label :address %>
+			<%= f.text_field :address, class:"form-control" %>
+		</div>
+
+		<div class="row">
+			<%= f.label :phone_number %>
+			<%= f.text_field :phone_number, class:"form-control" %>
+		</div>
+
+		<div class="row">
+			<%= f.submit "登録する", class:"btn btn-primary mt-3" %>
+		</div>
+	<% end %>
+
+	<h2>配送先一覧</h2>
+
+	<% @addresses.each do |address| %>
+		<table class="table">
+			<tr>
+				<th>宛名</th>
+				<th>郵便番号</th>
+				<th>住所</th>
+				<th>電話番号</th>
+			</tr>
+
+			<tr>
+				<td><%= address.name %></td>
+				<td><%= address.postal_code %></td>
+				<td><%= address.address %></td>
+				<td><%= address.phone_number %></td>
+			</tr>
+		</table>
+	<% end %>
+</div>
