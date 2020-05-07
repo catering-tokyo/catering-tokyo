@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_07_052844) do
+
+ActiveRecord::Schema.define(version: 2020_05_07_093443) do
+
 
   create_table "addresses", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -59,6 +61,13 @@ ActiveRecord::Schema.define(version: 2020_05_07_052844) do
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "shop_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.integer "shop_id", null: false
+    t.integer "shop_genreid", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -112,9 +121,9 @@ ActiveRecord::Schema.define(version: 2020_05_07_052844) do
     t.string "option", null: false
     t.string "people_number", null: false
     t.integer "price", null: false
-    t.integer "reserve_date", null: false
-    t.integer "reserve_time", null: false
-    t.integer "order_status", null: false
+    t.date "reserve_date", null: false
+    t.time "reserve_time", null: false
+    t.integer "order_status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -154,7 +163,6 @@ ActiveRecord::Schema.define(version: 2020_05_07_052844) do
     t.string "address", null: false
     t.string "shop_image_id", null: false
     t.string "postal_code", null: false
-    t.integer "shop_genre_id", null: false
     t.string "open_time", null: false
     t.string "close_time", null: false
     t.string "lunch_limit"

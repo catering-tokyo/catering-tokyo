@@ -37,7 +37,6 @@ class DeviseCreateShops < ActiveRecord::Migration[5.2]
       t.string :address, null: false
       t.string :shop_image_id
       t.string :postal_code, null: false
-      t.integer :shop_genre_id, null: false
       t.string :open_time, null: false
       t.string :close_time, null: false
       t.string :lunch_limit

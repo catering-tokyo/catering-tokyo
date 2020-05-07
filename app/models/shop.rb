@@ -4,8 +4,6 @@ class Shop < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-         belongs_to :shop_genre
-
 
          has_many :informations, dependent: :destroy
          has_many :reviews, dependent: :destroy
@@ -14,4 +12,5 @@ class Shop < ApplicationRecord
          has_many :courses, dependent: :destroy
          has_many :messages, dependent: :destroy
          has_many :rooms, dependent: :destroy
+         has_many :shop_genres, through: :genres
 end

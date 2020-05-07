@@ -1,2 +1,22 @@
 <h1>Shops::Courses#show</h1>
+
+<%= link_to '編集する', edit_shops_course_path(@course) %>
+
+<%= link_to "戻る", shops_courses_path(current_shop) %>
+
+
+<h3>コース名</h3>
+<%= @course.name %>
+
+<h3>説明</h3>
+<%= @course.introduction %>
+
+<h3>最大人数</h3>
+<%= @course.maximum_people %>
+
+<h3>最小人数</h3>
+<%= @course.minimum_people %>
+
+<h3>価格</h3>
+<%= @course.price %>
 <p>Find me in app/views/shops/courses/show.html.erb</p>
