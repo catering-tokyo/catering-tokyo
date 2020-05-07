@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(version: 2020_05_07_093443) do
 
 
+
   create_table "addresses", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "name", null: false
