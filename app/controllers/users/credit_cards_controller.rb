@@ -1,5 +1,6 @@
 class Users::CreditCardsController < ApplicationController
   def index
+    @credit_cards = CreditCard.where(user_id: current_user.id)
   end
 
   def new
