@@ -1,2 +1,31 @@
-<h1>Admins::ShopGenres#edit</h1>
-<p>Find me in app/views/admins/shop_genres/edit.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-8 col-xs-offset-2">
+			<h2>GENRE EDIT:</h2>
+			<div class="genre-body">
+				<%= form_for(@genre, url: admins_shop_genr_path(@genre.id)) do |f| %>
+					<div class = "row">
+						<div class="col-xs-6">
+							<div class="field">
+								<%= attachment_image_tag @genre, :genre_image, src: "", id:"img_prev", size: "200x150", alt:"Image preview", class: "item_prev", fallback: "no_image.jpg" %>
+							</div>
+				 			<div class="field">
+								<%= f.label :genre_image,"Image select" ,class: "btn btn-warning btn-lg" ,for:"post_img"%>
+								<%= f.attachment_field :genre_image, id:"post_img", class: "image", style:"display:none;" %>
+							</div>
+						</div>
+						<div class="col-xs-6">
+							<div class="field">
+								<%= f.label :name, "GENRE NAME" %>
+								<%= f.text_field :name %>
+							</div>
+							<div class="field">
+								<%= f.submit "変更を保存", class: "update-btn" %>
+							</div>
+						</div>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
