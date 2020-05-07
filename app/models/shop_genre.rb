@@ -1,3 +1,3 @@
 class ShopGenre < ApplicationRecord
-	has_many :shops
+	has_many :shops, through: :genres
 end

@@ -1,9 +1,12 @@
 class Users::ReviewsController < ApplicationController
+
 	def create
-		@review = Review.new(review_params)
+		@shop = Shop.find(params[:id])
+		@review = @shop.review.new(review_params)
   		@review.user_id = current_user.id
 		@review.save
   		redirect_to request.referer, notice: "このお店にレビューしました!"
+  		@reviews = @shop.reviews.all
 	end
 
 	def destroy
@@ -15,10 +18,6 @@ class Users::ReviewsController < ApplicationController
 	private
 
   def review_params
-  	params.require(:review).permit(:title, :item_image, :description, :genre_status, :category_id, :user_id, :item_image_id, :item_sound_id, :item_video_id )
+  	params.require(:review).permit(:title, :body, :star)
   end
 end
-
-      t.string :title, null: false
-      t.text :body, null: false
-      t.integer :star, null: false

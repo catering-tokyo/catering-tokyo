@@ -13,7 +13,7 @@
   <body>
 
     <div class=" head-all">
-      <% if user_signed_in? && !request.fullpath.include?("admins") %>
+      <% if user_signed_in? && !request.fullpath.include?("admins") && !request.fullpath.include?("shops") %>
       <nav>
         <ul>
         <li>
@@ -60,7 +60,7 @@
 
     <footer>
       <div id="footer">
-        <div class="copyright">© 2020 Respawn</div>
+        <div class="copyright">© 2020 Catering Tokyo</div>
       </div>
       <div>
         <%= link_to "お店の方はこちら", new_shop_session_path, class: "head-list" %></li>

@@ -4,7 +4,7 @@ class Shops::CoursesController < ApplicationController
   end
 
   def new
-    @courses = Course.new
+    @course = Course.new
   end
 
   def create
@@ -33,7 +33,7 @@ class Shops::CoursesController < ApplicationController
     @course = Course.find(params[:id])
     if @course.update(course_params)
       flash[:notice] = '住所を編集しました！'
-      redirect_to shops_courses_path(params[:id])
+      redirect_to shops_course_path(@course.id)
     else
       flash[:notice] = '入力し切れていませんでした。'
       @courses = current_shop.courses
