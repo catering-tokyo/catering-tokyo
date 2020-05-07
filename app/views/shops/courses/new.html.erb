@@ -1,2 +1,23 @@
 <h1>Shops::Courses#new</h1>
+
+<%= form_for @course, url: shops_course_path(@course) do |f| %>
+<h3>コース名</h3>
+<%= f.text_field :name %>
+
+<h3>紹介文</h3>
+<%= f.text_field :introduction %>
+
+<h3>最大人数</h3>
+<%= f.text_field :maximum_people %>
+
+<h3>最小人数</h3>
+<%= f.text_field :minimum_people %>
+
+<h3>価格</h3>
+<%= f.text_field :price %>
+
+<%= f.submit "コースを追加" %>
+
+<% end %>
+
 <p>Find me in app/views/shops/courses/new.html.erb</p>

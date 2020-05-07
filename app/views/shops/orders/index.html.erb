@@ -1,2 +1,12 @@
 <h1>Shops::Orders#index</h1>
+
+<h1>注文一覧</h1>
+<% @orders.each do |order| %>
+<%= order.course_name %>
+<%= order.delivery_address %>
+<%= order.payment %>
+<%= order.option %>
+<%= order.people_number %>
+<%= order.reserve_date %>
+<%= order.reserve_time %>
 <p>Find me in app/views/shops/orders/index.html.erb</p>
