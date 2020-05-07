@@ -14,9 +14,9 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.string :people_number, null: false
 
       t.integer :price, null: false
-      t.integer :reserve_date, null: false
-      t.integer :reserve_time, null: false
-      t.integer :order_status, null: false
+      t.date :reserve_date, null: false
+      t.time :reserve_time, null: false
+      t.integer :order_status, default: 0, null: false
       t.timestamps
     end
   end

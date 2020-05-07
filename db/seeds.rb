@@ -11,7 +11,6 @@ User.create(id:2, name: "佐野", phonenumber: "090-0000-0000", address: "東京
 User.create(id:3, name: "精鋭じゃしゅ", phonenumber: "090-0000-0000", address: "東京都渋谷区神南１丁目１９−１１　パークスクエア２ 4階", email: "13@13", password: "333333")
 
 
-
 Admin.create(id:1, email: "admin@admin", password: "111111")
 
 
@@ -103,6 +102,5 @@ Course.find_or_create_by(id:47, shop_id:23, introduction: "とにかくお団子
 Course.find_or_create_by(id:48, shop_id:23, introduction: "おすすめ！", name: "王道コース", maximum_people: "30", minimum_people: "5", price: "2500")
 
 
-
-
+Order.find_or_create_by(id:1, user_id:1, shop_id:1, user_name: "大蛇", shop_name: "松屋", course_name: "王道コース", delivery_address: "東京都渋谷区神南１丁目１９−１１　パークスクエア２ 4階", payment: "クレジットカード", option: "アレルギーあります。", people_number: "30", price: "3000", reserve_date: "2020-05-30", reserve_time: "11:00")
 
