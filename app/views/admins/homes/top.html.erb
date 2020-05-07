@@ -1,0 +1,39 @@
+<div>
+	<h2><%= link_to "お問い合わせ一覧", admins_inquiries_path, class: "top_list" %></h2>
+	<!-- <h2><%#= link_to @inquiries.length, admins_inquiries_path, class: "top_list" %>件</h2> -->
+</div>
+<div>
+	<h2><%= link_to "会員一覧", admins_users_path, class: "top_list" %></h2>
+</div>
+<div>
+	<h2><%= link_to "お知らせ一覧", admins_informations_path, class: "top_list" %></h2>
+</div>
+<div>
+	<h2><%= link_to "ショップ一覧", admins_shops_path, class: "top_list" %></h2>
+</div>
+<div>
+	<h2><%= link_to "ジャンル一覧", admins_shop_genres_path, class: "top_list" %></h2>
+</div>
+
+
+<style>
+.top_list{
+  display: block;
+  margin: auto;
+  padding: 0.8em;
+  text-align: center;
+  border: 2px solid #fbf284;
+  background-color: #1e294c;
+  border-radius: 30px;
+  transition: .4s;
+  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
+  font-size: 20px;
+  width: 100%;
+  color: #fff;
+  }
+
+.top_list:hover {
+  background: #EC407A;
+  color: #fff;
+  }
+</style>
