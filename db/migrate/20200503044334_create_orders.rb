@@ -3,7 +3,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
     create_table :orders do |t|
 
     	t.integer :user_id, null: false
-    	t.integer :shop_id, null: false
+    	t.integer :course_id, null: false
 
       t.string :user_name, null: false
       t.string :shop_name, null: false

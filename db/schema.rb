@@ -110,7 +110,7 @@ ActiveRecord::Schema.define(version: 2020_05_07_093443) do
 
   create_table "orders", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "shop_id", null: false
+    t.integer "course_id", null: false
     t.string "user_name", null: false
     t.string "shop_name", null: false
     t.string "course_name", null: false
