@@ -14,6 +14,7 @@ class Shop < ApplicationRecord
          has_many :rooms, dependent: :destroy
          has_many :genres, dependent: :destroy
          has_many :shop_genres, through: :genres
+         attr_accessor :shop_genre_ids
 
          attachment :shop_image
 end
