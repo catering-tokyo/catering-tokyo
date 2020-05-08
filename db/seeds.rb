@@ -103,3 +103,4 @@ Course.find_or_create_by(id:48, shop_id:23, introduction: "おすすめ！", nam
 
 
 Order.find_or_create_by(id:1, user_id:1, shop_id:1, user_name: "大蛇", shop_name: "松屋", course_name: "王道コース", delivery_address: "東京都渋谷区神南１丁目１９−１１　パークスクエア２ 4階", payment: "クレジットカード", option: "アレルギーあります。", people_number: "30", price: "3000", reserve_date: "2020-05-30", reserve_time: "11:00")
+
