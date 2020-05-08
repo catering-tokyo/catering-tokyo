@@ -46,11 +46,13 @@ end
 
 # 機能 #
 namespace :admins do
+  resources :informations
   resources :inquiries, only:[:index, :update, :show, :destroy]
   resources :reviews, only:[:index, :show, :destroy]
   resources :shop_genres, only:[:index, :create, :edit, :update, :destroy]
   resources :users, only:[:index, :show, :update]
   resources :shops
+  get "homes/top" => "admins/top", as:'top'
 end
 
 #----------------------------------------------
