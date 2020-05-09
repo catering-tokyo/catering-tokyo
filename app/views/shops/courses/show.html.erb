@@ -2,6 +2,8 @@
 
 <%= link_to '編集する', edit_shops_course_path(@course) %>
 
+<%= link_to '削除する', shops_course_path(@course.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+
 <%= link_to "戻る", shops_courses_path(current_shop) %>
 
 
