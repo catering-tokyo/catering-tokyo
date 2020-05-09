@@ -1,4 +1,5 @@
 <div class="container">
+	<%= link_to "新規登録", new_users_credit_card_path, class:"btn btn-info" %>
 	<h2>登録したクレジットカード一覧</h2>
 	<table class="table">
 		<tr>
@@ -9,9 +10,9 @@
 
 		<% @credit_cards.each do |credit_card| %>
 		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
+			<td>****<%= @crypt.decrypt_and_verify(credit_card.card_number).to_i % 10000 %></td>
+			<td><%= credit_card.card_holder %></td>
+			<td><%= credit_card.expiration_date.strftime("%m/%Y") %></td>
 		</tr>
 	<% end %>
 	</table>
