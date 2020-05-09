@@ -2,11 +2,19 @@
   <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
 <% end %>
 
+<% if @credit_card.errors.any? %>
+  <ul>
+  <% @credit_card.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+<% end %>
+
 <div class="container">
 	<h2>新規クレジットカード登録</h2>
 	<%= form_for(@credit_card, url:users_credit_cards_path) do |f| %>
 		<div class="row">
-			<%= f.label :card_holder, "カード名義" %>（<span style="color: red;">※必須</span>）
+			<%= f.label :card_holder, "カード名義" %>（<span style="color: red;">※必須,半角英大文字,半角スペースのみ</span>）
 			<%= f.text_field :card_holder, class:"form-control", placeholder:"例：TAROU TOKYO" %>
 		</div>
 

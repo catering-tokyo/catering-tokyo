@@ -3,38 +3,36 @@ class Admins::ShopsController < ApplicationController
     @shops = Shop.all
   end
 
-  def new
-    @shop = Shop.new
-    @genres = Genre.all
+  def edit
+    @shop = Shop.find(params[:id])
   end
-
-  def create
-    @shop = Shop.new(shop_params)
-    @shop_genres = Shop.all
-    binding.pry
-    if @shop.save
-       shop_params[:shop_genre_ids].each_with_index do | genre, i |
-        if i == 0
-          next
-        end
-        genre = Genre.new(shop_genre_id: genre.to_i)
-        genre.shop_id = @shop.id
-        genre.save
-    end
-        redirect_to admins_shops_path(@shop)
-    else
-       render 'new'
-    end
-  end
-
 
   def show
+    @shop = Shop.find(params[:id])
   end
 
   def update
+    @shop = Shop.find(params[:id])
+    if @shop.update(shop_params)
+       shop_params[:shop_genre_ids].each do | kiri |
+          # binding.pry
+          genres = @shop.genres.pluck(:shop_genre_id)
+          unless genres.include?(kiri.to_i)
+            genre = Genre.new(shop_genre_id: kiri)
+            genre.shop_id = @shop.id
+            genre.save
+          end
+        end
+          redirect_to admins_shop_path
+    else
+       render 'edit'
+    end
   end
 
   def destroy
+      @shop = Shop.find(params[:id])
+      @shop.destroy
+      redirect_to admins_shops_path, notice: "successfully delete gym!"
   end
 
   private

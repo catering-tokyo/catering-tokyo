@@ -1,3 +1,7 @@
+<% flash.each do |message_type, message| %>
+  <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+<% end %>
+
 <div class="container">
 	<%= link_to "新規登録", new_users_credit_card_path, class:"btn btn-info" %>
 	<h2>登録したクレジットカード一覧</h2>
