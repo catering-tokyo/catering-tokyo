@@ -1,18 +1,22 @@
 class Users::ReviewsController < ApplicationController
 
 	def create
-		@shop = Shop.find(params[:id])
-		@review = @shop.review.new(review_params)
+		@shop = Shop.find(params[:shop_id])
+		@review = @shop.reviews.new(review_params)
   		@review.user_id = current_user.id
-		@review.save
-  		redirect_to request.referer, notice: "このお店にレビューしました!"
-  		@reviews = @shop.reviews.all
+  	  if @review.save
+  		redirect_to users_shop_path(@shop.id), notice: "このお店にレビューしました!"
+  	  end
+  		@reviews = @shop.reviews
 	end
 
 	def destroy
-		@review = Review.find(params[:id])
-    	@review.destroy
-    	redirect_to request.referer, notice: "このお店のレビューしました!"
+		@review = Review.find(params[:shop_id])
+		@shop = @review.shop
+		if @review.user == current_user
+    	   @review.destroy
+    	   redirect_to users_shop_path(@shop.id), notice: "このお店にレビューを削除しました!"
+    	end
 	end
 
 	private

@@ -130,7 +130,7 @@ ActiveRecord::Schema.define(version: 2020_05_07_093443) do
     t.integer "shop_id", null: false
     t.string "title", null: false
     t.text "body", null: false
-    t.integer "star", null: false
+    t.float "star", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
