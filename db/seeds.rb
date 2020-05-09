@@ -166,9 +166,3 @@ Order.find_or_create_by(user_id:48, shop_id:1, user_name: "サスケ", shop_name
 
 
 
-
-
-
-
-
-

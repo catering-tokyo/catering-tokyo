@@ -10,9 +10,9 @@ class Admins::ShopGenresController < ApplicationController
     @genre = ShopGenre.new(genre_params)
     @genres = ShopGenre.all
     if @genre.save
-         redirect_to admins_shop_genres_path
+       redirect_to admins_shop_genres_path
     else
-     render "index"
+       render "index"
     end
   end
 
@@ -23,10 +23,10 @@ class Admins::ShopGenresController < ApplicationController
   def update
     @genre = ShopGenre.find(params[:id])
       if @genre.update(genre_params)
-       redirect_to admins_shop_genres_path
+         redirect_to admins_shop_genres_path
       else
-       redirect_back(fallback_location: edit_admins_shop_genre_path)
-    end
+         redirect_back(fallback_location: edit_admins_shop_genre_path)
+      end
   end
 
   def destroy
@@ -35,9 +35,8 @@ class Admins::ShopGenresController < ApplicationController
     redirect_to admins_shop_genres
   end
 
-    private
+  private
     def genre_params
-      params.require(:genre).permit(:name, :genre_image)
+      params.require(:shop_genre).permit(:name, :genre_image)
     end
-
 end
