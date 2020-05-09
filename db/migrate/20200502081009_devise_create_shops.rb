@@ -36,9 +36,9 @@ class DeviseCreateShops < ActiveRecord::Migration[5.2]
       t.string :phonenumber, null: false
       t.string :address, null: false
       t.string :shop_image_id
-      t.string :postal_code, null: false
-      t.string :open_time, null: false
-      t.string :close_time, null: false
+      t.string :postal_code
+      t.string :open_time
+      t.string :close_time
       t.string :lunch_limit
       t.string :dinner_limit
       t.float :latitude

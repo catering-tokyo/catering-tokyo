@@ -1,0 +1,55 @@
+<%= form_for(@shop, url:admins_shop_path(@shop),method: :patch) do |f| %>
+	<div class = "food">
+		<div class="field">
+			<%= attachment_image_tag @shop, :shop_image, src: "", id:"img_prev", size: "200x200", alt:"Image preview", class: "item_prev", fallback: "no_image.jpg" %>
+		</div>
+	 	<div class="field">
+			<%= f.label :shop_image,"image change" ,class: "btn btn-warning btn-lg" ,for:"post_img"%>
+			<%= f.attachment_field :shop_image, id:"post_img", class: "image", style:"display:none;" %>
+		</div>
+		<div class="field">
+			<%= f.label :name, "ショップ名" %><br />
+			<%= f.text_field :name %>
+		</div>
+		<div class="field">
+			<%= f.label :phonenumber, "電話番号" %><br />
+			<%= f.telephone_field :phonenumber %>
+		</div>
+		<div class="field">
+			<%= f.label :postal_code, "郵便番号" %><br />
+			<%= f.number_field :postal_code %>
+		</div>
+		<div class="field">
+			<%= f.label :address, "住所"%><br />
+			<%= f.text_field :address %>
+		</div>
+		<div class="field">
+			<%= f.label :open_time, "開店時間" %><br />
+			<%= f.text_field :open_time %>
+		</div>
+		<div class="field">
+			<%= f.label :close_time, "閉店時間" %><br />
+			<%= f.text_field :close_time %>
+		</div>
+		<div class="field">
+			<%= f.label :lunch_limit, "ランチラストオーダー" %><br />
+			<%= f.text_field :lunch_limit %>
+		</div>
+		<div class="field">
+			<%= f.label :dinner_limit, "ディナーラストオーダー" %><br />
+			<%= f.text_field :dinner_limit %>
+		</div>
+
+		<div class="form-group">
+		  <%= f.label :shop_genres, class:'control-label' %>
+		    <div class="checkbox">
+		      <%= collection_check_boxes(:shop, :shop_genre_ids, ShopGenre.all, :id, :name, include_hidden: false) do |f| %>
+		        <%= f.label {f.check_box + f.text} %>
+		      <% end %>
+		    </div>
+		</div>
+		<div class="field">
+			<%= f.submit "UPDATE", class: "new-btn" %>
+		</div>
+	</div>
+<% end %>
