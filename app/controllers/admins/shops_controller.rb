@@ -17,8 +17,7 @@ class Admins::ShopsController < ApplicationController
        shop_params[:shop_genre_ids].each do | kiri |
           # binding.pry
           genres = @shop.genres.pluck(:shop_genre_id)
-          # binding.pry
-          if genres.include?(kiri)
+          unless genres.include?(kiri.to_i)
             genre = Genre.new(shop_genre_id: kiri)
             genre.shop_id = @shop.id
             genre.save
