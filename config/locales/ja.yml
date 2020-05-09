@@ -1,0 +1,7 @@
+ja:
+  enums:
+    order:
+        order_status:
+          not_compatibled: "未対応"
+          during_correspondenced: "対応中"
+          supported: "対応済"
