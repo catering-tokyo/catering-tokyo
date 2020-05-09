@@ -1,2 +1,36 @@
-<h1>Users::CreditCards#new</h1>
-<p>Find me in app/views/users/credit_cards/new.html.erb</p>
+<% flash.each do |message_type, message| %>
+  <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+<% end %>
+
+<% if @credit_card.errors.any? %>
+  <ul>
+  <% @credit_card.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+<div class="container">
+	<h2>新規クレジットカード登録</h2>
+	<%= form_for(@credit_card, url:users_credit_cards_path) do |f| %>
+		<div class="row">
+			<%= f.label :card_holder, "カード名義" %>（<span style="color: red;">※必須,半角英大文字,半角スペースのみ</span>）
+			<%= f.text_field :card_holder, class:"form-control", placeholder:"例：TAROU TOKYO" %>
+		</div>
+
+		<div class="row">
+			<%= f.label :card_number, "カード番号" %>（<span style="color: red;">※必須</span>）
+			<%= f.text_field :card_number, class:"form-control", placeholder:"例：012345678901" %>
+		</div>
+
+		<div class="row">
+			<%= f.label :expiration_date, "有効期限" %>（<span style="color: red;">※必須</span>）
+			<%= f.date_select :expiration_date, order:[:month,:year,:day], use_month_numbers:true, discard_day:true, start_year:Time.now.year, end_year:Time.now.year+10, date_separator:'月' %>年
+		</div>
+
+		<div class="row">
+			<%= f.submit "登録する", class:"btn btn-primary mt-3" %>
+		</div>
+
+	<% end %>
+</div>

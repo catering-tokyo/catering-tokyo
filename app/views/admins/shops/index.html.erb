@@ -1,2 +1,26 @@
-<h1>Admins::Shops#index</h1>
-<p>Find me in app/views/admins/shops/index.html.erb</p>
+<table>
+	<tr>
+		<th>image</th>
+		<th>shop name</th>
+		<th>電話番号</th>
+		<th>郵便番号</th>
+		<th>開店時間</th>
+		<th>閉店時間</th>
+	</tr>
+   <% @shops.each do |shop| %>
+		<tr>
+			<td><%= attachment_image_tag shop, :shop_image, size: "40x40", fallback: "no_image.jpg" %></td>
+			<td><%= shop.name %></td>
+			<td><%= shop.phonenumber %></td>
+			<td>〒<%= shop.postal_code %></td>
+			<td><%= shop.address %></td>
+			<td><%= shop.open_time %></td>
+			<td><%= shop.close_time %></td>
+			<td><%= link_to "EDIT", edit_admins_shop_path(shop.id), class: "edit-btn" %></td>
+			<td><%= link_to "DELETE",admins_shop_path(shop.id), method: :delete, class: "destroy-btn", data: { confirm: '本当に消しますか？' } %></td>
+		</tr>
+    <% end %>
+</table>
+<div class="row">
+	<%= link_to "Create shop", new_admins_shop_path,class: "new-btn" %>
+</div>

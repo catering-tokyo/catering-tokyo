@@ -9,8 +9,13 @@ class Shop < ApplicationRecord
          has_many :reviews, dependent: :destroy
          has_many :favorites, dependent: :destroy
          has_many :inquiries, dependent: :destroy
+         has_many :orders, dependent: :destroy
          has_many :courses, dependent: :destroy
          has_many :messages, dependent: :destroy
          has_many :rooms, dependent: :destroy
+         has_many :genres, dependent: :destroy, foreign_key: 'shop_id'
          has_many :shop_genres, through: :genres
+         attr_accessor :shop_genre_ids
+
+         attachment :shop_image
 end

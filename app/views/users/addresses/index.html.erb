@@ -13,7 +13,7 @@
 <div class="container">
 	<h2>配送先登録</h2>
 
-	<%= form_for(@address, url:users_addresses_path(@address)) do |f| %>
+	<%= form_for(@address, url:users_addresses_path) do |f| %>
 		<div class="row">
 			<%= f.label :name, "宛名" %>（<span style="color: red;">※必須</span>）
 			<%= f.text_field :name, class:"form-control" %>

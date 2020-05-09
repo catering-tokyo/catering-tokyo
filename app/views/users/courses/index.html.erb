@@ -1,2 +1,7 @@
-<h1>Users::Courses#index</h1>
-<p>Find me in app/views/users/courses/index.html.erb</p>
+<h1>コース一覧</h1>
+<% @courses.each do |course| %>
+    <p>----------</p>
+    <span><%= link_to course.name , "/users/course/#{course.id}" %></span>
+    <span><%= course.course_image_id %></span>
+    <span><%= course.price %></span>
+<% end %>

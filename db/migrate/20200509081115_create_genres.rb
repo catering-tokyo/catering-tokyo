@@ -1,8 +1,8 @@
 class CreateGenres < ActiveRecord::Migration[5.2]
   def change
     create_table :genres do |t|
-    	t.integer :shop_id, null: false
-    	t.integer :shop_genreid, null: false
+      t.references :shop, foreign_key: true
+      t.references :shop_genre, foreign_key: true
 
       t.timestamps
     end

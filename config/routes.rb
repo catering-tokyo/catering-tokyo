@@ -47,11 +47,13 @@ end
 
 # 機能 #
 namespace :admins do
+  resources :informations
   resources :inquiries, only:[:index, :update, :show, :destroy]
   resources :reviews, only:[:index, :show, :destroy]
   resources :shop_genres, only:[:index, :create, :edit, :update, :destroy]
   resources :users, only:[:index, :show, :update]
   resources :shops
+  get "homes/top" => "admins/top", as:'top'
 end
 
 #----------------------------------------------
@@ -71,7 +73,11 @@ end
 namespace :shops do
   resources :inquiries, only:[:index, :new, :create, :show]
   resources :messages, only:[:index, :show, :create]
-  resources :orders, only:[:index, :show ,:update]
+  resources :orders, only:[:index, :show ,:update] do
+    patch :not_compatible
+    patch :during_correspondence
+    patch :support
+  end
   resources :informations
   resources :courses
   resources :reviews, only:[:index]

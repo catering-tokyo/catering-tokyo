@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h1>Users::Shops#show</h1>
 
 <p>Find me in app/views/users/shops/show.html.erb</p>
@@ -22,3 +23,18 @@
 
 
 
+=======
+<h1>店舗詳細</h1>
+<p><%= @shop.name %></p>
+<div><% @shop.shop_image_id%></div>
+<p><%= @shop.phonenumber %></p>
+<p><%= @shop.postal_code %></p>
+<p><%= @shop.address %></p>
+
+<div>
+<p>開店時間</p>
+<p><%= @shop.open_time %>~<%= @shop.close_time %></p>
+</div>
+
+<span><%= link_to "コース一覧", users_courses_path(:shop_id => params[:id]) %></span>
+>>>>>>> develop
