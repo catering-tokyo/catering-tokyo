@@ -1,4 +1,5 @@
 <h1>Shops::Orders#index</h1>
+<%= link_to "マイページへ",shops_shop_path(current_shop) %>
 
 <h1>注文一覧</h1>
 <% @orders.each do |order| %>
@@ -9,4 +10,9 @@
 <%= order.people_number %>
 <%= order.reserve_date %>
 <%= order.reserve_time %>
+
+
+<%= link_to "予約詳細", shops_order_path(order.id) %>
+
+<% end %>
 <p>Find me in app/views/shops/orders/index.html.erb</p>

@@ -72,7 +72,11 @@ end
 namespace :shops do
   resources :inquiries, only:[:index, :new, :create, :show]
   resources :messages, only:[:index, :show, :create]
-  resources :orders, only:[:index, :show ,:update]
+  resources :orders, only:[:index, :show ,:update] do
+    patch :not_compatible
+    patch :during_correspondence
+    patch :support
+  end
   resources :informations
   resources :courses
   resources :reviews, only:[:index]

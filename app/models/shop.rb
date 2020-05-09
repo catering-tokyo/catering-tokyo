@@ -9,6 +9,7 @@ class Shop < ApplicationRecord
          has_many :reviews, dependent: :destroy
          has_many :favorites, dependent: :destroy
          has_many :inquiries, dependent: :destroy
+         has_many :orders, dependent: :destroy
          has_many :courses, dependent: :destroy
          has_many :messages, dependent: :destroy
          has_many :rooms, dependent: :destroy

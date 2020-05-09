@@ -1,12 +1,13 @@
 class Order < ApplicationRecord
 	enum order_status: {
-		未対応: 0,
-		対応中: 1,
-		対応済: 2
+		not_compatibled: 0,
+		during_correspondenced: 1,
+		supported: 2
 	}
 
-	belongs_to :course
+	belongs_to :shop
 	belongs_to :user
 
 	has_many :notifications, dependent: :destroy
+
 end
