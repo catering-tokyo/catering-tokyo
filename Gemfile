@@ -76,7 +76,6 @@ gem 'geocoder'
 gem 'jp_prefecture'
 gem 'simple_calendar'
 gem 'gmaps4rails'
-
 gem 'dotenv-rails'
 # group :production do
 #   gem 'mysql2'

@@ -5,61 +5,63 @@
       <%= form_for(@shop, url:shops_shop_path(@shop.id)) do |f| %>
         <div class="row">
           <div class="col-3">
-          <h4><%= f.label :name, "店舗名", class: 'control-label' %></h4>
+          <%= f.label :name, "店舗名", class: 'control-label' %></h5>
         </div>
           <%= f.text_field :name, autocomplete: "name", class: 'col-4 form-control' %>
         </div>
         <div class="row">
           <div class="col-3">
-            <h4><%= f.label :email, 'メールアドレス', class: 'control-label' %></h4>
+            <h5><%= f.label :email, 'メールアドレス', class: 'control-label' %></h5>
           </div>
           <%= f.email_field :email, autofocus: true, autocomplete: "email",class: 'col-4 form-control' %>
         </div>
         <div class="row">
           <div class="col-3">
-            <h4><%= f.label :postal_code, '郵便番号', class: 'control-label' %></h4>
+            <h5><%= f.label :postal_code, '郵便番号', class: 'control-label' %></h5>
           </div>
             <%= f.text_field :postal_code, class: 'col-4 form-control' %>
         </div>
         <div class="row">
           <div class="col-3">
-            <h4><%= f.label :address, '住所', class: 'control-label' %></h4>
+            <h5><%= f.label :address, '住所', class: 'control-label' %></h5>
           </div>
           <%= f.text_field :address, class: 'col-4 form-control' %>
         </div>
         <div class="row">
           <div class="col-3">
-            <h4><%= f.label :phonenumber, '電話番号', class: 'control-label' %></h4>
+            <h5><%= f.label :phonenumber, '電話番号', class: 'control-label' %></h5>
           </div>
           <%= f.text_field :phonenumber, class: 'col-4 form-control' %>
         </div>
         <div class="row">
           <div class="col-3">
-            <h4><%= f.label :shop_genre_id, '店舗ジャンル', class: 'control-label' %></h4>
+            <h5><%= f.label :shop_genre_id, '店舗ジャンル', class: 'control-label' %></h5>
           </div>
-          <%= f.select :shop_genre_id,[["1 和風","1 和風"],["2 洋風","2 洋風"],["3 中華","3 中華"],["4 食えればなんでもOK","4 食えればなんでもOK"],["5 イタリアン","5 イタリアン"],["6 おうちでParty！！","6 おうちでParty！！"],["7 葬式","7 葬式"],["8 結婚式","8 結婚式"],["9 宴会","9 宴会"],["10 デザート","10 デザート"],["11 ジャンク","11 ジャンク"]] , {}, class: 'col-4 form-control'%>
+            <%= collection_check_boxes(:shop, :shop_genre_ids, ShopGenre.all, :id, :name, include_hidden: false) do |f| %>
+              <%= f.label {f.check_box + f.text} %>
+            <% end %>
         </div>
         <div class="row">
           <div class="col-3">
-            <h4><%= f.label :open_time, '開店時間', class: 'control-label' %></h4>
+            <h5><%= f.label :open_time, '開店時間', class: 'control-label' %></h5>
           </div>
           <%= f.text_field :open_time, class: 'col-4 form-control' %>
         </div>
         <div class="row">
           <div class="col-3">
-            <h4><%= f.label :close_time, '閉店時間', class: 'control-label' %></h4>
+            <h5><%= f.label :close_time, '閉店時間', class: 'control-label' %></h5>
           </div>
           <%= f.text_field :close_time, class: 'col-4 form-control' %>
         </div>
         <div class="row">
           <div class="col-3">
-            <h4><%= f.label :lunch_limit, 'ランチ終了時間', class: 'control-label' %></h4>
+            <h5><%= f.label :lunch_limit, 'ランチラストオーダー', class: 'control-label' %></h5>
           </div>
           <%= f.text_field :lunch_limit, class: 'col-4 form-control' %>
         </div>
         <div class="row">
           <div class="col-3">
-            <h4><%= f.label :dinner_limit, 'ディナー終了時間', class: 'control-label' %></h4>
+            <h5><%= f.label :dinner_limit, 'ディナーラストオーダー', class: 'control-label' %></h5>
           </div>
           <%= f.text_field :dinner_limit, class: 'col-4 form-control' %>
         </div>
@@ -72,7 +74,7 @@
         <div class="row">
           <div class="col-3">
           </div>
-          <%= f.submit "編集内容を保存する", class: "col-xs-5 col-xs-offset-3 btn btn-secondary" %>
+          <%= f.submit "編集内容を保存する", class: "col-4 btn btn-secondary" %>
         </div><br>
         <% end %>
     </div>
