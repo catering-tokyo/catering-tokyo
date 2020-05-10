@@ -56,6 +56,12 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+
+  gem 'rails-controller-testing'
+  gem 'minitest'
+  gem 'minitest-reporters'
+  gem 'guard'
+  gem 'guard-minitest'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -76,7 +82,6 @@ gem 'geocoder'
 gem 'jp_prefecture'
 gem 'simple_calendar'
 gem 'gmaps4rails'
-
 gem 'dotenv-rails'
 # group :production do
 #   gem 'mysql2'

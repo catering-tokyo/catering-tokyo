@@ -13,7 +13,7 @@ class Shop < ApplicationRecord
          has_many :courses, dependent: :destroy
          has_many :messages, dependent: :destroy
          has_many :rooms, dependent: :destroy
-         has_many :genres, dependent: :destroy
+         has_many :genres, dependent: :destroy, foreign_key: 'shop_id'
          has_many :shop_genres, through: :genres
          attr_accessor :shop_genre_ids
 

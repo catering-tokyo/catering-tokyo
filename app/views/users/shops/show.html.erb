@@ -1,3 +1,17 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 offset-md-3">
+			<%= render 'users/reviews/index', reviews: @reviews %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 offset-md-3">
+			<%= render 'users/reviews/new', shop: @shop, review: @review %>
+		</div>
+	</div>
+</div>
+
+
 <h1>店舗詳細</h1>
 <p><%= @shop.name %></p>
 <div><%= @shop.shop_image_id%></div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_08_041526) do
+ActiveRecord::Schema.define(version: 2020_05_09_081115) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -64,16 +64,18 @@ ActiveRecord::Schema.define(version: 2020_05_08_041526) do
   end
 
   create_table "genres", force: :cascade do |t|
-    t.integer "shop_id", null: false
-    t.integer "shop_genreid", null: false
+    t.integer "shop_id"
+    t.integer "shop_genre_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["shop_genre_id"], name: "index_genres_on_shop_genre_id"
+    t.index ["shop_id"], name: "index_genres_on_shop_id"
   end
 
   create_table "information", force: :cascade do |t|
     t.integer "shop_id", null: false
     t.string "title", null: false
-    t.string "information_image_id", null: false
+    t.string "information_image_id"
     t.text "text", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -131,7 +133,7 @@ ActiveRecord::Schema.define(version: 2020_05_08_041526) do
     t.integer "shop_id", null: false
     t.string "title", null: false
     t.text "body", null: false
-    t.integer "star", null: false
+    t.float "star", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -160,9 +162,9 @@ ActiveRecord::Schema.define(version: 2020_05_08_041526) do
     t.string "phonenumber", null: false
     t.string "address", null: false
     t.string "shop_image_id"
-    t.string "postal_code", null: false
-    t.string "open_time", null: false
-    t.string "close_time", null: false
+    t.string "postal_code"
+    t.string "open_time"
+    t.string "close_time"
     t.string "lunch_limit"
     t.string "dinner_limit"
     t.float "latitude"
