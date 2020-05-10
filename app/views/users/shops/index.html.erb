@@ -2,6 +2,6 @@
 <% @shops.each do |shop| %>
     <p>----------</p>
     <span><%= link_to shop.name , "/users/shops/#{shop.id}" %></span>
-    <span><%= shop.shop_image_id %></span>
+    <span><%= shop.shop_image_id %></span><br>
 <% end %>
-<%= render 'users/reviews/all', reviews: @reviews %>
+<%#<%= render 'users/reviews/all', reviews: @reviews %>

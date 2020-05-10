@@ -1,6 +1,6 @@
 <h1>店舗詳細</h1>
 <p><%= @shop.name %></p>
-<div><% @shop.shop_image_id%></div>
+<div><%= @shop.shop_image_id%></div>
 <p><%= @shop.phonenumber %></p>
 <p><%= @shop.postal_code %></p>
 <p><%= @shop.address %></p>
@@ -9,5 +9,12 @@
 <p>開店時間</p>
 <p><%= @shop.open_time %>~<%= @shop.close_time %></p>
 </div>
-
-<span><%= link_to "コース一覧", users_courses_path(:shop_id => params[:id]) %></span>
+<div>
+<% @courses.each do |course| %>
+    <p>----------</p>
+    <span><%= link_to course.name , users_course_path(course.id) %></span>
+    <span><%= course.course_image_id %></span><br>
+<% end %>
+</div>
+<span><%= link_to "コース一覧", users_courses_path(shop_id: params[:id]) %></span><br>
+<span><%= link_to "お店一覧", users_shops_path%></span>
