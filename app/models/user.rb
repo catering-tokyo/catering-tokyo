@@ -12,4 +12,8 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :inquiries, dependent: :destroy
   has_many :addresses, dependent: :destroy
+
+  validates :name,  presence: true, length: { maximum: 20 }
+  validates :phonenumber,  presence: true
+  validates :address,  presence: true
 end
