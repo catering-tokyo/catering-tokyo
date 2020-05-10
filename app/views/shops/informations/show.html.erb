@@ -1,2 +1,42 @@
-<h1>Shops::Informations#show</h1>
-<p>Find me in app/views/shops/informations/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-10 ofset-2">
+      <h2><strong>お知らせ詳細</strong></h2><br>
+      <div class="row">
+        <div class="col-2">
+          <h5>店名</h5>
+        </div>
+        <div class="col-7">
+          <h5><%= @information.shop.name %></h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-2">
+          <h5>件名</h5>
+        </div>
+        <div class="col-6">
+          <h5><%= @information.title %></h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-2">
+          <h5>内容</h5>
+        </div>
+        <div class="col-6">
+          <h5><%= @information.text %></h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <%= attachment_image_tag @shop, :shop_image, :fill, 250, 250, format: 'jpeg', fallback: "no_image.shop.jpg", size:"250x250" %>
+        </div>
+      </div>
+      <div class="row">
+        <%= link_to "編集", edit_shops_information_path(@information.id), class:"col-4 btn btn-secondary" %>
+      </div><br>
+      <div class="row">
+        <%= link_to "お知らせ一覧", shops_informations_path, class:"col-4 btn btn-secondary" %>
+      </div>
+    </div>
+  </div>
+</div>
