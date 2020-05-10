@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 2020_05_09_081115) do
   create_table "information", force: :cascade do |t|
     t.integer "shop_id", null: false
     t.string "title", null: false
-    t.string "information_image_id", null: false
+    t.string "information_image_id"
     t.text "text", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
