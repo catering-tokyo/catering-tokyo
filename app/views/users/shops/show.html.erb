@@ -18,7 +18,6 @@
 <p><%= @shop.phonenumber %></p>
 <p><%= @shop.postal_code %></p>
 <p><%= @shop.address %></p>
-
 <div>
 <p>開店時間</p>
 <p><%= @shop.open_time %>~<%= @shop.close_time %></p>
@@ -26,8 +25,8 @@
 <div>
 <% @courses.each do |course| %>
     <p>----------</p>
-    <span><%= link_to course.name , users_course_path(course.id) %></span>
-    <span><%= course.course_image_id %></span><br>
+    <span><%= link_to course.name , users_course_path(course.id) %></span><br>
+    <span><%= course.course_image_id %></span>
 <% end %>
 </div>
 <span><%= link_to "コース一覧", users_courses_path(shop_id: params[:id]) %></span><br>
