@@ -32,7 +32,7 @@ class Admins::ShopsController < ApplicationController
   def destroy
       @shop = Shop.find(params[:id])
       @shop.destroy
-      redirect_to admins_shops_path, notice: "successfully delete gym!"
+      redirect_to admins_shops_path, notice: "successfully delete shop!"
   end
 
   private
