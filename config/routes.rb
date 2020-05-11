@@ -78,7 +78,10 @@ namespace :shops do
     patch :during_correspondence
     patch :support
   end
-  resources :informations
+  resources :informations do
+    get :confirm, on: :collection
+  end
+  #get 'informations/confirm',to:'informations#confirm', as:'confirm_informations'
   resources :courses
   resources :reviews, only:[:index]
   resources :shops, only:[:show, :edit, :update]

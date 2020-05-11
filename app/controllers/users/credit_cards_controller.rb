@@ -2,7 +2,7 @@ class Users::CreditCardsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @credit_cards = CreditCard.where(user_id: current_user.id)
+    @credit_cards = CreditCard.where(user_id: current_user.id).page(params[:page]).per(8)
 
     key = ActiveSupport::KeyGenerator.new('card_number').generate_key(ENV['SECRET_KEY'], ActiveSupport::MessageEncryptor.key_len)
     @crypt = ::ActiveSupport::MessageEncryptor.new(key)
@@ -42,12 +42,41 @@ class Users::CreditCardsController < ApplicationController
   end
 
   def edit
+    @credit_card = CreditCard.find(params[:id])
+    if current_user.id != @credit_card.user.id
+      redirect_to root_path
+    else
+      key = ActiveSupport::KeyGenerator.new('card_number').generate_key(ENV['SECRET_KEY'], ActiveSupport::MessageEncryptor.key_len)
+      @crypt = ::ActiveSupport::MessageEncryptor.new(key)
+    end
   end
 
   def update
+    @credit_card = CreditCard.find(params[:id])
+    if current_user.id != @credit_card.user.id
+      redirect_to root_path
+    else
+      if @credit_card.update(credit_card_params)
+        flash[:success] = "クレジットカードを編集しました"
+        redirect_to users_credit_cards_path
+      else
+        key = ActiveSupport::KeyGenerator.new('card_number').generate_key(ENV['SECRET_KEY'], ActiveSupport::MessageEncryptor.key_len)
+        @crypt = ::ActiveSupport::MessageEncryptor.new(key)
+        flash.now[:danger] = "エラーです"
+        render "edit"
+      end
+    end
   end
 
   def destroy
+    credit_card = CreditCard.find(params[:id])
+    if current_user.id != credit_card.user.id
+      redirect_to root_path
+    else
+      credit_card.destroy
+      flash[:success] = "クレジットカードを登録しました"
+      redirect_to users_credit_cards_path
+    end
   end
 
   private
