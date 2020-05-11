@@ -4,3 +4,15 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
+
+sano:
+  card_holder: SANO
+  card_number: LzT3nScCx3l4Gn3pRw==--K0XYjbpFsIEI4brp--3/Fee8mt9TeJkTmUi4J5Hg==
+  expiration_date: <%= Date.today %>
+  user: sano
+
+orochi:
+  card_holder: OROCHI
+  card_number: PJWHZL1aHaa+KtBEoQ==--sYZkBdPlQ6UkUINO--lB1+yVU9q473QZ2zG8XCzw==
+  expiration_date: <%= Date.today %>
+  user: orochi
