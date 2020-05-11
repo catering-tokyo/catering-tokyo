@@ -1,2 +1,14 @@
-<h1>Users::Users#show</h1>
-<p>Find me in app/views/users/users/show.html.erb</p>
+<% if user_signed_in? %>
+    <h2>My Page</h2>
+    <p>お名前</p>
+    <p><%= current_user.name %></p>
+    <p>電話番号</p>
+    <p><%= current_user.phonenumber %></p>
+    <p>メールアドレス</p>
+    <p><%= current_user.email %></p>
+    <p>住所</p>
+    <p><%= current_user.address %></p>
+    <%= link_to "登録情報編集", edit_users_user_path(current_user) %>
+<% else %>
+
+<% end %>

@@ -1,2 +1,12 @@
-<h1>Users::Courses#show</h1>
-<p>Find me in app/views/users/courses/show.html.erb</p>
+<h1>コース詳細</h1>
+<p><%= @course.name %></p>
+<p><%= @course.people_number %></p>
+<p>最大予約人数</p>
+<p><%= @course.maximum_people %></p>
+<p>最低予約人数</p>
+<p><%= @course.minimum_people %></p>
+<p>価格</p>
+<p><%= @course.price %></p>
+<span><%= link_to "オーダーへ", users_orders_path %></span><br>
+<span><%= link_to "お店一覧", users_shops_path%></span><br>
+<span><%= link_to "コース一覧", users_courses_path(shop_id: params[:shop_id])%></span>
