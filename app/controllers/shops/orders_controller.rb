@@ -2,7 +2,15 @@ class Shops::OrdersController < ApplicationController
   def index
   	# courses = current_shop.courses.pluck(:id)
   	# @orders = Order.where(course_id: courses)
-  	@orders = current_shop.orders
+      if params[:support] == "not_compatibled"
+        @orders = Order.where(shop_id: current_shop.id, order_status: 0)
+      elsif params[:support] == "during_correspondenced"
+        @orders = Order.where(shop_id: current_shop.id, order_status: 1)
+      elsif params[:support] == "supported"
+        @orders = Order.where(shop_id: current_shop.id, order_status: 2)
+      else
+        @orders = current_shop.orders
+      end
   end
 
   def show
