@@ -1,2 +1,39 @@
-<h1>Shops::Informations#edit</h1>
-<p>Find me in app/views/shops/informations/edit.html.erb</p>
+<div class="container">
+  <div class="col-12">
+    <h2><strong>お知らせ編集</strong></h2><br>
+    <%= form_for(@information, url:shops_information_path(@information.id), method: :patch) do |f| %>
+    <div class="row">
+      <div class="col-1">
+        <h4><%= f.label :件名, class: 'control-label' %></h4>
+      </div>
+      <%= f.text_field :title, class: 'col-6 form-control' %>
+    </div>
+    <div class="row">
+      <div class="col-1">
+        <h4><%= f.label :内容, class: 'control-label' %></h4>
+      </div>
+      <%= f.text_area :text, class: 'col-6 form-control',placeholder: "お客様へわかりやすく情報を共有しましょう。" %><br><br><br><br><br><br>
+    </div><br>
+    <div class="row">
+      <div class="col-1">
+      </div>
+      <%= f.label :information_image, "画像を投稿", class: 'col-3 btn btn-secondary' %>
+      <%= f.attachment_field :information_image, style: "display: none;" %>
+    </div>
+    <div class="row">
+      <div class="col-1">
+      </div>
+      <div class="col-6">
+        <%= f.submit "アップデート",class: "col-3 btn btn-secondary" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-1">
+      </div>
+      <div class="col-6"><br>
+        <%= link_to "お知らせ一覧", shops_informations_path, class:"col-3 btn btn-secondary" %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
