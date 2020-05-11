@@ -1,5 +1,7 @@
 class Users::ShopsController < ApplicationController
-  def index 	 	
+
+  def index
+
   end
 
   def show

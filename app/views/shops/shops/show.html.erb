@@ -31,6 +31,11 @@
           </tr>
           <tr class="shop-tr">
             <td>店舗ジャンル</td>
+            <td>
+              <% @shop.genres.each do |shop| %>
+                <%= shop.shop_genre.name %>
+              <% end %>
+            </td>
           </tr>
           <tr class="shop-tr">
             <td>開店時間</td>
@@ -41,11 +46,11 @@
             <td><%= @shop.close_time %></td>
           </tr>
           <tr class="shop-tr">
-            <td>ランチ終了時間</td>
+            <td>ランチラストオーダー</td>
             <td><%= @shop.lunch_limit %></td>
           </tr>
           <tr class="shop-tr">
-            <td>ディナー終了時間</td>
+            <td>ディナーラストオーダー</td>
             <td><%= @shop.dinner_limit %></td>
           </tr>
         </table>
@@ -59,11 +64,8 @@
           <%= link_to "コース一覧リンク", shops_courses_path %><br><br>
           <%= link_to "お問い合わせ一覧", shops_inquiries_path %><br><br>
           <%= link_to "メッセージ件数", shops_messages_path %><br><br>
-          <%= link_to "お知らせ一覧", shops_inquiries_path %><br><br>
+          <%= link_to "お知らせ一覧", shops_informations_path %><br><br>
           <%= link_to "予約一覧", shops_orders_path %><br><br>
-          <%= link_to "予約件数", shops_orders_path %><br><br>
-          <%= link_to "予約一覧実行前", shops_orders_path %><br><br>
-          <%= link_to "予約一覧実行済み", shops_orders_path %><br><br>
           <%= link_to "予約キャンセル一覧", shops_orders_path %><br><br>
           <%= link_to "ショップ情報編集", edit_shops_shop_path(@shop.id) %><br><br>
           <%= link_to "レビュー一覧", shops_reviews_path %><br><br>

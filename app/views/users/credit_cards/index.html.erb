@@ -10,6 +10,8 @@
 			<th>カードナンバー</th>
 			<th>名義</th>
 			<th>有効期限</th>
+			<th></th>
+			<th></th>
 		</tr>
 
 		<% @credit_cards.each do |credit_card| %>
@@ -17,7 +19,10 @@
 			<td>****<%= @crypt.decrypt_and_verify(credit_card.card_number).to_i % 10000 %></td>
 			<td><%= credit_card.card_holder %></td>
 			<td><%= credit_card.expiration_date.strftime("%m/%Y") %></td>
+			<td><%= link_to "編集", edit_users_credit_card_path(credit_card), class:"btn btn-info" %></td>
+			<td><%= link_to "削除", users_credit_card_path(credit_card), method: :delete, class:"btn btn-danger", "data-confirm" => "本当に削除しますか？" %> </td>
 		</tr>
 	<% end %>
 	</table>
+	<%= paginate @credit_cards %>
 </div>
