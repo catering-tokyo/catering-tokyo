@@ -75,15 +75,15 @@ ActiveRecord::Schema.define(version: 2020_05_09_081115) do
   create_table "information", force: :cascade do |t|
     t.integer "shop_id", null: false
     t.string "title", null: false
-    t.string "information_image_id", null: false
+    t.string "information_image_id"
     t.text "text", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "inquiries", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "shop_id", null: false
+    t.integer "user_id"
+    t.integer "shop_id"
     t.string "title", null: false
     t.text "body", null: false
     t.text "reply"

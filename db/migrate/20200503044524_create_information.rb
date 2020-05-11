@@ -5,7 +5,7 @@ class CreateInformation < ActiveRecord::Migration[5.2]
     	t.integer :shop_id, null: false
 
     	t.string :title, null: false
-    	t.string :information_image_id , null: false
+    	t.string :information_image_id
     	t.text :text, null: false
       t.timestamps
     end
