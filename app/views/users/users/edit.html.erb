@@ -1,8 +1,7 @@
 <%= form_with url: users_user_path(current_user), local: true, method: :patch do |f| %>
     <h4>お名前</h4>
-    <input value=<%= f.text_field @user.name %>><br>
-    <%= f.label :電話番号 %>
-    <%= f.text_field :phonenumber %><br>
+    <%= f.text_field @user.name %>
+    <span><%= f.label :電話番号 %><%= f.text_field :phonenumber %></span><br>
     <%= f.label :メールアドレス %>
     <%= f.email_field :email %><br>
     <%= f.label :ご住所 %>
