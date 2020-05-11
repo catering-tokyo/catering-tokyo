@@ -28,13 +28,14 @@
       </div>
       <div class="row">
         <div class="col-4">
-          <%= attachment_image_tag @shop, :shop_image, :fill, 250, 250, format: 'jpeg', fallback: "no_image.shop.jpg", size:"250x250" %>
+          <%= attachment_image_tag @information, :information_image, :fill, 250, 250, format: 'jpeg', fallback: "no_image.shop.jpg", size:"250x250" %>
         </div>
       </div>
-      <div class="row">
-        <%= link_to "編集", edit_shops_information_path(@information.id), class:"col-4 btn btn-secondary" %>
-      </div><br>
-      <div class="row">
+      <div class="font"><br><br>
+        <% if @information.shop == current_shop %>
+          <%= link_to "編集",edit_shops_information_path(@information.id), class: "col-xs-2 btn btn-secondary edit_information_#{@information.id}" %>
+          <%= link_to "削除",shops_information_path(@information.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "col-xs-2 btn btn-secondary destroy_information_#{@information.id}" %>
+        <% end %>
         <%= link_to "お知らせ一覧", shops_informations_path, class:"col-4 btn btn-secondary" %>
       </div>
     </div>
