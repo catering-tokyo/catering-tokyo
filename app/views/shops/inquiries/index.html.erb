@@ -1,2 +1,18 @@
 <h1>Shops::Inquiries#index</h1>
-<p>Find me in app/views/shops/inquiries/index.html.erb</p>
+
+<%= link_to "マイページへ",shops_shop_path(current_shop), class: "btn btn-primary rounded-0" %>
+
+<%= link_to "問い合わせ作成", new_shops_inquiry_path, class: "btn btn-primary rounded-0" %>
+<% @inquiries.each do |inquiry| %>
+<table class="table table-bordered">
+		<tr class="shop-tr">
+			<td>題名</td>
+			<td><%= inquiry.title %></td>
+		</tr>
+		<tr class="shop-tr">
+			<td>内容</td>
+			<td><%= inquiry.body %></td>
+		</tr>
+</table>
+<%= link_to "詳細へ", shops_inquiry_path(inquiry.id), class: "btn btn-primary rounded-0" %>
+<% end %>

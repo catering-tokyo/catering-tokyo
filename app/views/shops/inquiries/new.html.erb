@@ -1,2 +1,8 @@
 <h1>Shops::Inquiries#new</h1>
-<p>Find me in app/views/shops/inquiries/new.html.erb</p>
+<%= form_for @inquiry, url: shops_inquiries_path do |inquiry| %>
+<h3>タイトル</h3>
+<%= inquiry.text_field :title %>
+<h3>内容</h3>
+<%= inquiry.text_area :body %>
+<%= inquiry.submit '送信' %>
+<% end %>
