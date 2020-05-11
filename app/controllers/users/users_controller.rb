@@ -13,7 +13,7 @@ class Users::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      #更新に成功したときの処理
+      redirect_to users_user_path
     else
       render "edit"
     end
