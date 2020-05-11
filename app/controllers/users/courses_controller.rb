@@ -4,5 +4,7 @@ class Users::CoursesController < ApplicationController
   end
 
   def show
+  	@order = Order.new
+    course = Course.find_by(params[:shop_id])
   end
 end

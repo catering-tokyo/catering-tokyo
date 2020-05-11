@@ -1,2 +1,9 @@
 <h1>Users::Courses#show</h1>
+
+<%= form_with url: users_orders_path ,local: true do |f| %>
+
+
+<%= f.time_select :order {|shop| [start_hour:open_time, end_hour:close_time]} %>
+
+<% end %>
 <p>Find me in app/views/users/courses/show.html.erb</p>
