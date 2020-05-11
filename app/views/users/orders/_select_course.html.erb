@@ -1,0 +1,26 @@
+<div class="row  select-course-box">
+	<div class="col-md-12 select-course-area">
+		<%= form_with model: [:users, order], data: {remote: false} do |f| %>
+
+
+		<div class>
+			<%= month_calendar do |date|  %>
+			  <%= date %>
+			<% end %>
+		</div>
+		<div>
+			<h4><%= f.label :日にち %>:
+          <%= f.text_field :reserve_date, class: "col-xs-5 item_title" %></h4>
+		</div>
+
+		<div>
+			<h4><%= f.label :時間  %>:
+					<%= select :reserve_time, course.shop.open_time , include_blank: "選択して下さい" %>		</h4>
+		</div>
+
+
+		<% end %>
+	</div>
+</div>
+
+<%= f.select :sub_address, current_customer.sub_addresses.map { |subaddress| [subaddress.postal_code + "  " + subaddress.shipping_address + "  " + subaddress.delivery_name, subaddress.id ]} %><br>

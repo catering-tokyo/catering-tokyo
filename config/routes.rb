@@ -19,7 +19,7 @@ namespace :users do
   resources :messages, only:[:index, :create, :show]
   resources :favorites, only:[:index, :create, :destroy]
   resources :addresses, only:[:index, :edit, :create, :update, :destroy]
-  resources :orders, only:[:index, :new, :create, :show] do
+  resources :orders, only:[:index, :new, :create, :show, :edit, :update] do
     get 'confirm' => 'users#confirm', as:'confirm'
     get 'thanks' => 'users#thanks', as:'thanks'
   end

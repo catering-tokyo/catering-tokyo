@@ -14,9 +14,9 @@ class Users::ReviewsController < ApplicationController
 		@review = Review.find(params[:shop_id])
 		@shop = @review.shop
 		if @review.user == current_user
-    	   @review.destroy
-    	   redirect_to users_shop_path(@shop.id), notice: "このお店にレビューを削除しました!"
-    	end
+    	 @review.destroy
+    	 redirect_to users_shop_path(@shop.id), notice: "このお店にレビューを削除しました!"
+    end
 	end
 
 	private
