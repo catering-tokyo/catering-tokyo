@@ -1,12 +1,20 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
+      <% if flash[:notice] %>
+        <div class="col-xs-6 col-xs-offset-1" >
+          <div class="flash"><br><br>
+            <h4><strong>
+              <%= flash[:notice] %>
+            </strong></h4>
+          </div>
+        </div>
+      </div>
+      <% end %>
       <h2><strong>お知らせ一覧</strong></h2>
       <% @informations.each do |information| %>
-    </div>
-
     <div class="col-5">
-      <%= attachment_image_tag @shop, :shop_image, :fill, 250, 250, format: 'jpeg', fallback: "no_image.shop.jpg", size:"250x250" %>
+      <%= attachment_image_tag information, :information_image, :fill, 250, 250, format: 'jpeg', fallback: "no_image.shop.jpg", size:"250x250" %>
     </div>
   </div>
   <div class="row">
