@@ -43,31 +43,40 @@ class Users::CreditCardsController < ApplicationController
 
   def edit
     @credit_card = CreditCard.find(params[:id])
-    redirect_to root_path if current_user.id != @credit_card.user.id
-    key = ActiveSupport::KeyGenerator.new('card_number').generate_key(ENV['SECRET_KEY'], ActiveSupport::MessageEncryptor.key_len)
-    @crypt = ::ActiveSupport::MessageEncryptor.new(key)
+    if current_user.id != @credit_card.user.id
+      redirect_to root_path
+    else
+      key = ActiveSupport::KeyGenerator.new('card_number').generate_key(ENV['SECRET_KEY'], ActiveSupport::MessageEncryptor.key_len)
+      @crypt = ::ActiveSupport::MessageEncryptor.new(key)
+    end
   end
 
   def update
     @credit_card = CreditCard.find(params[:id])
-    redirect_to root_path if current_user.id != @credit_card.user.id
-    if @credit_card.update(credit_card_params)
-      flash[:success] = "クレジットカードを編集しました"
-      redirect_to users_credit_cards_path
+    if current_user.id != @credit_card.user.id
+      redirect_to root_path
     else
-      key = ActiveSupport::KeyGenerator.new('card_number').generate_key(ENV['SECRET_KEY'], ActiveSupport::MessageEncryptor.key_len)
-      @crypt = ::ActiveSupport::MessageEncryptor.new(key)
-      flash.now[:danger] = "エラーです"
-      render "edit"
+      if @credit_card.update(credit_card_params)
+        flash[:success] = "クレジットカードを編集しました"
+        redirect_to users_credit_cards_path
+      else
+        key = ActiveSupport::KeyGenerator.new('card_number').generate_key(ENV['SECRET_KEY'], ActiveSupport::MessageEncryptor.key_len)
+        @crypt = ::ActiveSupport::MessageEncryptor.new(key)
+        flash.now[:danger] = "エラーです"
+        render "edit"
+      end
     end
   end
 
   def destroy
     credit_card = CreditCard.find(params[:id])
-    redirect_to root_path if current_user.id != credit_card.user.id
-    credit_card.destroy
-    flash[:success] = "クレジットカードを登録しました"
-    redirect_to users_credit_cards_path
+    if current_user.id != credit_card.user.id
+      redirect_to root_path
+    else
+      credit_card.destroy
+      flash[:success] = "クレジットカードを登録しました"
+      redirect_to users_credit_cards_path
+    end
   end
 
   private
