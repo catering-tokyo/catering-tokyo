@@ -159,8 +159,8 @@ ActiveRecord::Schema.define(version: 2020_05_09_081115) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name", null: false
-    t.string "phonenumber", null: false
-    t.string "address", null: false
+    t.string "phonenumber"
+    t.string "address"
     t.string "shop_image_id"
     t.string "postal_code"
     t.string "open_time"

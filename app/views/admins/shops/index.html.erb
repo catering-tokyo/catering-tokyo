@@ -2,25 +2,47 @@
 	<tr>
 		<th>image</th>
 		<th>shop name</th>
-		<th>電話番号</th>
 		<th>郵便番号</th>
-		<th>開店時間</th>
-		<th>閉店時間</th>
+		<th>住所</th>
+		<th>営業時間</th>
+		<th></th>
 	</tr>
    <% @shops.each do |shop| %>
 		<tr>
 			<td><%= attachment_image_tag shop, :shop_image, size: "40x40", fallback: "no_image.jpg" %></td>
 			<td><%= shop.name %></td>
-			<td><%= shop.phonenumber %></td>
 			<td>〒<%= shop.postal_code %></td>
 			<td><%= shop.address %></td>
 			<td><%= shop.open_time %></td>
 			<td><%= shop.close_time %></td>
-			<td><%= link_to "EDIT", edit_admins_shop_path(shop.id), class: "edit-btn" %></td>
+			<td><%= link_to "show", admins_shop_path(shop.id) %></td>
 			<td><%= link_to "DELETE",admins_shop_path(shop.id), method: :delete, class: "destroy-btn", data: { confirm: '本当に消しますか？' } %></td>
 		</tr>
     <% end %>
 </table>
 <div class="row">
-	<%= link_to "Create shop", new_admins_shop_path,class: "new-btn" %>
+<%= link_to "トップへ戻る", admins_top_path, class: "top_list" %>
 </div>
+
+
+<style>
+.top_list{
+  display: block;
+  margin: auto;
+  padding: 0.8em;
+  text-align: center;
+  border: 2px solid #fbf284;
+  background-color: #1e294c;
+  border-radius: 30px;
+  transition: .4s;
+  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
+  font-size: 20px;
+  width: 100%;
+  color: #fff;
+  }
+
+.top_list:hover {
+  background: #EC407A;
+  color: #fff;
+  }
+</style>
