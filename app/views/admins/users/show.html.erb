@@ -1,2 +1,42 @@
-<h1>Admins::Users#show</h1>
-<p>Find me in app/views/admins/users/show.html.erb</p>
+<div class="container">
+  <div class="row">
+      <div class="col-6">
+        <h2><strong><%= @user.name %>ユーザー情報</strong></h2>
+        <table class="table table-bordered">
+          <tr class="shop-tr">
+            <td>ID</td>
+            <td>
+              <%= @user.id %>
+            </td>
+          </tr>
+          <tr class="shop-tr">
+            <td>ユーザー名</td>
+            <td><%= @user.name %></td>
+          </tr>
+          <tr class="shop-tr">
+            <td>メールアドレス</td>
+            <td><%= @user.email %></td>
+          </tr>
+          <tr class="shop-tr">
+            <td>住所</td>
+            <td><%= @user.address %></td>
+          </tr>
+          <tr class="shop-tr">
+            <td>電話番号</td>
+            <td><%= @user.phonenumber %></td>
+          </tr>
+        </table>
+       <!--  <%#= form_for(@user, url:admins_user_path(@user), method: :patch) do |f| %>
+			<td><%#= f.number_field : %></td>
+			<td><%#= f.submit "変更", class:"btn btn-secondary" %></td>
+		<%# end %> -->
+
+		<% unless @user.deleted_at? %>
+          <td><%= link_to "アカウント削除", admins_user_path(@user), data: { confirm: "退会させますか?" }, method: :delete %></td>
+        <% else %>
+          <td><%= link_to "アカウント復元", user_restore_admins_user_path(@user), method: :patch %></td>
+        <% end %>
+      </div>
+  </div>
+  <%= link_to "一覧へ", admins_users_path, class:"btn btn-secondary" %><br><br>
+</div>
