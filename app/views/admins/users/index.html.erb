@@ -11,8 +11,12 @@
 			<td><%= user.name %></td>
 			<td>TEL:<%= user.phonenumber %></td>
 			<td><%= user.address %></td>
-			<td><%= link_to "show", admins_user_path(user.id) %></td>
-			<td><%= link_to "DELETE",admins_user_path(user.id), method: :delete, class: "destroy-btn", data: { confirm: '本当に消しますか？' } %></td>
+			<% if user.deleted_at.nil? %>
+				<td>有効会員</td>
+			<% else %>
+				<td>退会処理済</td>
+			<% end %>
+			<td><%= link_to "会員ステータス処理", admins_user_path(user.id) %></td>
 		</tr>
     <% end %>
 </table>
