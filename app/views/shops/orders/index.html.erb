@@ -1,18 +1,32 @@
-<h1>Shops::Orders#index</h1>
-<%= link_to "マイページへ",shops_shop_path(current_shop) %>
 
-<h1>注文一覧</h1>
-<% @orders.each do |order| %>
-<%= order.course_name %>
-<%= order.delivery_address %>
-<%= order.payment %>
-<%= order.option %>
-<%= order.people_number %>
-<%= order.reserve_date %>
-<%= order.reserve_time %>
+<%= link_to "マイページへ",shops_shop_path(current_shop), class: "pull-right", class: "btn btn-warning rounded-pill" %>
 
+  <%= link_to "未対応一覧", shops_orders_path(support: "not_compatibled"), class: "btn btn-primary rounded-0" %>  |
+  <%= link_to "対応中", shops_orders_path(support: "during_correspondenced"), class: "btn btn-primary rounded-0" %>  |
+  <%= link_to "対応済", shops_orders_path(support: "supported"), class: "btn btn-primary rounded-0" %>  |
+  <%= link_to "予約一覧", shops_orders_path, class: "btn btn-primary rounded-0" %>
 
-<%= link_to "予約詳細", shops_order_path(order.id) %>
+<div class="reservation">
+	<% @orders.each do |order| %>
+		<table class="table table-bordered">
+				<tr class="shop-tr">
+					<td>コース</td>
+					<td><%= order.course_name %></td>
+				</tr>
+				<tr class="shop-tr">
+					<td>人数</td>
+					<td><%= order.people_number %>人</td>
+				</tr>
+				<tr class="shop-tr">
+					<td>予約日時</td>
+					<td><%= order.reserve_date %>  <%= order.reserve_time %></td>
+				</tr>
+				<tr class="shop-tr">
+					<td>ステータス</td>
+					<td><%= order.order_status_i18n %></td>
+				</tr>
+					<%= link_to "予約詳細", shops_order_path(order.id), class: "pull-right", class: "btn btn-warning rounded-pill" %>
 
-<% end %>
-<p>Find me in app/views/shops/orders/index.html.erb</p>
+		</table>
+	<% end %>
+</div>

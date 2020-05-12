@@ -1,2 +1,17 @@
-<h1>Users::Users#edit</h1>
-<p>Find me in app/views/users/users/edit.html.erb</p>
+<%= form_with model: @user ,url: users_user_path(current_user) do |f| %>
+    <h4>お名前</h4>
+    <%= f.text_field :name %>
+    <span><%= f.label :電話番号 %><%= f.text_field :phonenumber %></span><br>
+    <%= f.label :メールアドレス %>
+    <%= f.email_field :email %><br>
+    <%= f.label :ご住所 %>
+    <%= f.text_area :address %><br>
+    <%# <%= f.label :現在のパスワード %>
+    <%#<%= f.password_field :password %><br>
+    <%#<%= f.label :新しいパスワード %>
+    <%#<%= f.password_field :new_password %><br>
+    <%#<%= f.label :新しいパスワード確認 %>
+    <%#<%= f.password_field :new_password_confirmation %><br>
+    
+    <%= f.submit "更新" %>
+<% end %>
