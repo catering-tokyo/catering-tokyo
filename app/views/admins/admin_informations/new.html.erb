@@ -1,0 +1,29 @@
+<div class = "container">
+	<div class = "row">
+		<div class="col-xs-8 col-xs-offset-2">
+			<h3 class="elementor-heading-title">INFO CREATE:</h3>
+		</div>
+	</div>
+	  <%= form_for(@info, url:admins_admin_informations_path(@info),method: :post) do |f| %>
+		<div class = "food">
+			<div class="field">
+				<%= attachment_image_tag @info, :info_image, src: "", id:"img_prev", size: "200x200", alt:"Image preview", class: "item_prev", fallback: "no_image.jpg" %>
+			</div>
+		 	<div class="field">
+				<%= f.label :info_image,"image change" ,class: "btn btn-warning btn-lg" ,for:"post_img"%>
+				<%= f.attachment_field :info_image, id:"post_img", class: "image", style:"display:none;" %>
+			</div>
+		 	<div class="field">
+				<%= f.label :title, "タイトル" %><br />
+				<%= f.text_field :title %>
+			</div>
+			<div class="field">
+				<%= f.label :body, "内容" %><br />
+				<%= f.text_area :body %>
+			</div>
+		</div>
+		<div class="row admin-item-show-btn">
+			<%= f.submit "NEW INFO", class: "new-btn" %>
+		</div>
+	<% end %>
+</div>

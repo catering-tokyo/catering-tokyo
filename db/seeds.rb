@@ -12,7 +12,9 @@ User.create(id:3, name: "精鋭じゃしゅ", phonenumber: "090-0000-0000", addr
 
 
 Admin.create(id:1, email: "admin@admin", password: "111111")
-
+AdminInformation.find_or_create_by(id:1, title: "キャッシュバック！！", body: "今なら対象の店舗にて飲食代金をカード支払いをすれば５％キャッシュバック", info_image_id: "")
+AdminInformation.find_or_create_by(id:2, title: "オリジナルワインプレゼント", body: "誕生日月の会員様を対象に誕生日月にご利用いただいた全ての方にオリジナルワインを１本無料にて進呈。", info_image_id: "")
+AdminInformation.find_or_create_by(id:3, title: "期間限定", body: "初回ご利用限定で合計金額から１０００円引き！！", info_image_id: "")
 
 ShopGenre.find_or_create_by(id:1, name: "和風", genre_image_id: "")
 ShopGenre.find_or_create_by(id:2, name: "洋風", genre_image_id: "")
