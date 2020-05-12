@@ -17,8 +17,24 @@ class Shop < ApplicationRecord
          has_many :shop_genres, through: :genres
          attr_accessor :shop_genre_ids
 
-         geocoded_by :address
-         after_validation :geocode, if: :address_changed?
-
          attachment :shop_image
+
+  # VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  # VALID_POSTAL_CODE = /\A\d{3}[-]\d{4}\z/  # 郵便番号（ハイフンあり7桁）
+  # VALID_TEL = /\A\d{3}[-]\d{3}[-]\d{4}|\d{3}[-]\d{4}[-]\d{4}\z/  # 電話番号
+  # with_options presence: true do
+  #   validates :name
+  #   validates :postal_code,     format: {
+  #                                 with: VALID_POSTAL_CODE,
+  #                                 message: "はハイフンあり7桁で入力してください。"
+  #                               }
+  #   validates :address
+  #   validates :phonenumber,     format: {
+  #                                 with: VALID_TEL,
+  #                                 message: "の入力が間違っています（ハイフンありの数字）"
+  #                               }
+  #   validates :email,           format: {
+  #                                 with: VALID_EMAIL_REGEX
+  #                               }
+  # end
 end
