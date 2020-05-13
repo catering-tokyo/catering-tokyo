@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+      <div class="col-6">
+        <h2><strong>お知らせ</strong></h2>
+        <table class="table table-bordered">
+          <tr class="shop-tr">
+            <td>ID</td>
+            <td>
+              <%= @info.id %>
+            </td>
+          </tr>
+          <tr class="shop-tr">
+            <td>タイトル</td>
+            <td><%= @info.title %></td>
+          </tr>
+          <tr class="shop-tr">
+            <td>内容</td>
+            <td><%= @info.body %></td>
+          </tr>
+          <tr class="shop-tr">
+          	<td>ステータス</td>
+          	<% if @info.info_status == true %>
+				<td>有効</td>
+			<% else %>
+				<td>無効</td>
+			<% end %>
+		  </tr>
+        </table>
+        <%= attachment_image_tag @info, :info_image, :fill, 250, 250, format: 'jpeg', fallback: "no_image.shop.jpg", size:"250x250" %>
+      </div>
+  </div>
+  <%= link_to "一覧へ", admins_admin_informations_path, class:"btn btn-secondary" %><br><br>
+  <%= link_to "編集", edit_admins_admin_information_path(@info), class:"btn btn-secondary" %>
+</div>

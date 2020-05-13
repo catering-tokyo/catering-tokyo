@@ -1,0 +1,26 @@
+<table>
+	<tr>
+		<th>タイトル</th>
+		<th>内容</th>
+		<th>ステータス</th>
+		<th></th>
+	</tr>
+   <% @infos.each do |info| %>
+		<tr>
+			<td><%= info.title %></td>
+			<td><%= info.body %></td>
+			<% if info.info_status == true %>
+				<td>有効</td>
+			<% else %>
+				<td>無効</td>
+			<% end %>
+			<td><%= link_to "お知らせ詳細", admins_admin_information_path(info) %></td>
+		</tr>
+    <% end %>
+</table>
+<div class="row">
+<%= link_to "お知らせ新規登録", new_admins_admin_information_path, class: "top_list" %>
+</div>
+<div class="row">
+<%= link_to "トップへ戻る", admins_top_path, class: "top_list" %>
+</div>

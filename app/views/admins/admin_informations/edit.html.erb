@@ -1,0 +1,38 @@
+<div class ="container">
+	<div class = "row">
+		<div class="col-xs-8 col-xs-offset-2">
+			<h2 class="elementor-heading-title">INFO:</h2>
+				<div class = "row edit-body">
+					<%= form_with(model: [:admin_informations, @info], data: {remote: false}, url:admins_admin_information_path(@info)) do |f| %>
+					<div class = "row edit-body">
+						<%= attachment_image_tag @info, :info_image,  id:"img_prev", class: "profile-img", fallback: "no_image.jpg" %>
+					<div class="field">
+						<%= f.label :info_image,"image change" ,class: "btn btn-warning btn-lg" ,for:"post_img"%>
+						<%= f.attachment_field :info_image, id:"post_img", class: "image", style:"display:none;" %>
+					</div>
+
+					<div class="field">
+						<%= f.label :title, "トレ名" %><br />
+						<%= f.text_field :title %>
+					</div>
+
+					<div class="field">
+						<%= f.label :body, "説明" %><br />
+						<%= f.text_area :body %>
+					</div>
+
+					<div class="field">
+						<%= f.radio_button :info_status, :true, id:"info-availability" %>
+					    <%= f.label :info_status, "有効", for:"info-availability" %>
+					    <%= f.radio_button :info_status, :false, id:"info-invalid" %>
+					    <%= f.label :info_status, "無効", for:"info-invalid" %>
+					</div>
+
+					<div>
+						<%= f.submit "変更を保存", class: "update-btn" %>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>

@@ -37,7 +37,7 @@
 								<%= f.text_field :name %>
 							</div>
 							<div class="field">
-								<%= f.submit " New Genre ",class: "new-btn" %>
+								<%= f.submit "New Genre", class: "top_list" %>
 							</div>
 						</div>
 					</div>
@@ -45,4 +45,30 @@
 			</div>
 		</div>
 	</div>
+	<%= link_to "トップへ戻る", admins_top_path, class: "top_list" %>
 </div>
+
+
+
+
+<style>
+.top_list{
+  display: block;
+  margin: auto;
+  padding: 0.8em;
+  text-align: center;
+  border: 2px solid #fbf284;
+  background-color: #1e294c;
+  border-radius: 30px;
+  transition: .4s;
+  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
+  font-size: 20px;
+  width: 100%;
+  color: #fff;
+  }
+
+.top_list:hover {
+  background: #EC407A;
+  color: #fff;
+  }
+</style>

@@ -1,0 +1,56 @@
+<div class="simple-calendar">
+  <div class="calendar-heading">
+    <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %>
+    <span class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
+    <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <% date_range.slice(0, 7).each do |day| %>
+          <th><%= t('date.abbr_day_names')[day.wday] %></th>
+        <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% date_range.each_slice(7) do |week| %>
+        <tr>
+          <% week.each do |day| %>
+            <%= content_tag :td, onclick: "javascript:onDay('"+day.to_s+"')", class: calendar.td_classes_for(day) do %>
+              <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(block) %>
+                <% capture_haml(day, sorted_events.fetch(day, []), &block) %>
+              <% else %>
+                <% block.call day, sorted_events.fetch(day, []) %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<script>
+function onDay(date){
+   var target = date;
+    while(target.indexOf('-') != -1){
+      target = target.replace('-','');
+    }
+    var hiduke=new Date();
+    //年・月・日・曜日を取得する
+    var year = hiduke.getFullYear();
+    var month = hiduke.getMonth()+1;
+    var day = hiduke.getDate();
+    var today = year.toString() + ('00' + month.toString()).slice(-2) + ('00' + day.toString()).slice(-2) ;
+    console.log(today);
+    console.log(target);
+    if ( parseInt(today) <= parseInt(target) ) {
+       $('#order_reserve_date').val(date);
+    }
+    else{
+  alert('選択できません');
+    }
+  }
+</script>

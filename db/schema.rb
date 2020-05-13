@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_08_041526) do
+ActiveRecord::Schema.define(version: 2020_05_12_185744) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -18,6 +18,15 @@ ActiveRecord::Schema.define(version: 2020_05_08_041526) do
     t.string "address", null: false
     t.string "phone_number", null: false
     t.integer "postal_code", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "admin_informations", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.string "info_image_id"
+    t.boolean "info_status", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -63,6 +72,15 @@ ActiveRecord::Schema.define(version: 2020_05_08_041526) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "genres", force: :cascade do |t|
+    t.integer "shop_id"
+    t.integer "shop_genre_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shop_genre_id"], name: "index_genres_on_shop_genre_id"
+    t.index ["shop_id"], name: "index_genres_on_shop_id"
+  end
+
   create_table "information", force: :cascade do |t|
     t.integer "shop_id", null: false
     t.string "title", null: false
@@ -73,10 +91,11 @@ ActiveRecord::Schema.define(version: 2020_05_08_041526) do
   end
 
   create_table "inquiries", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "shop_id"
+    t.integer "user_id", null: false
+    t.integer "shop_id", null: false
     t.string "title", null: false
     t.text "body", null: false
+    t.text "reply"
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -109,7 +128,7 @@ ActiveRecord::Schema.define(version: 2020_05_08_041526) do
     t.string "course_name", null: false
     t.string "delivery_address", null: false
     t.string "payment", null: false
-    t.string "option", null: false
+    t.string "option"
     t.string "people_number", null: false
     t.integer "price", null: false
     t.date "reserve_date", null: false
@@ -150,12 +169,12 @@ ActiveRecord::Schema.define(version: 2020_05_08_041526) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name", null: false
-    t.string "phonenumber", null: false
-    t.string "address", null: false
+    t.string "phonenumber"
+    t.string "address"
     t.string "shop_image_id"
     t.string "postal_code"
-    t.string "open_time"
-    t.string "close_time"
+    t.datetime "open_time"
+    t.datetime "close_time"
     t.string "lunch_limit"
     t.string "dinner_limit"
     t.float "latitude"

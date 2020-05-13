@@ -32,7 +32,7 @@ class Admins::ShopGenresController < ApplicationController
   def destroy
     genres = ShopGenre.find(params[:id])
     genres.destroy
-    redirect_to admins_shop_genres
+    redirect_to admins_shop_genres_path
   end
 
   private

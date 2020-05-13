@@ -10,7 +10,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.string :course_name, null: false
       t.string :delivery_address, null: false
       t.string :payment, null: false
-      t.string :option, null: false
+      t.string :option
       t.string :people_number, null: false
 
       t.integer :price, null: false

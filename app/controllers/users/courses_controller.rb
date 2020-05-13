@@ -5,6 +5,15 @@ class Users::CoursesController < ApplicationController
   end
 
   def show
-    @course = Course.find(params[:id])
+  	@course = Course.find(params[:id])
+  	@order = Order.new
+  end
+end
+
+
+
+private
+  def order_params
+      params.require(:order).permit(:user_id, :shop_id, :user_name, :shop_name, :course_name, :delivery_address, :payment, :option, :people_number, :price )
   end
 end
