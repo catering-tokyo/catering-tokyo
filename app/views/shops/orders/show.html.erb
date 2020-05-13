@@ -1,18 +1,43 @@
 <h1>予約詳細</h1>
-<%= link_to "戻る", shops_orders_path(current_shop), class: "pull-right", class: "btn btn-warning rounded-pill" %>
+<%= link_to "戻る", shops_orders_path, class: "pull-right", class: "btn btn-warning rounded-pill" %>
 
-
-<%= @order.user_name %>
-<%= @order.course_name %>
-<%= @order.delivery_address %>
-<%= @order.payment %>
-<%= @order.option %>
-<%= @order.people_number %>
-<%= @order.reserve_date %>
-<%= @order.reserve_time %>
-<%= @order.order_status_i18n %>
-
-
+<table class="table table-bordered">
+		<tr class="shop-tr">
+			<td>予約名</td>
+			<td><%= @order.user_name %></td>
+		</tr>
+		<tr class="shop-tr">
+			<td>コース</td>
+			<td><%= @order.course_name %></td>
+		</tr>
+		<tr class="shop-tr">
+			<td>住所</td>
+			<td><%= @order.delivery_address %></td>
+		</tr>
+		<tr class="shop-tr">
+			<td>支払い方法</td>
+			<td><%= @order.payment %></td>
+		</tr>
+		<tr class="shop-tr">
+			<td>オプション</td>
+			<td><%= @order.option %></td>
+		</tr>
+		<tr class="shop-tr">
+			<td>人数</td>
+			<td><%= @order.people_number %></td>
+		</tr>
+		<tr class="shop-tr">
+			<td>予約日</td>
+			<td><%= @order.reserve_date %></td>
+		</tr>
+		<tr class="shop-tr">
+			<td>予約時間</td>
+			<td><%= @order.reserve_time %></td>
+		</tr>
+		<tr class="shop-tr"s>
+			<td>ステータス</td>
+			<td>
+				<%= @order.order_status_i18n %>
 <% if @order.not_compatibled? %>
   <%= link_to '対応中に変更', shops_order_during_correspondence_path(@order), method: :patch, class: "pull-right", class: "btn btn-warning rounded-pill" %>
 
@@ -22,4 +47,6 @@
 <% else %>
   <%= link_to '未対応に変更', shops_order_not_compatible_path(@order), method: :patch, class: "pull-right", class: "btn btn-warning rounded-pill" %>
 <% end %>
-<p>Find me in app/views/shops/orders/show.html.erb</p>
+			</td>
+		</tr>
+</table>

@@ -18,18 +18,34 @@ class Shops::InformationsController < ApplicationController
     end
   end
 
+  def confirm
+    @shop = current_shop
+    @information = Information.new
+    @information.title = params[:title]
+    @information.text = params[:text]
+  end
 
   def show
     @information = Information.find(params[:id])
   end
 
   def edit
+    @information = Information.find(params[:id])
   end
 
   def update
+    @information = Information.find(params[:id])
+    if @information.update(information_params)
+      redirect_to shops_information_path(@information.id)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
+    information = Information.find(params[:id])
+      information.destroy
+    redirect_to shops_informations_path notice: "削除が完了しました"
   end
 
   private
