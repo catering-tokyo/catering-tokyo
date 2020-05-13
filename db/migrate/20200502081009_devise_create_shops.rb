@@ -33,8 +33,8 @@ class DeviseCreateShops < ActiveRecord::Migration[5.2]
       # t.datetime :locked_at
 
       t.string :name, null: false
-      t.string :phonenumber, null: false
-      t.string :address, null: false
+      t.string :phonenumber
+      t.string :address
       t.string :shop_image_id
       t.string :postal_code
       t.datetime :open_time

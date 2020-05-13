@@ -1,3 +1,9 @@
+<%# if @shop.errors.any? %>
+<!-- <h3><%#= @shop.errors.count %> errors prohibited this obj from being saved:</h3> -->
+<%# @shop.errors.full_messages.each do |message| %>
+<%# end %>
+<%# end %>
+
 <%= form_for(@shop, url:admins_shop_path(@shop),method: :patch) do |f| %>
 	<div class = "food">
 		<div class="field">
@@ -43,11 +49,12 @@
 		<div class="form-group">
 		  <%= f.label :shop_genres, class:'control-label' %>
 		    <div class="checkbox">
-		      <%= collection_check_boxes(:shop, :shop_genre_ids, ShopGenre.all, :id, :name, include_hidden: false) do |f| %>
-		        <%= f.label {f.check_box + f.text} %>
+		      <%= collection_check_boxes(:shop, :shop_genre_ids, ShopGenre.all, :id, :name, include_hidden: false) do |g| %>
+		        <%= g.label {g.check_box + g.text} %>
 		      <% end %>
 		    </div>
 		</div>
+
 		<div class="field">
 			<%= f.submit "UPDATE", class: "new-btn" %>
 		</div>

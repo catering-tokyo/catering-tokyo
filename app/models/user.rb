@@ -16,4 +16,5 @@ class User < ApplicationRecord
   validates :name,  presence: true, length: { maximum: 20 }
   validates :phonenumber,  presence: true
   validates :address,  presence: true
+  acts_as_paranoid
 end

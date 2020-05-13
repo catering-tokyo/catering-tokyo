@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_09_081115) do
+ActiveRecord::Schema.define(version: 2020_05_12_185744) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -18,6 +18,15 @@ ActiveRecord::Schema.define(version: 2020_05_09_081115) do
     t.string "address", null: false
     t.string "phone_number", null: false
     t.integer "postal_code", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "admin_informations", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.string "info_image_id"
+    t.boolean "info_status", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -82,8 +91,8 @@ ActiveRecord::Schema.define(version: 2020_05_09_081115) do
   end
 
   create_table "inquiries", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "shop_id"
+    t.integer "user_id", null: false
+    t.integer "shop_id", null: false
     t.string "title", null: false
     t.text "body", null: false
     t.text "reply"
@@ -160,8 +169,8 @@ ActiveRecord::Schema.define(version: 2020_05_09_081115) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name", null: false
-    t.string "phonenumber", null: false
-    t.string "address", null: false
+    t.string "phonenumber"
+    t.string "address"
     t.string "shop_image_id"
     t.string "postal_code"
     t.datetime "open_time"
