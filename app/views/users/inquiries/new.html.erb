@@ -11,7 +11,11 @@
 	        <h4><%= f.label :内容 %>:</h4>
 	        <p><%= f.text_area :body, rows:'5', class: "form-control",placeholder: "ここに入力してください" %></p>
 	      </div class="review-star">
+	      <div class="col-md-12">
+	      	<%= f.submit "問い合わせ内容を送信", class: "btn btn-primary btn-lg btn-base-1 mt-20 pull-right" %>
+	      </div>
 	    </div>
 		</div>
+		<% end %>
 	<% end %>
 </div>

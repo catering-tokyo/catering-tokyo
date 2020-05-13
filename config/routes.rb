@@ -27,7 +27,7 @@ namespace :users do
     get 'favorites' => 'users#favorites', as:'favorites'
     get 'withdraw', on: :member
   end
-  resources :infomations, only:[:show]
+  resources :informations, only:[:show]
   resources :courses, only:[:index, :show]
   resources :shops, only:[:index, :show] do
     resources :reviews, only:[:create, :destroy]
