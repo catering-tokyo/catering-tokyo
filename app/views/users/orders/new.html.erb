@@ -1,2 +1,33 @@
 <h1>Users::Orders#new</h1>
 <p>Find me in app/views/users/orders/new.html.erb</p>
+
+
+<div class="row  select-course-box">
+	<div class="col-md-12 select-course-area">
+		<%#= form_with model: [:users, order], data: {remote: false} do |f| %>
+
+		<%# end %>
+	</div>
+</div>
+
+
+<div class="row  select-course-box">
+	<div class="col-md-12 select-course-area">
+		<%= form_with model: [:users, @order], data: {remote: false} do |f| %>
+			<div class="calender">
+			<%= month_calendar do |date| %>
+			  <%= date %>
+			<% end %>
+			</div>
+	</div>
+
+		<div>
+			<h4><%= f.label :日にち %>:
+          <%= f.text_field :reserve_date, class: "col-xs-5 item_title" %></h4>
+		</div>
+
+			<% end %>
+</div>
+
+
+<%#= week_calendar events: Reservation.last(10),number_of_weeks: 5 do |date, reservations| %>

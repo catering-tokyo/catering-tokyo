@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 2020_05_12_185744) do
     t.integer "shop_id", null: false
     t.string "title", null: false
     t.text "body", null: false
+    t.text "reply"
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -127,7 +128,7 @@ ActiveRecord::Schema.define(version: 2020_05_12_185744) do
     t.string "course_name", null: false
     t.string "delivery_address", null: false
     t.string "payment", null: false
-    t.string "option", null: false
+    t.string "option"
     t.string "people_number", null: false
     t.integer "price", null: false
     t.date "reserve_date", null: false
@@ -172,8 +173,8 @@ ActiveRecord::Schema.define(version: 2020_05_12_185744) do
     t.string "address"
     t.string "shop_image_id"
     t.string "postal_code"
-    t.string "open_time"
-    t.string "close_time"
+    t.datetime "open_time"
+    t.datetime "close_time"
     t.string "lunch_limit"
     t.string "dinner_limit"
     t.float "latitude"
