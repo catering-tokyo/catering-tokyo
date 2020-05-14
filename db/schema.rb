@@ -127,7 +127,7 @@ ActiveRecord::Schema.define(version: 2020_05_12_185744) do
     t.string "shop_name", null: false
     t.string "course_name", null: false
     t.string "delivery_address", null: false
-    t.string "payment", null: false
+    t.boolean "payment", default: true, null: false
     t.string "option"
     t.string "people_number", null: false
     t.integer "price", null: false
@@ -173,8 +173,8 @@ ActiveRecord::Schema.define(version: 2020_05_12_185744) do
     t.string "address"
     t.string "shop_image_id"
     t.string "postal_code"
-    t.datetime "open_time"
-    t.datetime "close_time"
+    t.string "open_time"
+    t.string "close_time"
     t.string "lunch_limit"
     t.string "dinner_limit"
     t.float "latitude"

@@ -51,7 +51,7 @@ Shop.create(id:19, name: "スナック ヤマノ", phonenumber: "090-8888-6666",
 Shop.create(id:20, name: "スナック 大蛇", phonenumber: "090-8888-1111", postal_code: "135-8614", address: "東京都江東区豊洲２丁目１−３", email: "koutou@ku", open_time: "11:30", close_time: "19:00", lunch_limit: "14:30", dinner_limit: "19:00", password: "222444")
 Shop.create(id:21, name: "スナック 山", phonenumber: "090-9999-1122", postal_code: "152-0001", address: "東京都目黒区中央町２丁目２−２", email: "meguro@ku", open_time: "11:00", close_time: "19:30", lunch_limit: "14:30", dinner_limit: "19:30", password: "222555")
 Shop.create(id:22, name: "catering tokyo 2", phonenumber: "090-7777-1111", postal_code: "140-0014", address: "東京都品川区大井１丁目２−２", email: "shinagawa@ku", open_time: "12:00", close_time: "15:00", lunch_limit: "15:00", password: "222666")
-Shop.create(id:23, name: "アンダーザブリッジ 2", phonenumber: "090-6666-4444", postal_code: "143-0012", address: "東京都大田区大森東２丁目２−３", email: "oota@ku", open_time: "11:00", close_time: "19:00", lunch_limit: "14:30", dinner_limit: "19:00", password: "222777")
+Shop.create(id:23, name: "アンダーザブリッジ 2", phonenumber: "090-6666-4444", postal_code: "143-0012", address: "東京都大田区大森東２丁目２−３", email: "oota@ku", open_time: "11:00", close_time: "2:00", lunch_limit: "14:30", dinner_limit: "1:00", password: "222777")
 
 
 Course.find_or_create_by(id:1, shop_id:1, introduction: "おすすめ！", name: "王道コース", maximum_people: "30", minimum_people: "5", price: "2500")
