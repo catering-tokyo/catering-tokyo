@@ -1,9 +1,10 @@
 
-<h1>Users::Courses#show</h1>
-<p>Find me in app/views/users/courses/show.html.erb</p>
+<%= form_with url: users_orders_path ,local: true do |f| %>
 
 
+<%= f.time_select :order {|shop| [start_hour:open_time, end_hour:close_time]} %>
 
+<% end %>
 
 <h1>コース詳細</h1>
 <p><%= @course.name %></p>
