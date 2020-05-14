@@ -1,9 +1,27 @@
+<<<<<<< HEAD
 <%= form_with model: @user, url: users_user_path(current_user) do |f| %>
     <h4>お名前</h4>
     <%= f.text_field :name %>
     <%= f.text_field :phonenumber %></span><br>
+=======
+<%= form_with model: @user ,url: users_user_path(current_user) do |f| %>
+    <h4>お名前</h4>
+    <%= f.text_field :name %>
+    <span><%= f.label :電話番号 %><%= f.text_field :phonenumber %></span><br>
+    <%= f.label :メールアドレス %>
+>>>>>>> 43265fea6007eb7f7e84bb9137d8c4b9629ca88a
     <%= f.email_field :email %><br>
     <%= f.text_area :address %><br>
+<<<<<<< HEAD
 
+=======
+    <%# <%= f.label :現在のパスワード %>
+    <%#<%= f.password_field :password %><br>
+    <%#<%= f.label :新しいパスワード %>
+    <%#<%= f.password_field :new_password %><br>
+    <%#<%= f.label :新しいパスワード確認 %>
+    <%#<%= f.password_field :new_password_confirmation %><br>
+    
+>>>>>>> 43265fea6007eb7f7e84bb9137d8c4b9629ca88a
     <%= f.submit "更新" %>
 <% end %>

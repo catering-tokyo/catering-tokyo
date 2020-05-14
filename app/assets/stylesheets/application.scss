@@ -10,8 +10,24 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require simple_calendar
  *= require_tree .
  *= require_self
  */
 
  @import "bootstrap";
+
+
+
+
+ .simple-calendar td {
+ 	cursor: pointer;
+ }
+
+.simple-calendar .prev-month {
+	background-color: gray;
+}
+
+.past {
+	background-color: gray;
+}

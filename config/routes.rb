@@ -19,16 +19,16 @@ namespace :users do
   resources :messages, only:[:index, :create, :show]
   resources :favorites, only:[:index, :create, :destroy]
   resources :addresses, only:[:index, :edit, :create, :update, :destroy]
-  resources :orders, only:[:index, :new, :create, :show] do
-    get 'confirm' => 'users#confirm', as:'confirm'
-    get 'thanks' => 'users#thanks', as:'thanks'
-  end
+  resources :orders, only:[:index, :new, :create, :show, :edit, :update]
   resources :users, only:[:show, :edit, :update, :destroy] do
     get 'favorites' => 'users#favorites', as:'favorites'
     get 'withdraw', on: :member
   end
-  resources :infomations, only:[:show]
-  resources :courses, only:[:index, :show]
+  resources :informations, only:[:show]
+  resources :courses, only:[:index, :show] do
+    get 'confirm' => 'courses#confirm', as:'confirm'
+    get 'thanks' => 'courses#thanks', as:'thanks'
+  end
   resources :shops, only:[:index, :show] do
     resources :reviews, only:[:create, :destroy]
   end
@@ -47,11 +47,15 @@ end
 
 # 機能 #
 namespace :admins do
-  resources :informations
+  resources :admin_informations
   resources :inquiries, only:[:index, :update, :show, :destroy]
   resources :reviews, only:[:index, :show, :destroy]
   resources :shop_genres, only:[:index, :create, :edit, :update, :destroy]
-  resources :users, only:[:index, :show, :update]
+  resources :users, only:[:index, :show, :update, :destroy] do
+    member do
+    patch 'user_restore'
+   end
+ end
   resources :shops
   get "homes/top" => "admins/top", as:'top'
 end

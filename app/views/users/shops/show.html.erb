@@ -1,3 +1,8 @@
+<h1>Users::Shops#show</h1>
+
+<p>Find me in app/views/users/shops/show.html.erb</p>
+
+
 <div class="container">
 	<div class="row">
 		<div class="col-md-6 offset-md-3">
@@ -10,6 +15,7 @@
 		</div>
 	</div>
 </div>
+
 
 
 <h1>店舗詳細</h1>
@@ -31,3 +37,20 @@
 </div>
 <span><%= link_to "コース一覧", users_courses_path(shop_id: params[:id]) %></span><br>
 <span><%= link_to "お店一覧", users_shops_path%></span>
+
+<h2>gmap</h2>
+<div id='map'></div>
+
+<style>
+#map{
+  height: 400px;
+}
+</style>
+<script>
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(<%= raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+  });
+</script>

@@ -1,54 +1,137 @@
-<h2>Sign up</h2>
+<h2>SHOP 新規登録</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :name, "ショップ名" %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :phonenumber, "電話番号" %><br />
-    <%= f.telephone_field :phonenumber %>
-  </div>
-  <div class="field">
-      <%= f.label :open_time, "開店時間" %><br />
-      <%= f.text_field :open_time %>
-    </div>
-    <div class="field">
-      <%= f.label :close_time, "閉店時間" %><br />
-      <%= f.text_field :close_time %>
-    </div>
-  <div class="field">
-      <%= f.label :postal_code, "郵便番号" %><br />
-      <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code"  %>
-  </div>
-  <div class="field">
-    <%= f.label :address, "住所"%><br />
-    <%= f.text_field :address %>
+  <div class="cp_iptxt">
+    <%= f.text_field :name, class: "ef", type: "text", placeholder: "" %>
+    <%= f.label :name, "ショップ名" %>
+    <span class="focus_line"><i></i></span>
   </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="cp_iptxt">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "ef", type: "text", placeholder: "" %>
+    <%= f.label :email %>
+    <span class="focus_line"><i></i></span>
   </div>
 
-  <div class="field">
+  <div class="cp_iptxt">
+    <%= f.password_field :password, autocomplete: "new-password", class: "ef", type: "text", placeholder: "" %>
     <%= f.label :password %>
+    <span class="focus_line"><i></i></span>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <% end %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="cp_iptxt">
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "ef", type: "text", placeholder: "" %>
+    <%= f.label :password_confirmation %>
+    <span class="focus_line"><i></i></span>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "新規登録" %>
   </div>
 <% end %>
 
-<%= render "devise/shops/shared/links" %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+.cp_iptxt {
+  position: relative;
+  width: 80%;
+  margin: 40px 3%;
+}
+.cp_iptxt input[type='text'] {
+  font: 15px/24px sans-serif;
+  box-sizing: border-box;
+  width: 100%;
+  letter-spacing: 1px;
+  padding-left: 4em;
+}
+.cp_iptxt input[type='text']:focus {
+  outline: none;
+}
+.ef {
+  padding: 7px 14px;
+  transition: 0.4s;
+  border: 1px solid #1b2538;
+  background: transparent;
+}
+.ef ~ .focus_line:before,
+.ef ~ .focus_line:after {
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  content: '';
+  transition: 0.4s;
+  background-color: #da3c41;
+}
+.ef ~ .focus_line:after {
+  top: auto;
+  bottom: 0;
+}
+.ef ~ .focus_line i:before,
+.ef ~ .focus_line i:after {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 2px;
+  height: 0;
+  content: '';
+  transition: 0.6s;
+  background-color: #da3c41;
+}
+.ef ~ .focus_line i:after {
+  right: 0;
+  left: auto;
+}
+.ef:focus ~ .focus_line:before,
+.ef:focus ~ .focus_line:after,
+.cp_iptxt.ef ~ .focus_line:before,
+.cp_iptxt.ef ~ .focus_line:after {
+  left: 0;
+  width: 100%;
+  transition: 0.4s;
+}
+.ef:focus ~ .focus_line i:before,
+.ef:focus ~ .focus_line i:after,
+.cp_iptxt.ef ~ .focus_line i:before,
+.cp_iptxt.ef ~ .focus_line i:after {
+  top: -1px;
+  height: 100%;
+  transition: 0.6s;
+}
+.ef ~ label {
+  position: absolute;
+  z-index: -1;
+  top: 10px;
+  left: 14px;
+  width: 100%;
+  transition: 0.3s;
+  letter-spacing: 0.5px;
+  color: #aaaaaa;
+}
+.ef:focus ~ label,
+.cp_iptxt.ef ~ label {
+  font-size: 12px;
+  top: -18px;
+  left: 0;
+  transition: 0.3s;
+  color: #da3c41;
+}
+</style>
