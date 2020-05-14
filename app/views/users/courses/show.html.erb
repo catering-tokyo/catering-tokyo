@@ -3,7 +3,7 @@
 <p>Find me in app/views/users/courses/show.html.erb</p>
 
 
-<%= render 'users/orders/select_course', orders: @orders, order: @order %>
+
 
 <h1>コース詳細</h1>
 <p><%= @course.name %></p>
@@ -17,3 +17,6 @@
 <span><%= link_to "オーダーへ", users_orders_path %></span><br>
 <span><%= link_to "お店一覧", users_shops_path%></span><br>
 <span><%= link_to "コース一覧", users_courses_path(shop_id: params[:shop_id])%></span>
+
+
+<%= render 'users/orders/select_course', course: @course, order: @order, shop: @shop, reserve_time: @reserve_time %>

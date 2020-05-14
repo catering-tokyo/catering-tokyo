@@ -1,24 +1,64 @@
 <div class="row  select-course-box">
-	<div class="col-md-12 select-course-area">
-		<%= form_with model: [:users, order], data: {remote: false} do |f| %>
+	<div class="col-md-8 offset-md-2 select-course-area">
+		<%= form_with model: order, url: users_course_confirm_path(course.id), method: :get, data: {remote: false} do |f| %>
+			<div>
+				<h4><%= f.hidden_field :shop_name, value: shop.name %></h4>
+			</div>
+			<div>
+				<h4><%= f.hidden_field  :course_name ,value: course.name %></h4>
+			</div>
 
+			<div class>
+				<%= month_calendar do |date|  %>
+				  <%= date %>
+				<% end %>
+			</div>
+			<div>
+				<h4><%= f.label :日にち %>:
+	          <%= f.text_field :reserve_date %></h4>
+			</div>
+			<div>
+				<h4><%= f.label :時間  %>:
+						<%= f.select :reserve_time, reserve_time, include_blank: "選択して下さい" %></h4>
+			</div>
+			<div>
+				<h4><%= f.label :人数  %>:
+						<%= f.select :people_number, @resave_people, include_blank: "選択して下さい" %>名</h4>
+			</div>
 
-		<div class>
-			<%= month_calendar do |date|  %>
-			  <%= date %>
-			<% end %>
-		</div>
-		<div>
-			<h4><%= f.label :日にち %>:
-          <%= f.text_field :reserve_date, class: "col-xs-5 item_title" %></h4>
-		</div>
-
-		<div>
-			<h4><%= f.label :時間  %>:
-					<%= select :reserve_time, course.shop.open_time , include_blank: "選択して下さい" %>		</h4>
-		</div>
-
-
+			<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#sampleModal">
+				詳細入力へ
+			</button>
+			<!-- モーダル・ダイアログ -->
+			<div class="modal fade" id="sampleModal" tabindex="-1">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+							<h4 class="modal-title">予約リクエスト</h4>
+						</div>
+						<div class="modal-body">
+							<div class="row">
+								<div class="col-md-12">
+									<h4>お客様情報</h4>
+									<hr class="bottom-line">
+									<h5>名前： <%= f.text_field  :user_name ,value: current_user.name %>様</h5>
+									<h5>メールアドレス： <%= current_user.email %></h5>
+									    <%= f.radio_button :payment, :true %>
+    									<%= f.label :payment, "クレジットカード" %>
+    									<%= f.radio_button :payment, :false %>
+    									<%= f.label :payment, "銀行振込" %>
+    									<h6>※銀行振込の場合</h6>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+							<button type="button" class="btn btn-primary"><%= f.submit "ボタン" %></button>
+						</div>
+					</div>
+				</div>
+			</div>
 		<% end %>
 	</div>
 </div>

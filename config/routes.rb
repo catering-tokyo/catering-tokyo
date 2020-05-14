@@ -19,16 +19,16 @@ namespace :users do
   resources :messages, only:[:index, :create, :show]
   resources :favorites, only:[:index, :create, :destroy]
   resources :addresses, only:[:index, :edit, :create, :update, :destroy]
-  resources :orders, only:[:index, :new, :create, :show, :edit, :update] do
-    get 'confirm' => 'users#confirm', as:'confirm'
-    get 'thanks' => 'users#thanks', as:'thanks'
-  end
+  resources :orders, only:[:index, :new, :create, :show, :edit, :update]
   resources :users, only:[:show, :edit, :update, :destroy] do
     get 'favorites' => 'users#favorites', as:'favorites'
     get 'withdraw', on: :member
   end
   resources :informations, only:[:show]
-  resources :courses, only:[:index, :show]
+  resources :courses, only:[:index, :show] do
+    get 'confirm' => 'courses#confirm', as:'confirm'
+    get 'thanks' => 'courses#thanks', as:'thanks'
+  end
   resources :shops, only:[:index, :show] do
     resources :reviews, only:[:create, :destroy]
   end

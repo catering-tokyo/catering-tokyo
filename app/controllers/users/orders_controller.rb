@@ -9,7 +9,7 @@ class Users::OrdersController < ApplicationController
     @order.customer_id = current_customer.id
     if @review.user == current_user
        @review.destroy
-       redirect_to users_order_thanks_path(@order.id), notice: "このお店にレビューを削除しました!"
+       redirect_to users_course_confirm_path(@order.id), notice: "このお店にレビューを削除しました!"
     end
   end
 

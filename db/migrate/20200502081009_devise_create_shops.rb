@@ -37,8 +37,8 @@ class DeviseCreateShops < ActiveRecord::Migration[5.2]
       t.string :address
       t.string :shop_image_id
       t.string :postal_code
-      t.datetime :open_time
-      t.datetime :close_time
+      t.string :open_time
+      t.string :close_time
       t.string :lunch_limit
       t.string :dinner_limit
       t.float :latitude
