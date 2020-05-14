@@ -42,13 +42,18 @@
 								<div class="col-md-12">
 									<h4>お客様情報</h4>
 									<hr class="bottom-line">
-									<h5>名前： <%= f.text_field  :user_name ,value: current_user.name %>様</h5>
-									<h5>メールアドレス： <%= current_user.email %></h5>
+									<h5><%= f.label :名前 %>:
+											<%= f.text_field :user_name ,value: current_user.name %>様</h5>
+									<h5><%= f.label :メールアドレス %>:
+											<%= current_user.email %></h5>
+									<h5><%= f.label :支払い方法 %>:</h5>
 									    <%= f.radio_button :payment, :true %>
     									<%= f.label :payment, "クレジットカード" %>
     									<%= f.radio_button :payment, :false %>
     									<%= f.label :payment, "銀行振込" %>
-    									<h6>※銀行振込の場合</h6>
+    									<h6>※銀行振込の場合、振込手数料はお客様のご負担でお願いします</h6>
+    							<h5>お届け先：<%= f.text %></h5>
+    							t.string :delivery_address
 								</div>
 							</div>
 						</div>
