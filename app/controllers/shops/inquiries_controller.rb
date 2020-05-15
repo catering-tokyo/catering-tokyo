@@ -12,7 +12,6 @@ class Shops::InquiriesController < ApplicationController
   	@inquiry.shop_id = current_shop.id
     @shop = current_shop
 
-    binding.pry
   	if @inquiry.save(inquiry_params)
        InquiriesMailer.admin_reply(@shop,@inquiry).deliver #確認メールを送信
   	   redirect_to shops_inquiries_path(current_shop)
