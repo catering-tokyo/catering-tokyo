@@ -91,8 +91,8 @@ ActiveRecord::Schema.define(version: 2020_05_12_185744) do
   end
 
   create_table "inquiries", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "shop_id", null: false
+    t.integer "user_id"
+    t.integer "shop_id"
     t.string "title", null: false
     t.text "body", null: false
     t.text "reply"

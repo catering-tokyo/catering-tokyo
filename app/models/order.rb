@@ -5,10 +5,6 @@ class Order < ApplicationRecord
 		supported: 2
 	}
 
-
-  class Order < ApplicationRecord
-
-
 	belongs_to :shop
 	belongs_to :user
 

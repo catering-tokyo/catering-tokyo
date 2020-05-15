@@ -16,6 +16,8 @@ class Shop < ApplicationRecord
          has_many :genres, dependent: :destroy, foreign_key: 'shop_id'
          has_many :shop_genres, through: :genres
          attr_accessor :shop_genre_ids
+         geocoded_by :address
+         after_validation :geocode, if: :address_changed?
 
          attachment :shop_image
 

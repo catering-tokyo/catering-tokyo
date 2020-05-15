@@ -11,6 +11,7 @@ class Shops::InquiriesController < ApplicationController
   	@inquiry = Inquiry.new(inquiry_params)
   	@inquiry.shop_id = current_shop.id
 
+    binding.pry
   	if @inquiry.save(inquiry_params)
   	   redirect_to shops_inquiries_path(current_shop)
   	else
