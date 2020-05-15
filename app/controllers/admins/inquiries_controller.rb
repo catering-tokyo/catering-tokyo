@@ -9,7 +9,7 @@ class Admins::InquiriesController < ApplicationController
    inquiry = Inquiry.find(params[:id]) #inquiry_mailer.rbの引数を指定
    inquiry.update(inquiry_params)
    shop = inquiry.shop
-   InquiryMailer.admin_replied(shop, inquiry).deliver
+   InquiriesMailer.admin_replied(shop, inquiry).deliver
   end
 
   def show
