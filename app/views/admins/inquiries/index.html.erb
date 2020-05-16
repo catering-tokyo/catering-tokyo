@@ -1,2 +1,24 @@
 <h1>Admins::Inquiries#index</h1>
-<p>Find me in app/views/admins/inquiries/index.html.erb</p>
+
+  <%= link_to "返信済（shop）", admins_inquiries_path(support: "shop_true"), class: "btn btn-primary rounded-0" %>  |
+  <%= link_to "未返信（shop）", admins_inquiries_path(support: "shop_false"), class: "btn btn-primary rounded-0" %>  |
+  <%= link_to "返信済（user）", admins_inquiries_path(support: "user_true"), class: "btn btn-primary rounded-0" %>  |
+  <%= link_to "未返信（user）", admins_inquiries_path(support: "user_false"), class: "btn btn-primary rounded-0" %> |
+  <%= link_to "お問い合わせ一覧", admins_inquiries_path, class: "btn btn-primary rounded-0" %>
+
+
+<% @inquiries.each do |inquiry| %>
+	<table>
+			<tr>
+				<th>お名前</th>
+				<th>タイトル</th>
+				<th>お問い合わせ内容</th>
+			</tr>
+			<tr>
+				<th><% if inquiry.shop_id == nil %> <%= inquiry.user.name %> <% else inquiry.user_id == nil %> <%= inquiry.shop.name %> <% end %></th>
+				<th><%= inquiry.title %></th>
+				<th><%= inquiry.body %></th>
+				<th><%= link_to "返信する", edit_admins_inquiry_path(inquiry.id) %></th>
+			</tr>
+	</table>
+<% end %>
