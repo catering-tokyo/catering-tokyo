@@ -1,5 +1,10 @@
 <div class="container">
   <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <%= render 'admins/reviews/index', reviews: @reviews %>
+    </div>
+  </div>
+  <div class="row">
       <div class="col-6">
         <h2><strong><%= @shop.name %>　店舗データ</strong></h2>
         <table class="table table-bordered">

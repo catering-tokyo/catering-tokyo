@@ -1,0 +1,28 @@
+<div class="row  reviews-box">
+	<% reviews.each do |review| %>
+		<div class="col-md-12 reviews-box">
+			<div class="reviews-title-area col-md-12">
+				<h3>[タイトル] <%= review.title %></h3>
+			</div>
+			<div class="reviews-body-area col-md-12">
+				<div class="star">
+				  <h5>[評価] <span id="star-rate-<%= review.id %>"></span></h5>
+				</div>
+				  <h5>[内容]:<%= review.body %></h5>
+   				  <%= link_to "削除", admins_review_path(review.id), method: :delete, class: "com", remote: false %>
+			</div>
+		</div>
+
+		<script>
+		$('#star-rate-<%= review.id %>').raty({
+		  size: 36,
+		  starOff:  '<%= asset_path('star-off.png') %>',
+		  starOn : '<%= asset_path('star-on.png') %>',
+		  starHalf: '<%= asset_path('star-half.png') %>',
+		  half: true,
+		  readOnly: true,
+		  score: <%= review.star %>,
+		});
+		</script>
+	<% end %>
+</div>
