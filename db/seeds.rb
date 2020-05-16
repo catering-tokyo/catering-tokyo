@@ -29,7 +29,7 @@ ShopGenre.find_or_create_by(id:10, name: "デザート", genre_image_id: "")
 ShopGenre.find_or_create_by(id:11, name: "ジャンク", genre_image_id: "")
 
 
-Shop.create(id:1, name: "松屋", phonenumber: "090-5555-6666", postal_code: "150-0041", address: "東京都渋谷区神南２丁目１９−１１", email: "shop@shop", open_time: "11:00", close_time: "19:00", lunch_limit: "14:00", dinner_limit: "19:00", password: "111111")
+Shop.create(id:1, name: "松屋", phonenumber: "090-5555-6666", postal_code: "150-0041", address: "東京都渋谷区神南２丁目１９−１１", email: "abcabcmart5644@gmail.com", open_time: "11:00", close_time: "19:00", lunch_limit: "14:00", dinner_limit: "19:00", password: "111111")
 Shop.create(id:2, name: "長野ケーキ", phonenumber: "090-3333-6666", postal_code: "117-0032", address: "東京都練馬区谷原４丁目１１−６", email: "shops@shops", open_time: "11:30", close_time: "19:30", lunch_limit: "14:30", dinner_limit: "19:30", password: "222222")
 Shop.create(id:3, name: "居酒屋 大蛇", phonenumber: "090-4444-6666", postal_code: "174-0045", address: "東京都板橋区西台３丁目４２−６", email: "ita@bashi", open_time: "11:00", close_time: "19:30", lunch_limit: "14:00", dinner_limit: "19:30", password: "333333")
 Shop.create(id:4, name: "スナック 福", phonenumber: "090-1111-6666", postal_code: "115-0053", address: "東京都北区赤羽台３丁目４２−８", email: "kita@ku", open_time: "12:00", close_time: "18:00", dinner_limit: "18:00", password: "444444")
