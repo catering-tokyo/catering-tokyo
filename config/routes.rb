@@ -50,7 +50,7 @@ end
 namespace :admins do
   resources :admin_informations
   resources :inquiries, only:[:index, :edit, :update, :show, :destroy]
-  resources :reviews, only:[:index, :show, :destroy]
+  resources :reviews, only:[:destroy]
   resources :shop_genres, only:[:index, :create, :edit, :update, :destroy]
   resources :users, only:[:index, :show, :update, :destroy] do
     member do
