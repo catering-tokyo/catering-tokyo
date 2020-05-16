@@ -1,0 +1,8 @@
+<h1>Users::Rooms#show</h1>
+
+<h1>Chat room</h1>
+<div id='messages'>
+  <%= render 'messages/message', { message: @message } %>
+</div>
+	<h1 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>">大蛇丸</h1>
+
