@@ -38,6 +38,8 @@
 <span><%= link_to "コース一覧", users_courses_path(shop_id: params[:id]) %></span><br>
 <span><%= link_to "お店一覧", users_shops_path%></span>
 
+<%= link_to "チャットする", users_room_path(@shop.id) %>
+
 <h2>gmap</h2>
 <div id='map'></div>
 

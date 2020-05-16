@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 root 'users/homes#top'
 get "homes/about" => "users/homes#about"
 namespace :users do
+  resources :rooms, only:[:show]
   resources :inquiries, only:[:index, :new, :create, :show]
   resources :credit_cards, only:[:index, :new, :create, :edit, :update, :destroy]
   resources :messages, only:[:index, :create, :show]
@@ -75,6 +76,7 @@ end
 
 
 namespace :shops do
+  resources :rooms, only:[:show]
   resources :inquiries, only:[:index, :new, :create, :show]
   resources :messages, only:[:index, :show, :create]
   resources :orders, only:[:index, :show ,:update] do
