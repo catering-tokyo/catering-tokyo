@@ -6,4 +6,6 @@ class CreditCard < ApplicationRecord
                     		format: { with: VALID_CARD_HOLDER_REGEX }
 	validates :card_number, presence: true
 	validates :expiration_date, presence: true
+
+  attr_accessor :radio
 end
