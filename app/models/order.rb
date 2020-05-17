@@ -1,4 +1,5 @@
 class Order < ApplicationRecord
+  attr_accessor :radio
 	enum order_status: {
 		not_compatibled: 0,
 		during_correspondenced: 1,
@@ -11,3 +12,4 @@ class Order < ApplicationRecord
 	has_many :notifications, dependent: :destroy
 
 end
+

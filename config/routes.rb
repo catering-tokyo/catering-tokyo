@@ -28,7 +28,7 @@ namespace :users do
   resources :informations, only:[:show]
   resources :courses, only:[:index, :show] do
     get 'confirm' => 'courses#confirm', as:'confirm'
-    get 'thanks' => 'courses#thanks', as:'thanks'
+    get 'thanks', on: :collection
   end
   resources :shops, only:[:index, :show] do
     resources :reviews, only:[:create, :destroy]

@@ -1,11 +1,11 @@
 <div class="row  select-course-box">
 	<div class="col-md-8 offset-md-2 select-course-area">
-		<%= form_with model: order, url: users_course_confirm_path(course.id), method: :get, data: {remote: false} do |f| %>
+		<%= form_with url: users_course_confirm_path(course.id), method: :get, data: {remote: false} do |f| %>
 			<div>
 				<h4><%= f.hidden_field :shop_name, value: shop.name %></h4>
 			</div>
 			<div>
-				<h4><%= f.hidden_field  :course_name ,value: course.name %></h4>
+				<h4><%= f.hidden_field  :course_id ,value: course.id %></h4>
 			</div>
 
 			<div class>
@@ -42,18 +42,60 @@
 								<div class="col-md-12">
 									<h4>お客様情報</h4>
 									<hr class="bottom-line">
-									<h5><%= f.label :名前 %>:
-											<%= f.text_field :user_name ,value: current_user.name %>様</h5>
-									<h5><%= f.label :メールアドレス %>:
-											<%= current_user.email %></h5>
-									<h5><%= f.label :支払い方法 %>:</h5>
-									    <%= f.radio_button :payment, :true %>
-    									<%= f.label :payment, "クレジットカード" %>
-    									<%= f.radio_button :payment, :false %>
-    									<%= f.label :payment, "銀行振込" %>
-    									<h6>※銀行振込の場合、振込手数料はお客様のご負担でお願いします</h6>
-    							<h5>お届け先：<%#= f.text %></h5>
-    							t.string :delivery_address
+									<h5>
+										<%= f.label :名前 %>:
+										<%= current_user.name %>様
+									</h5>
+									<h5>
+										<%= f.label :連絡先電話番号 %>:
+										<%= current_user.phonenumber %>
+									</h5>
+									<h5>
+										<%= f.label :メールアドレス %>:
+										<%= current_user.email %>
+									</h5>
+									<h5>
+										<%= f.label :支払い方法 %>:
+									  <%= f.radio_button :payment, "クレジットカード" %>
+    								<%= f.label :payment, "クレジットカード" %>
+    								<%= f.radio_button :payment, "銀行振込" %>
+    								<%= f.label :payment, "銀行振込" %>
+    							</h5>
+    							<h6>※銀行振込の場合、振込手数料はお客様のご負担でお願いします</h6>
+    							<h5>
+    								<%= f.label :お届け先を選択 %>:</h5>
+  									<table class ="table">
+											<tr>
+												<td>
+													<%= f.radio_button("radio_num", "1") %>ご自身の住所<br>
+										  		<% @address  =  "〒" + current_user.postal_code + "  " + current_user.address %>
+										  		<%= f.hidden_field :delivery_address ,:value => @address %><%= @address %>
+										  	</td>
+											</tr>
+											<tr>
+												<td>
+													<label><%= f.radio_button("radio_num", "2") %>登録先住所から選択</label><br>
+									  			<%= f.collection_select :delivery_address, current_user.addresses, :id, :address%><br>
+									  		</td>
+											</tr>
+											<tr>
+												<td>
+													<label><%= f.radio_button("radio_num", "3") %>新しいお届け先</label><br>
+										    	<p>郵便番号</p>
+											    <%= f.text_field :postal_code %>
+											    <p>住所</p>
+											    <%= f.text_area :address %>
+											    <p>宛名</p>
+											    <%= f.text_field :name %>
+											    <p>連絡先</p>
+											    <%= f.text_field :phone_number %>
+										  	</td>
+											</tr>
+										</table>
+										<div>
+											<h4><%= f.label :ご質問・ご要望 %>:
+	          					<%= f.text_area :option, class: "form-control",placeholder: "お店に伝えたい内容をこちらにご記入ください" %></h4>
+										</div>
 								</div>
 							</div>
 						</div>

@@ -6,18 +6,16 @@ class Users::OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @order.customer_id = current_customer.id
-    if @review.user == current_user
-       @review.destroy
-       redirect_to users_course_confirm_path(@order.id), notice: "このお店にレビューを削除しました!"
+    @order.user_id = current_user.id
+    @order.save
+    if order_params[:radio] == "3"
+      Address.create(user_id: current_user.id, 
+                     name: @order.delivery_name,
+                     address: @order.delivery_address,
+                     phone_number: @order.phone_number,
+                     postal_code: @order.postal_code )
     end
-  end
-
-  def confirm
-  end
-
-  def thanks
-
+    redirect_to thanks_users_courses_path
   end
 
   def index
@@ -25,10 +23,23 @@ class Users::OrdersController < ApplicationController
 
   def show
   end
-end
 
 private
   def order_params
-      params.require(:order).permit(:user_id, :shop_id, :user_name, :shop_name, :course_name, :delivery_address, :payment, :option, :people_number, :price )
+      params.require(:order).permit(:shop_id, 
+                                    :user_name, 
+                                    :shop_name, 
+                                    :course_name, 
+                                    :delivery_address, 
+                                    :payment, 
+                                    :option, 
+                                    :people_number, 
+                                    :price, 
+                                    :delivery_name, 
+                                    :phone_number, 
+                                    :reserve_date, 
+                                    :reserve_time,
+                                    :postal_code,
+                                    :radio )
   end
 end

@@ -18,3 +18,4 @@ class User < ApplicationRecord
   validates :address,  presence: true
   acts_as_paranoid
 end
+
