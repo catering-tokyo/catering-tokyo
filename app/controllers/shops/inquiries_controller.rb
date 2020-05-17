@@ -10,8 +10,10 @@ class Shops::InquiriesController < ApplicationController
   def create
   	@inquiry = Inquiry.new(inquiry_params)
   	@inquiry.shop_id = current_shop.id
+    @shop = current_shop
 
   	if @inquiry.save(inquiry_params)
+       InquiriesMailer.admin_reply(@shop,@inquiry).deliver #確認メールを送信
   	   redirect_to shops_inquiries_path(current_shop)
   	else
   	   render "index"

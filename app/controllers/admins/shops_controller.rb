@@ -10,6 +10,7 @@ class Admins::ShopsController < ApplicationController
 
   def show
     @shop = Shop.find(params[:id])
+    @reviews = @shop.reviews
   end
 
   def update

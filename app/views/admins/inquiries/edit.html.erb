@@ -1,3 +1,8 @@
 <h1>Admins::Inquiries#edit</h1>
-<p>Find me in app/views/admins/inquiries/edit.html.erb</p>
-ddd
+<%= form_with model: @inquiry, url: admins_inquiry_path, local: true do |inquiry| %>
+<%= @inquiry.shop.name %>
+<%= @inquiry.title %>
+<%= @inquiry.body %>
+<%= inquiry.text_area :reply %>
+<%= inquiry.submit '返信' %>
+<% end %>

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 root 'users/homes#top'
 get "homes/about" => "users/homes#about"
 namespace :users do
+  resources :rooms, only:[:show]
   resources :inquiries, only:[:index, :new, :create, :show]
   resources :credit_cards, only:[:index, :new, :create, :edit, :update, :destroy]
   resources :messages, only:[:index, :create, :show]
@@ -48,8 +49,8 @@ end
 # 機能 #
 namespace :admins do
   resources :admin_informations
-  resources :inquiries, only:[:index, :update, :show, :destroy]
-  resources :reviews, only:[:index, :show, :destroy]
+  resources :inquiries, only:[:index, :edit, :update, :show, :destroy]
+  resources :reviews, only:[:destroy]
   resources :shop_genres, only:[:index, :create, :edit, :update, :destroy]
   resources :users, only:[:index, :show, :update, :destroy] do
     member do
@@ -75,6 +76,7 @@ end
 
 
 namespace :shops do
+  resources :rooms, only:[:show]
   resources :inquiries, only:[:index, :new, :create, :show]
   resources :messages, only:[:index, :show, :create]
   resources :orders, only:[:index, :show ,:update] do
