@@ -8,14 +8,14 @@
 				<h4><%= f.hidden_field  :course_id ,value: course.id %></h4>
 			</div>
 
-			<div class>
+			<div class="order_reserve_date">
 				<%= month_calendar do |date|  %>
-				  <%= date %>
+				  <%= date.strftime("%d") %>
 				<% end %>
 			</div>
 			<div>
 				<h4><%= f.label :日にち %>:
-	          <%= f.text_field :reserve_date %></h4>
+	          <%= f.text_field :reserve_date, placeholder: '選択してください' %></h4>
 			</div>
 			<div>
 				<h4><%= f.label :時間  %>:

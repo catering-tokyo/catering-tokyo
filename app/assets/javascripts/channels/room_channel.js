@@ -25,3 +25,14 @@ $(function() {
     }
   });
 });
+
+
+
+
+// received(data) {
+//   if (data['user_id'] == $('#user_room').data('user_id')) {
+//     $('#new-message').append('<p class="chat-right">'+data['message']+'</p>');
+//   } else {
+//     $('#new-message').append('<p class="chat-left">'+data['message']+'</p>');
+//   }
+// },

@@ -7,12 +7,15 @@ class Users::InquiriesController < ApplicationController
   	@inquiry = Inquiry.new
   end
 
+
   def create
-  	@inquiry = Inquiry.new(inquiry_params)
-  	@inquiry.user_id = current_user.id
-  	if @inquiry.save(inquiry_params)
-  		redirect_to users_inquiry_path(@inquiry.id), notice: "管理者に問い合わせ内容を送りました!"
-  	else
+    @inquiry = Inquiry.new(inquiry_params)
+    @inquiry.user_id = current_user.id
+    @user = current_user
+    if @inquiry.save
+      InquiriesMailer.admin_reply(@user,@inquiry).deliver #確認メールを送信
+      redirect_to users_inquiry_path(@inquiry.id), notice: "画像を投稿しました！"
+    else
       render :new
     end
   end
@@ -21,9 +24,7 @@ class Users::InquiriesController < ApplicationController
   	@inquiry = Inquiry.find(params[:id])
   end
 
-
-
-    private
+  private
   def inquiry_params
     params.require(:inquiry).permit(:user_id, :title, :body)
   end
