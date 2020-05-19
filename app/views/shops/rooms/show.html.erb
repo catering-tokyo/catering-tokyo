@@ -1,8 +1,38 @@
-<h1>Shops::Rooms#show</h1>
-<h1>Chat room</h1>
-<div id='messages'>
-  <%= render @messages %>
-</div>
+<div class="line">
+	<h1 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>">大蛇丸</h1>
+		<div class="line_title">
+		  <h1>Chat room</h1>
+			<div class="line__contents scroll">
+				<div class='message'>
+					<% @message.each do |message| %>
+					  <% if message.user_id == nil %>
+					     <div class="shops_name">
+					       <p>あなた</p>
+					     </div>
+					  <% else message.shop_id == nil %>
+						 <div class="users_name">
+						   <p><%= message.user.name %>さん</p>
+						 </div>
+					  <% end %>
 
-<%= label_tag :content, 'Say something:' %>
-<%= text_field_tag :content, nil, data: { behavior: 'room_speaker' } %>
+
+					  <% if message.shop_id == nil %>
+					     <div class="shops_comments">
+					       <p><%= message.message %></p>
+					     </div>
+					  <% else %>
+					     <div class="users_comments">
+					       <p><%= message.message %></p>
+					     </div>
+					  <% end %>
+
+					<% end %>
+
+					<div class=“user_name”></div>
+
+					<div class="messages" data-user="shop">
+					  </div>
+			</div>
+		</div>
+	<input type="text" class="shop_post">
+</div>
