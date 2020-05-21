@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 # 機能
 root 'users/homes#top'
 get "homes/about" => "users/homes#about"
+get "homes/terms" => "users/homes#terms"
 namespace :users do
   resources :rooms, only:[:show]
   resources :inquiries, only:[:index, :new, :create, :show]

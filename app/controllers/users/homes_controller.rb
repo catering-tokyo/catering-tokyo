@@ -7,8 +7,8 @@ class Users::HomesController < ApplicationController
   def about
   end
 
-  private
 
+  private
   def user_search_params
     params.fetch(:search, {}).permit(:name, :gender, :birthday_from, :birthday_to, :prefecture_id)
   end
