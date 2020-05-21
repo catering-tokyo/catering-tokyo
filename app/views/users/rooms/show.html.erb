@@ -10,9 +10,7 @@
 				       <p>あなた</p>
 				     </div>
 				  <% else %>
-					 <div class="shop_name">
-					   <p><%= message.shop.name %></p>
-					 </div>
+					   <p><%= attachment_image_tag @shop, :shop_image, :fill, 200, 150, format: 'jpeg', class: "img-rounded pull-left profile-img", class: "shop_name", fallback: "no_image.jpg", :size =>'50x50' %></p>
 				  <% end %>
 
 
@@ -27,12 +25,16 @@
 				  <% end %>
 				<% end %>
 
-                    <div class="messages" data-user="user">
+
+				<div class="orochi" data-name="<%= @shop.name %>"></div>
+
 					<div class="messages" data-user="user">
 					  </div>
 
 			</div>
 		</div>
+   <div class="col-8 offset-3">
 	<input type="text" class="post">
+  </div>
 </div>
 
