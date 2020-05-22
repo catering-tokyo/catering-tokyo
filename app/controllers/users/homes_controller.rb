@@ -7,6 +7,8 @@ class Users::HomesController < ApplicationController
   def about
   end
 
+  def terms
+  end
 
   private
   def user_search_params
