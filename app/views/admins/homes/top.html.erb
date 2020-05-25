@@ -1,39 +1,159 @@
-<div>
-	<h2><%= link_to "お問い合わせ一覧", admins_inquiries_path, class: "top_list" %></h2>
-	<!-- <h2><%#= link_to @inquiries.length, admins_inquiries_path, class: "top_list" %>件</h2> -->
+<div class="back">
+    <div class="button_base b1_roll">
+        <!-- <h2><%#= link_to @inquiries.length, admins_inquiries_path, class: "top_list" %>件</h2> -->
+        <%= link_to admins_inquiries_path do %>
+            <div>いちらん</div>
+            <div>お問い合わせ</div>
+        <% end %>
+    </div>
 </div>
-<div>
-	<h2><%= link_to "会員一覧", admins_users_path, class: "top_list" %></h2>
+<div class="back">
+    <div class="button_base b1_roll">
+        <%= link_to admins_admin_informations_path do %>
+            <div>いちらん</div>
+            <div>お知らせ</div>
+        <% end %>
+    </div>
 </div>
-<div>
-	<h2><%= link_to "お知らせ一覧", admins_admin_informations_path, class: "top_list" %></h2>
+
+<div class="back">
+    <div class="button_base b1_roll">
+        <%= link_to admins_users_path do %>
+            <div>いちらん</div>
+            <div>会員</div>
+        <% end %>
+    </div>
 </div>
-<div>
-	<h2><%= link_to "ショップ一覧", admins_shops_path, class: "top_list" %></h2>
+<div class="back">
+    <div class="button_base b1_roll">
+        <%= link_to admins_shops_path do %>
+            <div>いちらん</div>
+            <div>ショップ</div>
+        <% end %>
+    </div>
 </div>
-<div>
-	<h2><%= link_to "ジャンル一覧", admins_shop_genres_path, class: "top_list" %></h2>
+<div class="back">
+    <div class="button_base b1_roll">
+        <%= link_to admins_shop_genres_path do %>
+        <div>いちらん</div>
+        <div>ジャンル</div>
+        <% end %>
+    </div>
 </div>
+
+
 
 
 <style>
-.top_list{
-  display: block;
-  margin: auto;
-  padding: 0.8em;
-  text-align: center;
-  border: 2px solid #fbf284;
-  background-color: #1e294c;
-  border-radius: 30px;
-  transition: .4s;
-  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
-  font-size: 20px;
-  width: 100%;
-  color: #fff;
-  }
 
-.top_list:hover {
-  background: #EC407A;
-  color: #fff;
-  }
+.back {
+    /*width: 50%;
+    height: 400px;
+    float: left;
+    background-color: #eeeeee;*/
+    border: 10px;
+    border-color: #ffffff;
+    border-style: solid;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    counter-increment: bc;
+    padding: 0px 5px 5px 5px;
+    margin: 1%;
+}
+
+.button_base {
+    margin: 0;
+    border: 0;
+    font-size: 18px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    margin-top: -25px;
+    margin-left: -100px;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-user-select: none;
+    cursor: default;
+}
+
+.button_base:hover {
+    cursor: pointer;
+}
+
+/* ### ### ### 05 */
+.b1_roll {
+    perspective: 500px;
+    -webkit-perspective: 500px;
+    -moz-perspective: 500px;
+}
+
+.b1_roll div {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border: #000000 solid 1px;
+    /*pointer-events: none;*/
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.b1_roll div:nth-child(1) {
+    color: #000000;
+    background-color: #000000;
+    transform: rotateX(90deg);
+    -webkit-transform: rotateX(90deg);
+    -moz-transform: rotateX(90deg);
+    transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    transform-origin: 50% 50% -25px;
+    -webkit-transform-origin: 50% 50% -25px;
+    -moz-transform-origin: 50% 50% -25px;
+    font-family: 'Hannotate TC','Osaka',sans-serif;
+    border-radius: 3px;
+}
+
+.b1_roll div:nth-child(2) {
+    color: #000000;
+    background-color: #ffffff;
+    transform: rotateX(0deg);
+    -webkit-transform: rotateX(0deg);
+    -moz-transform: rotateX(0deg);
+    transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    transform-origin: 50% 50% -25px;
+    -webkit-transform-origin: 50% 50% -25px;
+    -moz-transform-origin: 50% 50% -25px;
+    font-family: 'Hannotate TC','Osaka',sans-serif;
+    border-radius: 3px;
+}
+
+.b1_roll:hover div:nth-child(1) {
+    color: #ffffff;
+    transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    transform: rotateX(0deg);
+    -webkit-transform: rotateX(0deg);
+    -moz-transform: rotateX(0deg);
+}
+
+.b1_roll:hover div:nth-child(2) {
+    background-color: #000000;
+    transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    transform: rotateX(-90deg);
+    -webkit-transform: rotateX(-90deg);
+    -moz-transform: rotateX(-90deg);
+}
 </style>
