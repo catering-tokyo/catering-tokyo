@@ -16,6 +16,7 @@ root 'users/homes#top'
   get "homes/about" => "users/homes#about"
   get '/search' => 'users/search#search'
 
+get "homes/terms" => "users/homes#terms"
 namespace :users do
   resources :rooms, only:[:show]
   resources :inquiries, only:[:index, :new, :create, :show]

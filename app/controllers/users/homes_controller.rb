@@ -12,3 +12,13 @@ class Users::HomesController < ApplicationController
   end
 
 end
+
+  def terms
+  end
+
+  private
+  def user_search_params
+    params.fetch(:search, {}).permit(:name, :gender, :birthday_from, :birthday_to, :prefecture_id)
+  end
+end
+
