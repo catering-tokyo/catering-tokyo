@@ -1,5 +1,6 @@
 class Users::ShopsController < ApplicationController
   def index
+    # @shops = shop_search_params
     @shops = Shop.all
   end
 
@@ -15,4 +16,5 @@ class Users::ShopsController < ApplicationController
       marker.infowindow place.name
     end
   end
+
 end

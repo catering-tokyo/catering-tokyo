@@ -1,15 +1,14 @@
 class Users::HomesController < ApplicationController
   def top
-  	@search_params = user_search_params
-    @users = User.search(@search_params).includes(:prefecture)
+    shop_genre = ShopGenre.all
   end
 
   def about
   end
 
-  private
-
-  def user_search_params
-    params.fetch(:search, {}).permit(:name, :gender, :birthday_from, :birthday_to, :prefecture_id)
+  def search
+    @search_params = shop_search_params
+    @shops = Shop.search(@search_params)
   end
+
 end
