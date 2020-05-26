@@ -11,7 +11,6 @@ class Users::HomesController < ApplicationController
     @shops = Shop.search(@search_params)
   end
 
-end
 
   def terms
   end
