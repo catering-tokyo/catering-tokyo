@@ -159,7 +159,6 @@ ActiveRecord::Schema.define(version: 2020_05_12_185744) do
 
   create_table "shop_genres", force: :cascade do |t|
     t.string "name", null: false
-    t.string "genre_image_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
