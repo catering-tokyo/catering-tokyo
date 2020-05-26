@@ -21,6 +21,11 @@ class Shop < ApplicationRecord
 
          attachment :shop_image
 
+  attr_accessor :average
+    def average_star
+       self.reviews.average(:star) 
+    end
+
   # VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   # VALID_POSTAL_CODE = /\A\d{3}[-]\d{4}\z/  # 郵便番号（ハイフンあり7桁）
   # VALID_TEL = /\A\d{3}[-]\d{3}[-]\d{4}|\d{3}[-]\d{4}[-]\d{4}\z/  # 電話番号

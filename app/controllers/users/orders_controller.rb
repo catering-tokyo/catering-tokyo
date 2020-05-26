@@ -7,7 +7,11 @@ class Users::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.user_id = current_user.id
-    @order.save
+
+    if params[:back]
+
+      redirect_to users_shops_path
+    elsif @order.save
     if order_params[:radio] == "3"
       Address.create(user_id: current_user.id, 
                      name: @order.delivery_name,
@@ -15,13 +19,18 @@ class Users::OrdersController < ApplicationController
                      phone_number: @order.phone_number,
                      postal_code: @order.postal_code )
     end
-    redirect_to thanks_users_courses_path
+    redirect_to thanks_users_courses_path, notice: 'Task was successfully created.'
+    else
+      render "users/courses/show"
+    end
   end
 
   def index
+    @orders = current_user.orders
   end
 
   def show
+    @order = Order.find(params[:id])
   end
 
 private

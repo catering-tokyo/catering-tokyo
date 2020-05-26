@@ -23,9 +23,16 @@
 
 
   <!-- 評価javascript -->
+  <style>
+    #star img {
+      height: 50px;
+    }
+  </style>
+
+
   <script>
   $('#star').raty({
-    size     : 36,
+    size   : 36,
     starOff:  '<%= asset_path('star-off.png') %>',
     starOn : '<%= asset_path('star-on.png') %>',
     starHalf: '<%= asset_path('star-half.png') %>',

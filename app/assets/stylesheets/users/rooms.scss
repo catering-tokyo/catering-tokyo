@@ -1,3 +1,134 @@
 // Place all the styles related to the users/rooms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.line {
+	  padding:0;
+	  background: #7494c0;
+	  overflow: hidden;
+	  margin: 20px auto;
+	  font-size: 80%;
+
+}
+
+.comments {
+	  margin-left: 4%;
+    max-width:500px; /*最大幅は任意*/
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    padding: 17px 13px 15px 18px;
+    border-radius: 12px;
+    background: #00FF00;/*色は任意*/
+    box-sizing:border-box;
+    line-height:1.5;
+/*   align-items: center; */
+}
+
+.comments p {
+	margin:8px 0 0
+}
+
+.comments p:first-child {
+  margin-top:0 !important;
+}
+
+.comments:after {
+  content: "";
+  position: absolute;
+  border: 10px solid transparent;
+/*   margin-top:-3px;  */
+}
+
+.message .comments:after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: -21px;
+  border: 8px solid transparent;
+  border-right: 18px solid #00FF00;
+  -webkit-transform: rotate(-35deg);
+  transform: rotate3d(1, 1, 1, 45deg);
+}
+
+.user_comments {
+    margin-left: 60%;
+    max-width:500px; /*最大幅は任意*/
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    padding: 17px 13px 15px 18px;
+    border-radius: 12px;
+    background: #00FF00;/*色は任意*/
+    box-sizing:border-box;
+    line-height:1.5;
+}
+
+.message .user_comments:after {
+    content: "";
+    position: absolute;
+    top: 8px;
+    right: -25px;
+    border: 8px solid transparent;
+    border-left: 23px solid #00FF00;
+    -webkit-transform: rotate(-35deg);
+    transform: skew(20deg, -25deg);
+}
+
+.user_name {
+  margin-left: 97%;
+}
+
+.users_comments {
+    margin-left: 60%;
+    max-width:500px; /*最大幅は任意*/
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    padding: 17px 13px 15px 18px;
+    border-radius: 12px;
+    background: #00FF00;/*色は任意*/
+    box-sizing:border-box;
+    line-height:1.5;
+}
+
+.message .users_comments:after {
+    content: "";
+    position: absolute;
+    top: 8px;
+    right: -25px;
+    border: 8px solid transparent;
+    border-left: 23px solid #00FF00;
+    -webkit-transform: rotate(-35deg);
+    transform: skew(20deg, -25deg);
+}
+
+.shops_comments {
+    margin-left: 4%;
+    max-width:500px; /*最大幅は任意*/
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    padding: 17px 13px 15px 18px;
+    border-radius: 12px;
+    background: #00FF00;/*色は任意*/
+    box-sizing:border-box;
+    line-height:1.5;
+}
+
+.shops_comments:after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: -21px;
+    border: 8px solid transparent;
+    border-right: 18px solid #00FF00;
+    -webkit-transform: rotate(-35deg);
+    transform: rotate3d(1, 1, 1, 45deg);
+}
+
+/*.message .comments:after {
+  right: -26px;
+  border-left: 22px solid #99dddd;
+}*/

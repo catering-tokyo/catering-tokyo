@@ -8,12 +8,10 @@
 				<div class="star">
 				　<h5>[評価] <span id="star-rate-<%= review.id %>"></span></h5>
 				</div>
-
 				<h5>[内容]:<%= review.body %></h5>
 				<div><% unless current_user != review.user %>
         	<%= link_to "削除", users_shop_review_path(review.id), method: :delete, class: "com", remote: false %>
         	<% end %>
-
         </div>
 			</div>
 		</div>

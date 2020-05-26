@@ -1,8 +1,40 @@
-<h1>Users::Rooms#show</h1>
+<div class="line">
+	<h1 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>">大蛇丸</h1>
+		<div class="line_title">
+		  <h1>Chat room</h1>
+			<div class="line__contents scroll">
+				<div class='message'>
+				<% @message.each do |message| %>
+				  <% if message.shop_id == nil %>
+				     <div class="user_name">
+				       <p>あなた</p>
+				     </div>
+				  <% else %>
+					 <div class="shop_name">
+					   <p><%= message.shop.name %></p>
+					 </div>
+				  <% end %>
 
-<h1>Chat room</h1>
-<div id='messages'>
-  <%= render 'messages/message', { message: @message } %>
+
+				  <% if message.shop_id == nil %>
+				     <div class="user_comments">
+				       <p><%= message.message %></p>
+				     </div>
+				  <% else %>
+				     <div class="comments">
+				       <p><%= message.message %></p>
+				     </div>
+				  <% end %>
+				<% end %>
+
+              
+					<div class="messages" data-user="user">
+					  </div>
+
+			</div>
+		</div>
+	<input type="text" class="post">
 </div>
+
 <h1 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>">大蛇丸</h1>
 

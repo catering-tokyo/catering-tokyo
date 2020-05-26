@@ -1,2 +1,6 @@
 <h1>Shops::Messages#index</h1>
+<% @room.each do |room| %>
+<%= room.user.name %>
+<%= link_to "チャット", shops_room_path(room) %>
+<% end %>
 <p>Find me in app/views/shops/messages/index.html.erb</p>
