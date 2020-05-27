@@ -1,4 +1,4 @@
-<%= form_with model: @user ,url: users_user_path(current_user) do |f| %>
+<%= form_with model: @user ,url: users_user_path(current_user), local: true do |f| %>
     <h4>お名前</h4>
     <%= f.text_field :name %>
     <span><%= f.label :電話番号 %><%= f.text_field :phonenumber %></span><br>

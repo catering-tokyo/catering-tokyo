@@ -1,4 +1,5 @@
 class Users::ShopsController < ApplicationController
+
   def index
     @shops = Shop.all
   end

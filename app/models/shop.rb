@@ -7,7 +7,10 @@ class Shop < ApplicationRecord
 
          has_many :informations, dependent: :destroy
          has_many :reviews, dependent: :destroy
+         
          has_many :favorites, dependent: :destroy
+         has_many :favorited_users, through: :favorites, source: :user
+
          has_many :inquiries, dependent: :destroy
          has_many :orders, dependent: :destroy
          has_many :courses, dependent: :destroy
@@ -18,6 +21,17 @@ class Shop < ApplicationRecord
          attr_accessor :shop_genre_ids
 
          attachment :shop_image
+
+         geocoded_by :address
+         after_validation :geocode, if: :address_changed?
+
+      def favorited_by?(user)
+        favorites.where(user_id: user.id).exists?
+      end
+
+      def favorite_user(user_id)
+        favorites.find_by(user_id: user_id)
+      end
 
   # VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   # VALID_POSTAL_CODE = /\A\d{3}[-]\d{4}\z/  # 郵便番号（ハイフンあり7桁）

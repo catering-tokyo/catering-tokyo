@@ -3,6 +3,7 @@ class Users::UsersController < ApplicationController
   before_action :authenticate_user!
 
   def show
+    @user = User.find(params[:id])
     flash[:notice] = "ログインして下さい。未登録のユーザは登録をお願いします。" unless user_signed_in?
   end
 
@@ -27,6 +28,6 @@ class Users::UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:name, :phonenumber, :email, :address, :password, :password_confirmation)
+      params.require(:user).permit(:name, :phonenumber, :email, :address)#, :password, :password_confirmation)
     end
 end
