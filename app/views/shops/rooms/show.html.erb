@@ -1,5 +1,5 @@
 <div class="line">
-	<h1 id="room" data-room="<%= @room.id %>" data-user="<%= current_shop.id %>">大蛇丸</h1>
+	<h1 id="room" data-room="<%= @room.id %>" data-shop="<%= current_shop.id %>"> <%# binding.pry %>大蛇丸</h1>
 		<div class="line_title">
 		  <h1>Chat room</h1>
 			<div class="line__contents scroll">
@@ -9,7 +9,7 @@
 					     <div class="shops_name">
 					       <p>あなた</p>
 					     </div>
-					  <% else message.shop_id == nil %>
+					  <% else %>
 						 <div class="users_name">
 						   <p><%= message.user.name %>さん</p>
 						 </div>
@@ -28,11 +28,14 @@
 
 					<% end %>
 
-					<div class=“user_name”></div>
+					<div class="orochi" data-name="<%= @user.name %>"></div>
 
 					<div class="messages" data-user="shop">
 					  </div>
 			</div>
 		</div>
-	<input type="text" class="shop_post">
+		<div class="col-8 offset-3">
+	      <input type="text" class="shop_post">
+	    </div>
 </div>
+

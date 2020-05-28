@@ -9,18 +9,22 @@ $(function() {
     disconnected: function(data) {},
     received: function(data) {
       console.log($('.messages').data('user'))
-      console.log(data['user_message'])
+      console.log($('.orochi').data('shop_image'))
       if ($('.messages').data('user') == "user") {
         if (data['user_message'] == "user"){
+<<<<<<< HEAD
           $('.messages').append(data['data']  + 'あなた' + '</div>' + '<div class="user_comments"><p>' + data['data'] + '</p></div>');
+=======
+          $('.messages').append('<div class="user_name">あなた</div>' + '<div class="user_comments"><p>' + data["data"] + '</p></div>');
+>>>>>>> develop
         } else {
-          $('.messages').append('<div class=“users_name”><p> data[‘data’]</p></div>' + '<div class="comments"><p>' + data['data'] + '</p></div>');
+          $('.messages').append( $('.orochi').data("name") + '<div class="comments"><p>'+ data['data'] + '</p></div>');
         }
       } else {
         if (data['user_message'] == "shop"){
-          $('.messages').append('<div class="shops_name">' + 'あなた' + '</div>' + '<div class="users_comments"><p>' + data['data'] + '</p></div>');
+          $('.messages').append('<div class="user_name">あなた</div>' + '<div class="users_comments"><p>' + data["data"] + '</p></div>');
         } else {
-          $('.messages').append('<div class=“shop_name”><p> data[‘data’]</p></div>' + '<div class="shops_comments"><p>' + data['data'] + '</p></div>');
+          $('.messages').append( $('.orochi').data("name") + '<div class="shops_comments"><p>' + data['data'] + '</p></div>');
         }
       }
     }

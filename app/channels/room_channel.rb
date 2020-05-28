@@ -16,7 +16,7 @@ class RoomChannel < ApplicationCable::Channel
   end
 
   def talk(data)
-      # binding.pry
+       binding.pry
       Message.create(shop_id: data['current_shop_id'], room_id: params['room_id'], message: data['data'])
       ActionCable.server.broadcast "room_channel", data
   end

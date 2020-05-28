@@ -8,7 +8,6 @@ class Users::ShopsController < ApplicationController
     else
       @shops = Shop.all
     end
-
   end
 
   def show
@@ -25,5 +24,6 @@ class Users::ShopsController < ApplicationController
     #   marker.infowindow place.name
     # end
   end
+
 end
 

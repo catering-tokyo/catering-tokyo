@@ -20,6 +20,9 @@ class Shop < ApplicationRecord
          # after_validation :geocode, if: :address_changed?
 
          attachment :shop_image
+       #日付の範囲検索をするため、fromとtoをつけている
+     #scope :メソッド名 -> (引数) { SQL文 }
+     #if 引数.present?をつけることで、検索フォームに値がない場合は実行されない
 
   attr_accessor :average
     def average_star
