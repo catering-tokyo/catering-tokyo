@@ -1,4 +1,5 @@
 class Users::ShopsController < ApplicationController
+
   def index
     # @shops = shop_search_params
     @shops = Shop.all

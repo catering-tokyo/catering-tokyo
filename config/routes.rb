@@ -22,7 +22,7 @@ namespace :users do
   resources :inquiries, only:[:index, :new, :create, :show]
   resources :credit_cards, only:[:index, :new, :create, :edit, :update, :destroy]
   resources :messages, only:[:index, :create, :show]
-  resources :favorites, only:[:index, :create, :destroy]
+  resources :favorites, only:[:index, :new, :create, :destroy]
   resources :addresses, only:[:index, :edit, :create, :update, :destroy]
   resources :orders, only:[:index, :new, :create, :show, :edit, :update]
   resources :users, only:[:show, :edit, :update, :destroy] do
@@ -36,6 +36,7 @@ namespace :users do
   end
   resources :shops, only:[:index, :show] do
     resources :reviews, only:[:create, :destroy]
+    resources :favorites, only: [:create, :destroy]
   end
 end
 

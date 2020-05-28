@@ -1,2 +1,5 @@
-<h1>Users::Favorites#index</h1>
-<p>Find me in app/views/users/favorites/index.html.erb</p>
+<h1>お気に入り一覧</h1>
+<% @favorites.each do |favorite| %>
+    <p>----------</p>
+    <span><%= link_to favorite.shop_id , "/users/shops/#{favorite.shop_id}" %></span>
+<% end %>

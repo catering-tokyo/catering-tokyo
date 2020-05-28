@@ -2,7 +2,6 @@
 
 <p>Find me in app/views/users/shops/show.html.erb</p>
 
-
 <div class="container">
 	<div class="row">
 		<div class="col-md-6 offset-md-3">
@@ -15,8 +14,6 @@
 		</div>
 	</div>
 </div>
-
-
 
 <h1>店舗詳細</h1>
 <p><%= @shop.name %></p>
@@ -38,7 +35,28 @@
 <span><%= link_to "コース一覧", users_courses_path(shop_id: params[:id]) %></span><br>
 <span><%= link_to "お店一覧", users_shops_path%></span>
 
+<%# <% if @shop.favorited_by?(current_user) %>
+<%#  <span>
+      <%= link_to "お気に入り解除", users_favorite_path(user_id: current_user.id, shop_id: @shop.id), method: :delete, class: "fav", remote: true do %>
+<%#        <i class="fas fa-heart" id="<%= @shop.id %>
+<%#"></i>
+<%#      <% end %>
+<%#  </span>
+<%#<% else %>
+<%#  <span>
+<%#      <i class="far fa-heart"></i>
+<%#      <span><%= link_to "お気に入り登録", users_favorites_path(shop_id: @shop.id), method: :post %></span>
+<%#  </span>
+<%#<% end %>
+
+<%#<%= flash[:notice] %>
+
+<div id="favorites_buttons_<%= @shop.id %>">
+    <%= render partial: 'users/favorites/favorite', locals: { shop: @shop, favorites: @favorites} %>
+</div>
+
 <%= link_to "チャットする", users_room_path(@shop.id) %>
+
 
 <h2>gmap</h2>
 <div id='map'></div>
