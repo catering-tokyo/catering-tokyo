@@ -2,7 +2,6 @@ class Users::SearchController < ApplicationController
   def search
     @model = params["model"]
     @content = params["content"]
-    @genre = params["shop_genre_id"]
     # binding.pry
         if @model == 'course'
           from = params["price_gteq"]
@@ -23,9 +22,12 @@ class Users::SearchController < ApplicationController
             @datas = Course.where("name LIKE ? OR introduction LIKE ?", "%#{@content}%", "%#{@content}%")
                            .order(price: :asc)
           end
+
         elsif @model == 'shop'
+          @genre = params["shop_genre_id"]
           if @genre.present? && @content.present?
-            @genres = Shop.joins(:shop_genres).merge(ShopGenre.where(id: @genre))
+            @genres = Shop.joins(:shop_genres)
+                          .merge(ShopGenre.where(id: @genre))
             @shops = Shop.where("name LIKE ? OR address LIKE ?", "%#{@content}%", "%#{@content}%")
             @datas = @shops.where(id: @genres)
 
@@ -33,7 +35,8 @@ class Users::SearchController < ApplicationController
             @datas = Shop.where("name LIKE ? OR address LIKE ?", "%#{@content}%", "%#{@content}%")
 
           elsif @genre.present?
-            @datas = Shop.joins(:shop_genres).merge(ShopGenre.where(id: @genre))
+            @datas = Shop.joins(:shop_genres)
+                         .merge(ShopGenre.where(id: @genre))
           # binding.pry
           end
         end
