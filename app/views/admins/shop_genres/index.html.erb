@@ -1,74 +1,407 @@
 <div class="container">
 	<div class="row">
-		<div class="col-xs-8 col-xs-offset-2">
-			<h2>GENRE:</h2>
-			<div class="genre-body">
-				<table class="table">
-					<tr>
-						<th>GENRE LIST</th>
-						<th></th>
-						<th></th>
-					</tr>
-					<% @genres.each do |genre| %>
-						<tr>
-							<td><%= attachment_image_tag genre, :genre_image, src: "", id:"item_image", size: "210x60", alt:"Image preview", class: "item_prev", fallback: "no_image.jpg" %>
-								<%= genre.name %>
-							</td>
-							<td><%= link_to "EDIT", edit_admins_shop_genre_path(genre.id), class: "edit-btn" %></td>
-							<td><%= link_to "DELETE",admins_shop_genre_path(genre), method: :delete, class: "destroy-btn" %></td>
-						</tr>
-					<% end %>
-				</table>
-
-				<%= form_for(@genre, url: admins_shop_genres_path) do |f| %>
-					<div class = "row">
-						<div class="col-xs-6">
-							<div class="field">
-								<%= attachment_image_tag @genre, :genre_image, src: "", id:"img_prev", size: "200x200", alt:"Image preview", class: "item_prev", fallback: "no_image.jpg" %>
-							</div>
-				 			<div class="field">
-								<%= f.label :genre_image,"Image select" ,class: "btn btn-warning btn-lg" ,for:"post_img"%>
-								<%= f.attachment_field :genre_image, id:"post_img", class: "image", style:"display:none;" %>
-							</div>
-						</div>
-						<div class="col-xs-6">
-							<div class="field">
-								<%= f.label :name, "GENRE NAME" %>
-								<%= f.text_field :name %>
-							</div>
-							<div class="field">
-								<%= f.submit "New Genre", class: "top_list" %>
-							</div>
-						</div>
-					</div>
-				<% end %>
-			</div>
-		</div>
+		<h1> G E N R E：一覧 </h1>
 	</div>
-	<%= link_to "トップへ戻る", admins_top_path, class: "top_list" %>
+	<div class="row">
+		<% @genres.each do |genre| %>
+			<div class="back">
+			    <div class="button_base b1_roll">
+			        <%= link_to edit_admins_shop_genre_path(genre.id) do %>
+			            <div>へんしゅう</div>
+			            <div><%= genre.name %></div>
+			        <% end %>
+			    </div>
+			</div>
+		<% end %>
+	</div>
+	<div class="row">
+		<h1>G E N R E：追加</h1>
+	</div>
+	<div class="row">
+		<%= form_for(@genre, url: admins_shop_genres_path) do |f| %>
+			<div class="cp_iptxt">
+				<%= f.text_field :name, class: "ef", type: "text", placeholder: ":Genre追加入力" %>
+				<%= f.label :name, "Genre追加入力" %>
+				<span class="focus_line"><i></i></span>
+			</div>
+			<div class="btn-border-gradient-wrap btn-border-gradient-wrap--gold">
+				<button type="submit" class="btn btn-border-gradient"><span class="btn-text-gradient--gold">CREATE RIZAP</span></button>
+			</div>
+		<% end %>
+	</div>
+	<div class="row top_link">
+		<%= link_to "TOPページ", admins_top_path, class: "btn btn-border" %>
+	</div>
 </div>
 
 
-
-
 <style>
-.top_list{
-  display: block;
-  margin: auto;
-  padding: 0.8em;
-  text-align: center;
-  border: 2px solid #fbf284;
-  background-color: #1e294c;
-  border-radius: 30px;
-  transition: .4s;
-  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
-  font-size: 20px;
-  width: 100%;
-  color: #fff;
-  }
 
-.top_list:hover {
-  background: #EC407A;
-  color: #fff;
-  }
+.cp_iptxt {
+  position: relative;
+  width: 300p;
+  margin: 10% 3% 3% 0;
+}
+
+.cp_iptxt input[type='text'] {
+  font: 15px/24px sans-serif;
+  box-sizing: border-box;
+  width: 100%;
+  letter-spacing: 1px;
+  padding-left: 4em;
+}
+
+.cp_iptxt input[type='text']:focus {
+  outline: none;
+}
+
+.ef {
+  padding: 7px 14px;
+  transition: 0.4s;
+  border: 1px solid #1b2538;
+  background: transparent;
+}
+
+.ef ~ .focus_line:before,
+.ef ~ .focus_line:after {
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  content: '';
+  transition: 0.4s;
+  background-color: #ffde59;
+}
+
+.ef ~ .focus_line:after {
+  top: auto;
+  bottom: 0;
+}
+
+.ef ~ .focus_line i:before,
+.ef ~ .focus_line i:after {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 2px;
+  height: 0;
+  content: '';
+  transition: 0.6s;
+  background-color: #ffde59;
+}
+
+.ef ~ .focus_line i:after {
+  right: 0;
+  left: auto;
+}
+
+.ef:focus ~ .focus_line:before,
+.ef:focus ~ .focus_line:after,
+.cp_iptxt.ef ~ .focus_line:before,
+.cp_iptxt.ef ~ .focus_line:after {
+  left: 0;
+  width: 100%;
+  transition: 0.4s;
+}
+
+.ef:focus ~ .focus_line i:before,
+.ef:focus ~ .focus_line i:after,
+.cp_iptxt.ef ~ .focus_line i:before,
+.cp_iptxt.ef ~ .focus_line i:after {
+  top: -1px;
+  height: 100%;
+  transition: 0.6s;
+}
+
+.ef ~ label {
+  position: absolute;
+  z-index: -1;
+  top: 10px;
+  left: 14px;
+  width: 100%;
+  transition: 0.3s;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+}
+
+.ef:focus ~ label,
+.cp_iptxt.ef ~ label {
+  font-size: 12px;
+  top: -18px;
+  left: 0;
+  transition: 0.3s;
+  color: #ff914d;
+}
+
+.btn-border-gradient-wrap {
+  display: inline-block;
+  padding: 0.2rem;
+  border-radius: 0.5rem;
+}
+
+.btn-border-gradient-wrap--gold {
+  background-image: -webkit-linear-gradient(
+    315deg,
+    #704308 0%,
+    #ffce08 37%,
+    #fefeb2 47%,
+    #fafad6 50%,
+    #fefeb2 53%,
+    #e1ce08 63%,
+    #704308 100%
+  );
+  background-image: linear-gradient(
+    135deg,
+    #704308 0%,
+    #ffce08 37%,
+    #fefeb2 47%,
+    #fafad6 50%,
+    #fefeb2 53%,
+    #e1ce08 63%,
+    #704308 100%
+  );
+}
+
+.btn-border-gradient-wrap--gold:hover a.btn {
+  text-shadow: 0 0 15px rgba(250, 250, 214, 0.5),
+    0 0 15px rgba(250, 250, 214, 0.5), 0 0 15px rgba(250, 250, 214, 0.5),
+    0 0 15px rgba(250, 250, 214, 0.5);
+}
+
+button.btn-border-gradient {
+  font-size: 2rem;
+  background: #000;
+}
+
+.btn-text-gradient--gold {
+  font-family: "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro",
+    "Hiragino Mincho ProN", "HGS明朝E", "ＭＳ Ｐ明朝", serif;
+  background: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    from(#ffffdb),
+    to(#a16422)
+  );
+  background: -webkit-linear-gradient(bottom, #ffffdb, #a16422);
+  background: linear-gradient(to top, #ffffdb, #a16422);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn-border {
+    border: 2px solid #000;
+    border-radius: 0;
+    background: #fff;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    margin: auto;
+}
+
+.btn-border:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 100%;
+    content: '';
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    -webkit-transform: translateX(0) translateY(0);
+    transform: translateX(0) translateY(0);
+    border-radius: 0 50% 50% 0;
+    background: #000;
+}
+
+.btn-border:hover:before {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: bold;
+    line-height: 30px;
+    width: 30px;
+    height: 30px;
+    content: '\f061';
+    -webkit-transform: translateX(460%) translateY(.5rem);
+    transform: translateX(460%) translateY(.5rem);
+    color: #fff;
+    border-radius: 50%;
+}
+
+
+h1 {
+    position: relative;
+    padding-bottom: 0.5em;
+}
+
+h1::after {
+     position: absolute;
+     content: '';
+     left: 0;
+     bottom: 0;
+     width: 100%;
+     height: 7px;
+     box-sizing: border-box;
+     border-top: 3px solid black;
+     border-bottom: 1px solid black;
+}
+
+.back {
+    width: 20%;
+    height: 100px;
+    float: left;
+    border: 10px;
+    border-color: #ffffff;
+    border-style: solid;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    counter-increment: bc;
+    padding: 0px 5px 5px 5px;
+    margin: auto;
+}
+
+.button_base {
+    margin: 0;
+    border: 0;
+    font-size: 18px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    margin-top: -25px;
+    margin-left: -100px;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-user-select: none;
+    cursor: default;
+}
+
+.button_base:hover {
+    cursor: pointer;
+}
+
+/* ### ### ### 05 */
+.b1_roll {
+    perspective: 500px;
+    -webkit-perspective: 500px;
+    -moz-perspective: 500px;
+}
+
+.b1_roll div {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border: #000000 solid 1px;
+    /*pointer-events: none;*/
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.b1_roll div:nth-child(1) {
+    color: #000000;
+    background-color: #ffffff;
+    transform: rotateX(90deg);
+    -webkit-transform: rotateX(90deg);
+    -moz-transform: rotateX(90deg);
+    transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    transform-origin: 50% 50% -25px;
+    -webkit-transform-origin: 50% 50% -25px;
+    -moz-transform-origin: 50% 50% -25px;
+    font-family: 'Hannotate TC','Osaka',sans-serif;
+    border-radius: 3px;
+}
+
+.b1_roll div:nth-child(2) {
+    color: #000000;
+    background-color: #ffdd4d;
+    transform: rotateX(0deg);
+    -webkit-transform: rotateX(0deg);
+    -moz-transform: rotateX(0deg);
+    transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    transform-origin: 50% 50% -25px;
+    -webkit-transform-origin: 50% 50% -25px;
+    -moz-transform-origin: 50% 50% -25px;
+    font-family: 'Hannotate TC','Osaka',sans-serif;
+    border-radius: 3px;
+}
+
+.b1_roll:hover div:nth-child(1) {
+    color: #000000;
+    transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    transform: rotateX(0deg);
+    -webkit-transform: rotateX(0deg);
+    -moz-transform: rotateX(0deg);
+}
+
+.b1_roll:hover div:nth-child(2) {
+    background-color: #000000;
+    transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    transform: rotateX(-90deg);
+    -webkit-transform: rotateX(-90deg);
+    -moz-transform: rotateX(-90deg);
+}
+
+.btn-box {
+  display: inline-block;
+  width: 100px;
+  text-align: center;
+  font-size: 16px;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 7%;
+  position: relative;
+  border: 2px solid #ffffff;
+  transition: .4s;
+}
+
+.btn-box:hover {
+  border: 2px solid transparent;
+  color: #000;
+  text-decoration: none;
+}
+
+.btn-box:before, .btn-box:after {
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  transform: scale(0);
+  transition: .2s;
+}
+
+.btn-box:before {
+  border-bottom: 2px solid #000;
+  border-left: 2px solid #000;
+  transform-origin: 100% 0%;
+}
+
+.btn-box:after {
+  border-top: 2px solid #000;
+  border-right: 2px solid #000;
+  transform-origin: 0% 100%;
+}
+
+.btn-box:hover:after,
+.btn-box:hover:before {
+  transform: scale(1);
+}
 </style>
