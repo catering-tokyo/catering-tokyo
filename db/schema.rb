@@ -91,8 +91,8 @@ ActiveRecord::Schema.define(version: 2020_05_12_185744) do
   end
 
   create_table "inquiries", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "shop_id", null: false
+    t.integer "user_id"
+    t.integer "shop_id"
     t.string "title", null: false
     t.text "body", null: false
     t.text "reply"
@@ -102,8 +102,8 @@ ActiveRecord::Schema.define(version: 2020_05_12_185744) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "shop_id", null: false
+    t.integer "user_id"
+    t.integer "shop_id"
     t.integer "room_id", null: false
     t.string "message", null: false
     t.datetime "created_at", null: false
@@ -123,15 +123,17 @@ ActiveRecord::Schema.define(version: 2020_05_12_185744) do
   create_table "orders", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "shop_id", null: false
-    t.string "user_name", null: false
+    t.string "delivery_name", null: false
     t.string "shop_name", null: false
     t.string "course_name", null: false
     t.string "delivery_address", null: false
     t.string "payment", null: false
+    t.string "postal_code", null: false
     t.string "option"
     t.string "people_number", null: false
+    t.string "phone_number", null: false
     t.integer "price", null: false
-    t.date "reserve_date", null: false
+    t.string "reserve_date", null: false
     t.time "reserve_time", null: false
     t.integer "order_status", default: 0, null: false
     t.datetime "created_at", null: false
@@ -157,7 +159,6 @@ ActiveRecord::Schema.define(version: 2020_05_12_185744) do
 
   create_table "shop_genres", force: :cascade do |t|
     t.string "name", null: false
-    t.string "genre_image_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -173,8 +174,8 @@ ActiveRecord::Schema.define(version: 2020_05_12_185744) do
     t.string "address"
     t.string "shop_image_id"
     t.string "postal_code"
-    t.datetime "open_time"
-    t.datetime "close_time"
+    t.string "open_time"
+    t.string "close_time"
     t.string "lunch_limit"
     t.string "dinner_limit"
     t.float "latitude"
@@ -194,6 +195,7 @@ ActiveRecord::Schema.define(version: 2020_05_12_185744) do
     t.string "name", null: false
     t.string "phonenumber", null: false
     t.string "address", null: false
+    t.string "postal_code", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"

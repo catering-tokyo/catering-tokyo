@@ -1,10 +1,14 @@
 class Admins::ReviewsController < ApplicationController
-  def index
-  end
+  
+	def destroy
+		@review = Review.find(params[:id])
+		@shop = @review.shop
+    	@review.destroy
+    	redirect_to admins_shop_path(@shop.id), notice: "このお店にレビューを削除しました!"
+	end
 
-  def show
-  end
-
-  def destroy
+  private
+  def review_params
+  	params.require(:review).permit(:title, :body, :star)
   end
 end

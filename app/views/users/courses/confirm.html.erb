@@ -1,0 +1,112 @@
+
+
+
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <div class="page-title">
+      <h1>- 注文情報確認 -</h1>
+    </div>
+    <div class="confirm-select-course">
+      <h2>選択中のプラン</h2>
+      <hr class="bottom-line">
+      <div>コースイメージ</div>
+        <table class="table">
+          <tr>
+            <th>コース名</th>
+            <td> <%= @course.name %></td>
+          </tr>
+          <tr>
+            <th>ひとり（税込）</th>
+            <td> <%= @course.price %> 円</td>
+          </tr>
+          <tr>
+            <th>基本送料</th>
+            <td>０円</td>
+          </tr>
+          <tr>
+            <th>最低人数</th>
+            <td><%= @course.minimum_people %> 人</td>
+          </tr>
+        </table>
+    </div>
+    <div>
+      <h2>お客様情報</h2>
+      <hr class="bottom-line">
+      <table class="table">
+        <tr>
+          <th>名前</th>
+          <td><%= @delivery_name %></td>
+        </tr>
+        <tr>
+          <th>連絡先</th>
+          <td><%= @phone_number %></td>
+        </tr>
+        <tr>
+          <th>配送先</th>
+          <td><%= @postal_code %> <%= @delivery_address %></td>
+        </tr>
+      </table>
+    </div>
+
+    <div>
+      <h2>注文情報</h2>
+      <hr class="bottom-line">
+      <table class="table">
+      <tr>
+        <th>支払い方法</th>
+        <td><%= params[:payment] %></td>
+      </tr>
+      <tr>
+        <th>予約日時</th>
+        <td> <%= params[:reserve_date] %>日：<%= params[:reserve_time] %></td>
+      </tr>
+      <tr>
+        <th>注文人数</th>
+        <td><%= params[:people_number] %>人</td>
+      </tr>
+      <tr>
+        <th>ご要望</th>
+        <td><%= params[:option] %></td>
+      </tr>
+      </table>
+    </div>
+    <div>
+      <h2>料金内訳</h2>
+      <table class="table">
+        <hr class="bottom-line">
+        <tr>
+          <th>プラン（<%= @course.name %>）</th>
+          <td><%= @course.price %>円 × <%= params[:people_number] %>人 =  <%= @course.price * params[:people_number].to_i %>円  </td>
+        </tr>
+        <tr>
+          <th>基本送料</th>
+          <td>０円</td>
+        </tr>
+        <tr>
+          <th>合計金額</th>
+          <td><%= @course.price * params[:people_number].to_i %>円</td>
+        </tr>
+      </table>
+    </div>
+<%= form_with model: @order, url: users_orders_path, local: true do |f| %>
+<%= f.hidden_field  :shop_id ,value: @course.shop.id %>
+<%= f.hidden_field :shop_name, value: @course.shop.name %>
+<%= f.hidden_field :course_name, value: @course.name %>
+<%= f.hidden_field  :delivery_name ,value: @delivery_name %>
+<%= f.hidden_field  :postal_code ,value: @postal_code %>
+<%= f.hidden_field  :delivery_address ,value: @delivery_address %>
+<%= f.hidden_field  :payment ,value: params[:payment] %>
+<%= f.hidden_field  :option ,value: params[:option] %>
+<%= f.hidden_field  :people_number ,value: params[:people_number] %>
+<%= f.hidden_field  :phone_number ,value: @phone_number %>
+<%= f.hidden_field  :price ,value: @course.price %>
+<%= f.hidden_field  :reserve_date ,value: params[:reserve_date] %>
+<%= f.hidden_field  :reserve_time ,value: params[:reserve_time] %>
+  <% if params[:radio_num] == "3" %>
+  <%= f.hidden_field  :radio ,value: params[:radio_num] %>
+  <% end %>
+  <%= f.submit "注文確定" %>
+<% end %>
+
+
+

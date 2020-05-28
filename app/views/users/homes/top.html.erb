@@ -1,2 +1,44 @@
-<h1>Users::Homes#top</h1>
-<p>Find me in app/views/users/homes/top.html.erb</p>
+
+
+    <div class="search-form">
+      <%= form_with(url: search_path, method: :get, local: true) do |f| %>
+        <%= f.text_field :content %>
+
+        <%= f.select :model, [["お店", "shop"], ["コース", "course"]] %>
+      </div>
+
+      <div class="pricezorn">
+        <%= f.select :price_gteq, [["２０００円", "2000"], ["２５００円", "2500"], ["３０００円", "3000"], ["３５００円", "3500"], ["４０００円", "4000"], ["４５００円", "4500"]], :prompt => "なんか選んでよ" %> 〜 <%= f.select :price_lteq, [["２０００円", "2000"], ["２５００円", "2500"], ["３０００円", "3000"], ["３５００円", "3500"], ["４０００円", "4000"], ["４５００円", "4500"], ["５０００円", "5000"], ["５５００円", "5500"], ["６０００円", "6000"]], :prompt => "上限なし" %>
+      </div>
+
+      <div class="genrezorn">
+        <%= f.select :shop_genre_id, ShopGenre.all.map { |shopgenre| [shopgenre.name, shopgenre.id]}, :prompt => "なんか選んでよ" %>
+      </div>
+
+        <%= f.submit '検索', class: "btn btn-primary" %>
+      <% end %>
+    </div>
+
+
+
+
+<script>
+	$("#model").ready(function() {
+    var category_val = $("#model").val();
+        $('.pricezorn').css('display', 'none');
+        $('.genrezorn').css('display', 'block');
+    });
+
+
+	$("#model").change(function() {
+    var category_val = $("#model").val();
+    if(category_val == "shop") {
+        $('.pricezorn').css('display', 'none');
+        $('.genrezorn').css('display', 'block');
+    }else if(category_val == "course") {
+        $('.pricezorn').css('display', 'block');
+        $('.genrezorn').css('display', 'none');
+    }
+});
+
+</script>

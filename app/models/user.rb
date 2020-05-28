@@ -23,3 +23,4 @@ class User < ApplicationRecord
     self.favorites.exists?(shop_id: :id)
   end
 end
+

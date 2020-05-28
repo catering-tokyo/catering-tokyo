@@ -1,0 +1,39 @@
+<div class='message'>
+	<% message.each do |message| %>
+	    <% if message.shop_id == nil %>
+	      <div class="user_name">
+		   <p>あなた</p>
+		  </div>
+		<% else message.user_id == nil %>
+		  <div class="shop_name">
+		   <p><%= message.shop.name %></p>
+		  </div>
+		<% end %>
+
+
+	   <% if message.shop_id == nil %>
+	   <div class="user_comments">
+	     <p><%= message.message %></p>
+	   </div>
+	   <% else message.user_id == nil %>
+	   <div class="comments">
+	     <p><%= message.message %></p>
+	   </div>
+	   <% end %>
+
+    <% end %>
+
+</div>
+<!--
+
+
+<div class="balloon_l">
+  <div class="faceicon"><img src="#.jpg" alt="" ></div>
+  <p class="says">顔アイコン左の吹き出し</p>
+</div>
+<div class="balloon_r">
+  <div class="faceicon">
+    <img src="#.jpg" alt="" >
+  </div>
+    <div class="says"><p>顔アイコン右の吹き出し。</p><p>顔アイコン右の吹き出し。</p></div>
+</div> -->

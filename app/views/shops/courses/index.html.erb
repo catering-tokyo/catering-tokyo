@@ -1,8 +1,9 @@
-<h1>コース一覧</h1>
+
 
 <%= link_to "マイページへ",shops_shop_path(current_shop) %>
 
 <div class="item_list_box">
+	<h1>コース一覧</h1>
 	<% @courses.each do |course| %>
 	<div class="course">
 	<%= link_to shops_course_path(course.id), class: "item_link" do %>

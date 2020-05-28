@@ -1,2 +1,6 @@
 <h1>Admins::Inquiries#show</h1>
-<p>Find me in app/views/admins/inquiries/show.html.erb</p>
+<%= @inquiry.shop.name %>
+<%= @inquiry.title %>
+<%= @inquiry.body %>
+<%= @inquiry.reply %>
+<%= link_to "詳細へ", edit_admins_inquiry_path(@inquiry) %>

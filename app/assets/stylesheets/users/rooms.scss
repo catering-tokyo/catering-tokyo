@@ -1,0 +1,208 @@
+// Place all the styles related to the users/rooms controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.line {
+	  padding:0;
+	  background: #FFFFAA;
+	  overflow: hidden;
+	  margin: 20px auto;
+	  font-size: 80%;
+
+}
+
+.comments {
+    margin-left: 4%;
+    max-width: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    padding: 17px 13px 15px 18px;
+    border-radius: 12px;
+    background: #988E84;
+    box-sizing: border-box;
+    line-height: 1.5;
+    color: white;
+    font-size: 14px;
+    font-family: 'Sylfaen','Hiragino Kaku Gothic Std',sans-serif;
+    border: solid;
+}
+
+
+
+.comments p {
+	margin:8px 0 0
+}
+
+.comments p:first-child {
+  margin-top:0 !important;
+}
+
+.comments:after {
+  content: "";
+  position: absolute;
+  border: 10px solid transparent;
+/*   margin-top:-3px;  */
+}
+
+.message .comments:after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: -21px;
+    border: 8px solid transparent;
+    border-right: 18px solid #988E84;
+    transform: rotate3d(1, 1, 1, 45deg);
+}
+
+.user_comments {
+    margin-left: 60%;
+    max-width: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    padding: 17px 13px 15px 18px;
+    border-radius: 12px;
+    background: #DCAE59;
+    box-sizing: border-box;
+    line-height: 1.5;
+    color: white;
+    font-size: 15px;
+    font-family: 'Sylfaen','Hiragino Kaku Gothic Std',sans-serif;
+    border: solid;
+}
+
+.message .users_comments:after {
+    content: "";
+    position: absolute;
+    top: 8px;
+    right: -25px;
+    border: 8px solid transparent;
+    border-left: 23px solid #DCAE59;
+    transform: skew(20deg, -25deg);
+}
+
+.message .user_comments:after {
+    content: "";
+    position: absolute;
+    top: 8px;
+    right: -25px;
+    border: 8px solid transparent;
+    border-left: 23px solid #DCAE59;
+    transform: skew(20deg, -25deg);
+}
+
+.user_name {
+    margin-left: 94%;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    line-height: 57px;
+    text-align: center;
+    background: #DCAE59;
+    border: 3px solid white;
+}
+
+.users_name {
+    width: 10%;
+    border-radius: 12px;
+    background: #988E84;
+    border: solid white;
+    color: white;
+    line-height: 31px;
+    height: 39px;
+    text-align: center;
+    margin: 10px;
+}
+
+.shops_name {
+    margin-left: 94%;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    line-height: 57px;
+    text-align: center;
+    background: #DCAE59;
+    border: 3px solid white;
+}
+
+.users_comments {
+    margin-left: 60%;
+    max-width: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    padding: 17px 13px 15px 18px;
+    border-radius: 12px;
+    background: #DCAE59;
+    box-sizing: border-box;
+    line-height: 1.5;
+    color: white;
+    font-size: 15px;
+    font-family: 'Sylfaen','Hiragino Kaku Gothic Std',sans-serif;
+    border: solid;
+}
+
+.shops_comments {
+    margin-left: 4%;
+    max-width: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    padding: 17px 13px 15px 18px;
+    border-radius: 12px;
+    background: #988E84;
+    box-sizing: border-box;
+    line-height: 1.5;
+    color: white;
+    font-size: 14px;
+    font-family: 'Sylfaen','Hiragino Kaku Gothic Std',sans-serif;
+    border: solid;
+}
+
+.shops_comments:after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: -21px;
+    border: 8px solid transparent;
+    border-right: 18px solid #9A9389;
+    transform: rotate3d(1, 1, 1, 45deg);
+}
+
+.shop_name {
+    margin-left: 1%;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    line-height: 57px;
+    text-align: center;
+    background: #988E84;
+    border: 3px solid white;
+}
+.post {
+    width: 60%;
+    height: 130px;
+    border-radius: 10px;
+    background: #fff8e8;
+    border-left: solid 20px #00FF00;
+}
+
+.shop_post {
+    width: 60%;
+    height: 130px;
+    border-radius: 10px;
+    background: #fff8e8;
+    color: #FFFFAA;
+    border-left: solid 20px #666666;
+}
+
+
+
+
+
+/*.message .comments:after {
+  right: -26px;
+  border-left: 22px solid #99dddd;
+}*/

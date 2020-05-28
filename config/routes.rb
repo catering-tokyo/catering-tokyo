@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  get 'search/search'
 # user #
 
 # devise
@@ -12,23 +13,27 @@ Rails.application.routes.draw do
 
 # 機能
 root 'users/homes#top'
-get "homes/about" => "users/homes#about"
+  get "homes/about" => "users/homes#about"
+  get '/search' => 'users/search#search'
+
+get "homes/terms" => "users/homes#terms"
 namespace :users do
+  resources :rooms, only:[:show]
   resources :inquiries, only:[:index, :new, :create, :show]
   resources :credit_cards, only:[:index, :new, :create, :edit, :update, :destroy]
   resources :messages, only:[:index, :create, :show]
   resources :favorites, only:[:index, :new, :create, :destroy]
   resources :addresses, only:[:index, :edit, :create, :update, :destroy]
-  resources :orders, only:[:index, :new, :create, :show, :edit, :update] do
-    get 'confirm' => 'users#confirm', as:'confirm'
-    get 'thanks' => 'users#thanks', as:'thanks'
-  end
+  resources :orders, only:[:index, :new, :create, :show, :edit, :update]
   resources :users, only:[:show, :edit, :update, :destroy] do
     get 'favorites' => 'users#favorites', as:'favorites'
     get 'withdraw', on: :member
   end
   resources :informations, only:[:show]
-  resources :courses, only:[:index, :show]
+  resources :courses, only:[:index, :show] do
+    get 'confirm' => 'courses#confirm', as:'confirm'
+    get 'thanks', on: :collection
+  end
   resources :shops, only:[:index, :show] do
     resources :reviews, only:[:create, :destroy]
     resources :favorites, only: [:create, :destroy]
@@ -49,8 +54,8 @@ end
 # 機能 #
 namespace :admins do
   resources :admin_informations
-  resources :inquiries, only:[:index, :update, :show, :destroy]
-  resources :reviews, only:[:index, :show, :destroy]
+  resources :inquiries, only:[:index, :edit, :update, :show, :destroy]
+  resources :reviews, only:[:destroy]
   resources :shop_genres, only:[:index, :create, :edit, :update, :destroy]
   resources :users, only:[:index, :show, :update, :destroy] do
     member do
@@ -76,6 +81,7 @@ end
 
 
 namespace :shops do
+  resources :rooms, only:[:show]
   resources :inquiries, only:[:index, :new, :create, :show]
   resources :messages, only:[:index, :show, :create]
   resources :orders, only:[:index, :show ,:update] do

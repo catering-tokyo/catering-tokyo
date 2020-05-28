@@ -1,0 +1,12 @@
+<h1>Search#search</h1>
+<% if @model == 'shop' %>
+<% @datas.each do |data| %>
+<%= data.name %>
+<% end %>
+
+<% else %>
+<% @datas.each do |data| %>
+<%= data.name %>
+<%= data.price %>
+<% end %>
+<% end %>

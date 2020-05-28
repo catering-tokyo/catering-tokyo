@@ -19,8 +19,13 @@ class Shop < ApplicationRecord
          has_many :genres, dependent: :destroy, foreign_key: 'shop_id'
          has_many :shop_genres, through: :genres
          attr_accessor :shop_genre_ids
+         # geocoded_by :address
+         # after_validation :geocode, if: :address_changed?
 
          attachment :shop_image
+       #日付の範囲検索をするため、fromとtoをつけている
+     #scope :メソッド名 -> (引数) { SQL文 }
+     #if 引数.present?をつけることで、検索フォームに値がない場合は実行されない
 
          geocoded_by :address
          after_validation :geocode, if: :address_changed?
