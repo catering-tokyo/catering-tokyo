@@ -9,6 +9,10 @@
 User.create(id:1, name: "大蛇丸", phonenumber: "00011112222", postal_code:"150-0041", address: "東京都渋谷区神南１丁目１９−１１　パークスクエア２ 4階", email: "orochi@maru", password: "111111")
 User.create(id:2, name: "佐野", phonenumber: "090-0000-0000", postal_code:"150-0041", address: "東京都渋谷区神南１丁目１９−１１　パークスクエア２ 4階", email: "sa@no", password: "222222")
 User.create(id:3, name: "精鋭じゃしゅ", phonenumber: "090-0000-0000", postal_code:"150-0041", address: "東京都渋谷区神南１丁目１９−１１　パークスクエア２ 4階", email: "13@13", password: "333333")
+User.create(id:4, name: "サクラ", phonenumber: "090-0000-0000", postal_code:"150-0041", address: "東京都渋谷区神南１丁目１９−１１　パークスクエア２ 4階", email: "sakura@sakura", password: "333333")
+User.create(id:5, name: "おてもと", phonenumber: "090-0000-0000", postal_code:"150-0041", address: "東京都渋谷区神南１丁目１９−１１　パークスクエア２ 4階", email: "otemoto@otemoto", password: "333333")
+User.create(id:6, name: "美人局", phonenumber: "090-0000-0000", postal_code:"150-0041", address: "東京都渋谷区神南１丁目１９−１１　パークスクエア２ 4階", email: "tutu@tutu", password: "333333")
+User.create(id:7, name: "社長", phonenumber: "090-0000-0000", postal_code:"150-0041", address: "東京都渋谷区神南１丁目１９−１１　パークスクエア２ 4階", email: "syatyo@syatyo", password: "333333")
 
 
 Admin.create(id:1, email: "admin@admin", password: "111111")
