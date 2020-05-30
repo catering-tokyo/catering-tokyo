@@ -7,7 +7,6 @@
 					<th>店名</th>
 					<th>件名</th>
 					<th>内容</th>
-					<th>画像</th>
 			    </tr>
 					<tr>
 						<td><%= current_shop.name %></td>
@@ -16,16 +15,22 @@
 					</tr>
 			</table>
 		</div>
-		<%= form_for(@information, url:shops_informations_path) do |f| %>
-			<%= f.label :information_image, "画像を投稿", class: 'col-3 btn btn-secondary' %>
-      <%= f.attachment_field :information_image, style: "display: none;" %>
-			<%= f.hidden_field :shop_id, :value => current_shop.id %>
-			<%= f.hidden_field :title, :value => @information.title %>
-			<%= f.hidden_field :text, :value => @information.text %>
 			<div class="col-4">
-				<%= f.submit "投稿を完了する", class: "btn btn-secondary" %><br><br>
-				<%= f.submit "入力画面に戻る", {name: "back", class: "btn btn-secondary"} %>
-		<% end %>
+				<%= form_for(@information, url:shops_informations_path) do |f| %>
+					<%= f.label :information_image, "画像を投稿", class: 'col-5 btn btn-secondary' %>
 			</div>
+		<div class="row">
+			<div class="col-8">
+		      <%= f.attachment_field :information_image, style: "display: none;" %>
+					<%= f.hidden_field :shop_id, :value => current_shop.id %>
+					<%= f.hidden_field :title, :value => @information.title %>
+					<%= f.hidden_field :text, :value => @information.text %>
+					<div class="col-4">
+						<%= f.submit "投稿を完了する", class: "btn btn-secondary" %><br><br>
+						<%= f.submit "入力画面に戻る", {name: "back", class: "btn btn-secondary"} %>
+				<% end %>
+					</div>
+			</div>
+		</div>
 	</div>
 </div>
