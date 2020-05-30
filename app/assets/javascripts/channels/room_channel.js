@@ -12,11 +12,7 @@ $(function() {
       console.log($('.orochi').data('shop_image'))
       if ($('.messages').data('user') == "user") {
         if (data['user_message'] == "user"){
-<<<<<<< HEAD
-          $('.messages').append(data['data']  + 'あなた' + '</div>' + '<div class="user_comments"><p>' + data['data'] + '</p></div>');
-=======
           $('.messages').append('<div class="user_name">あなた</div>' + '<div class="user_comments"><p>' + data["data"] + '</p></div>');
->>>>>>> develop
         } else {
           $('.messages').append( $('.orochi').data("name") + '<div class="comments"><p>'+ data['data'] + '</p></div>');
         }

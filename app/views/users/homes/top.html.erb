@@ -1,24 +1,26 @@
-
-
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <div class="page-title">
+      <h1>- CATERING TOKYO! -</h1>
+    </div>
     <div class="search-form">
       <%= form_with(url: search_path, method: :get, local: true) do |f| %>
         <%= f.text_field :content %>
-
         <%= f.select :model, [["お店", "shop"], ["コース", "course"]] %>
-      </div>
-
-      <div class="pricezorn">
-        <%= f.select :price_gteq, [["２０００円", "2000"], ["２５００円", "2500"], ["３０００円", "3000"], ["３５００円", "3500"], ["４０００円", "4000"], ["４５００円", "4500"]], :prompt => "なんか選んでよ" %> 〜 <%= f.select :price_lteq, [["２０００円", "2000"], ["２５００円", "2500"], ["３０００円", "3000"], ["３５００円", "3500"], ["４０００円", "4000"], ["４５００円", "4500"], ["５０００円", "5000"], ["５５００円", "5500"], ["６０００円", "6000"]], :prompt => "上限なし" %>
-      </div>
-
-      <div class="genrezorn">
-        <%= f.select :shop_genre_id, ShopGenre.all.map { |shopgenre| [shopgenre.name, shopgenre.id]}, :prompt => "なんか選んでよ" %>
-      </div>
-
-        <%= f.submit '検索', class: "btn btn-primary" %>
+    </div>
+    <div class="pricezorn">
+      <%= f.select :price_gteq, [["２０００円", "2000"], ["２５００円", "2500"], ["３０００円", "3000"], ["３５００円", "3500"], ["４０００円", "4000"], ["４５００円", "4500"]], :prompt => "なんか選んでよ" %> 〜 <%= f.select :price_lteq, [["２０００円", "2000"], ["２５００円", "2500"], ["３０００円", "3000"], ["３５００円", "3500"], ["４０００円", "4000"], ["４５００円", "4500"], ["５０００円", "5000"], ["５５００円", "5500"], ["６０００円", "6000"]], :prompt => "上限なし" %>
+    </div>
+    <div class="genrezorn">
+      <%= f.select :shop_genre_id, ShopGenre.all.map { |shopgenre| [shopgenre.name, shopgenre.id]}, :prompt => "なんか選んでよ" %>
+    </div>
+    <div>
+      <%= f.submit '検索', class: "btn btn-primary" %>
       <% end %>
     </div>
 
+  </div>
+</div>
 
 
 
@@ -40,5 +42,34 @@
         $('.genrezorn').css('display', 'none');
     }
 });
-
 </script>
+
+
+<div id="vue_example"></div>
+
+<script>
+var vue_example = new Vue({
+  el: '#vue_example',
+
+  template: `<div>
+    <p>{{ message }}</p>
+    <input v-model="message" />
+    <button v-on:click="reverse()">Reverse</button>
+    </div>`,
+
+  data: {
+    message: 'Hello Vue.js!',
+  },
+
+  methods: {
+    reverse: function () {
+      this.message = this.message.split('').reverse().join('')
+    },
+  },
+})
+</script>
+</body>
+</html>
+
+
+
