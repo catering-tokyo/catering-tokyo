@@ -1,15 +1,18 @@
-<h1>Shops::Inquiries#show</h1>
-
-<%= link_to "お問い合わせ一覧へ", shops_inquiries_path %>
-
-
-<table class="table table-bordered">
-		<tr class="shop-tr">
-			<td>タイトル</td>
-			<td><%= @inquiry.title %></td>
-		</tr>
-		<tr class="shop-tr">
-			<td>内容</td>
-			<td><%= @inquiry.body %></td>
-		</tr>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h2><strong>お問い合わせ詳細</strong></h2>
+      <table class="table table-bordered">
+        <tr class="shop-tr">
+          <td>タイトル</td>
+          <td><%= @inquiry.title %></td>
+        </tr>
+        <tr class="shop-tr">
+          <td>内容</td>
+          <td><%= @inquiry.body %></td>
+        </tr>
+      </table>
+      <%= link_to "お問い合わせ一覧へ", shops_inquiries_path %>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="col-12">
+  <div class="col-11 ofset-1">
     <h2><strong>お知らせ新規投稿</strong></h2><br>
     <%= form_with(url:confirm_shops_informations_path, method: :get, data: {remote: false}) do |f| %>
     <div class="row">
@@ -14,19 +14,12 @@
       </div>
       <%= f.text_area :text, class: 'col-6 form-control',placeholder: "お客様へわかりやすく情報を共有しましょう。" %><br><br><br><br><br><br>
     </div><br>
-      <div class="col-6">
+      <div class="col-8">
         <%= f.submit "確認画面へ進む",class: "col-3 btn btn-secondary" %>
-        <h5>確認画面で画像を選択できます。</h5>
+        <h6>確認画面で画像を選択できます。</h6>
+        <%= link_to "お知らせ一覧", shops_informations_path, class:"col-3 btn btn-secondary" %><br><br>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-1">
-      </div>
-      <div class="col-6"><br>
-        <%= link_to "お知らせ一覧", shops_informations_path, class:"col-3 btn btn-secondary" %>
-      </div>
-    </div>
-    <% end %>
+      <% end %>
   </div>
 </div>
 
