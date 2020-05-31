@@ -27,7 +27,7 @@
     </div>
 
     <div class="row user_status">
-       <h1 class="status_name2"> 無　効　会　員： </h1>
+       <h1 class="status_name2"> 退　会　済　み： </h1>
     </div>
     <div class="row oya">
         <% @users.each do |user| %>
@@ -56,10 +56,23 @@
 </div>
 
 <div class="row">
-<%= link_to "トップへ戻る", admins_top_path, class: "top_list" %>
+    <%= link_to "TOPページ", admins_top_path, class: "btn top_back" %>
 </div>
 
 <style>
+
+.top_back{
+  padding: 0;
+  margin: 10% auto;
+  font-family: 'Hannotate TC','Osaka',sans-serif;
+  border: 2px solid;
+  border-radius: 10px;
+}
+
+.top_back:hover{
+  color: #000000;
+  text-decoration: none;
+  }
 
 .user_container{
   font-family: 'Hannotate TC','Osaka',sans-serif;
