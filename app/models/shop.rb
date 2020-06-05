@@ -7,7 +7,7 @@ class Shop < ApplicationRecord
 
          has_many :informations, dependent: :destroy
          has_many :reviews, dependent: :destroy
-         
+
          has_many :favorites, dependent: :destroy
          has_many :favorited_users, through: :favorites, source: :user
 
@@ -35,7 +35,7 @@ class Shop < ApplicationRecord
       end
 
       def favorite_user(user_id)
-        favorites.find_by(user_id: user_id)
+        favorites.find_by(user_id: current_user.id)
       end
 
   # VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

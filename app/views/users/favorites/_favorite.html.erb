@@ -3,6 +3,9 @@
     <%= link_to users_favorite_path(shop_id: shop.id), method: :delete, class: "fav", remote: true do %>
       <div class="vertical_like">
         <i class="fas fa-heart">お気に入り解除</i>
+        <% flash.each do |message_type, message| %>
+          <%= message %>
+        <% end %>
         <span class="grey-text text-darken-2">
           <%#<%= shop.favorites_count %>
         </span>
@@ -12,6 +15,9 @@
     <%= link_to users_favorites_path(shop_id: shop.id), method: :post, class: "fav", remote: true do %>
       <div class="vertical_like">
         <i class="far fa-heart">お気に入り登録</i>
+        <% flash.each do |message_type, message| %>
+          <%= message %>
+        <% end %>
         <span class="red-text">
           <%#<%= shop.favorites_count %>
         </span>
@@ -28,7 +34,7 @@
     <%#</div>
   <%#<% else %>
     <div class="vertical_like">
-      <i class="fas fa-heart">favorite_border</i>
+      <i class="fas fa-heart">未ログイン</i>
       <span class="grey-text text-darken-2">
         <%#<%= shop.favorites_count %>
       </span>
