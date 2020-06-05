@@ -1,15 +1,15 @@
 class Users::FavoritesController < ApplicationController
-  before_action :set_shop
+  before_action :set_shop, only:[:creste, :destroy]
 
   def index
     @favorites = Favorite.where(user_id: current_user.id)
-    @shops = Shop.where(id: current_user.id)
   end
 
   def create
     @favorite = Favorite.create(user_id: current_user.id, shop_id: params[:shop_id])
     @favorites = Favorite.where(shop_id: params[:shop_id])
-    @shop.reload
+    flash[:success] = "お気に入り登録しました。"
+    #@shop.reload
     #favorite = Favorite.new
     #favorite.user_id = current_user.id
     #favorite.shop_id = params[:shop_id]
@@ -24,10 +24,12 @@ class Users::FavoritesController < ApplicationController
   end
 
   def destroy
-    favorite = Favorite.find_by(user_id: current_user.id, shop_id: params[:shop_id])
-    favorite.destroy
+    @favorite = Favorite.find_by(user_id: current_user.id, shop_id: params[:shop_id])
+    @favorite.destroy
     @favorites = Favorite.where(shop_id: params[:shop_id])
-    @shop.reload
+    flash[:success] = "お気に入り削除しました。"
+
+    #@shop.reload
     #favorite = Favorite.find_by(user_id: params[:user_id])
     #favorite = Favorite.find_by(shop_id: params[:shop_id])
     #if current_user.id != favorite.user.id

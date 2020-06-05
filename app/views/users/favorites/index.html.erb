@@ -1,5 +1,5 @@
 <h1>お気に入り一覧</h1>
 <% @favorites.each do |favorite| %>
     <p>----------</p>
-    <span><%= link_to favorite.shop_id , "/users/shops/#{favorite.shop_id}" %></span>
+    <span><%= link_to favorite.shop.name , "/users/shops/#{favorite.shop_id}" %></span>
 <% end %>
