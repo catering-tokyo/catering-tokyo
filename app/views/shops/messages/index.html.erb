@@ -1,6 +1,11 @@
-<h1>Shops::Messages#index</h1>
-<% @room.each do |room| %>
-<%= room.user.name %>
-<%= link_to "チャット", shops_room_path(room.user.id) %>
-<% end %>
-<p>Find me in app/views/shops/messages/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-9">
+      <h2><strong>メッセージ一覧</strong></h2>
+      <% @room.each do |room| %>
+      <%= room.user.name %>
+      <%= link_to "チャット", shops_room_path(room.user.id) %>
+      <% end %>
+    </div>
+  </div>
+</div>
