@@ -1,7 +1,3 @@
-<h1>Users::Shops#show</h1>
-
-<p>Find me in app/views/users/shops/show.html.erb</p>
-
 <div class="container">
 	<div class="row">
 		<div class="col-md-6 offset-md-3">
@@ -36,7 +32,7 @@
 <span><%= link_to "お店一覧", users_shops_path%></span>
 
 <div id="favorites_buttons_<%= @shop.id %>">
-    <%= render partial: 'users/favorites/favorite', locals: { shop: @shop, favorite: @favorite} %>
+    <%= render partial: 'users/favorites/favorite', locals: { shop: @shop} %>
 </div>
 
 <%= link_to "チャットする", users_room_path(@shop.id) %>
