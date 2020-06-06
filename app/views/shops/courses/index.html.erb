@@ -1,15 +1,27 @@
-
-
-<%= link_to "マイページへ",shops_shop_path(current_shop) %>
-
-<div class="item_list_box">
-	<h1>コース一覧</h1>
-	<% @courses.each do |course| %>
-	<div class="course">
-	<%= link_to shops_course_path(course.id), class: "item_link" do %>
-	<%= attachment_image_tag course, :course_image, :fill, 200, 150, format: 'jpeg', class: "img-rounded pull-left profile-img", fallback: "no_image.jpg", :size =>'200x150' %>
-	<%= course.introduction %>
-	<%= link_to course.name %>
-	<% end %>
-	<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-11">
+      <h2><strong>コース一覧</strong></h2><br>
+      <% @courses.each do |course| %>
+        <table class="table table-bordered">
+          <tr class="shop-tr">
+            <td>
+              <%= link_to shops_course_path(course.id), class: "item_link" do %>
+            	<%= attachment_image_tag course, :course_image, :fill, 200, 150, format: 'jpeg', class: "img-rounded pull-left profile-img", fallback: "no_image.jpg", :size =>'200x150' %>
+            </td>
+            <td>
+            	<%= course.introduction %>
+            </td>
+            <td>
+            	<%= link_to course.name,shops_course_path(course.id) %>
+            </td>
+            <% end %>
+          </tr>
+        </table>
+      <% end %>
+          <%= link_to "マイページへ",shops_shop_path(current_shop), class: "btn btn-secondary" %><br><br>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
