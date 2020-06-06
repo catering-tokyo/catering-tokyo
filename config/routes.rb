@@ -36,7 +36,7 @@ namespace :users do
   end
   resources :shops, only:[:index, :show] do
     resources :reviews, only:[:create, :destroy]
-    resources :favorites, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
   end
 end
 
