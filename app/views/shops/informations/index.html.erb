@@ -13,36 +13,21 @@
       <% end %>
       <h2><strong>お知らせ一覧</strong></h2>
       <% @informations.each do |information| %>
-    <div class="col-5">
-      <%= attachment_image_tag information, :information_image, :fill, 250, 250, format: 'jpeg', fallback: "no_image.shop.jpg", size:"250x250" %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-1">
-      <h6>店名</h6>
-    </div>
-    <div class="col-6">
-      <h5><%= link_to information.shop.name, shops_shop_path(information.shop_id) %></h5>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-1">
-      <h6>件名</h6>
-    </div>
-    <div class="col-6">
-      <h5><%= link_to information.title, shops_information_path(information.id) %></h5>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-1">
-      <h6>内容</h6>
-    </div>
-    <div class="col-6">
-      <h5><%= information.text %></h5>
-    </div>
-  </div>
-  <% end %>
-    <div class="col-4"><br><br><br>
-      <%= link_to "お知らせ新規作成", new_shops_information_path, class:"btn btn-secondary" %>
-    </div>
+        <%= attachment_image_tag information, :information_image, :fill, 250, 250, format: 'jpeg', fallback: "no_image.shop.jpg", size:"250x250" %>
+        <table class="table table-bordered">
+          <tr class="shop-tr">
+            <th>店名</th>
+            <th>件名</th>
+            <th>内容</th>
+          </tr>
+          <tr class="shop-tr">
+            <td><%= link_to information.shop.name, shops_shop_path(information.shop_id) %></td>
+            <td><%= link_to information.title, shops_information_path(information.id) %></td>
+            <td><%= information.text %></td>
+          </tr>
+        </table>
+      <% end %>
+    <div class="col-8"><br><br>
+      <%= link_to "お知らせ新規作成", new_shops_information_path, class: "col-7 btn btn-secondary" %>
+    </div><br>
 </div>
