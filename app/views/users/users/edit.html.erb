@@ -6,15 +6,7 @@
   <%= f.email_field :email %><br>
   <%= f.label :住所 %>
   <%= f.text_area :address %><br>
-  <%# <%= f.label :現在のパスワード %>
-  <%#<%= f.password_field :password %><br>
-  <%#<%= f.label :新しいパスワード %>
-  <%#<%= f.password_field :new_password %><br>
-  <%#<%= f.label :新しいパスワード確認 %>
-  <%#<%= f.password_field :new_password_confirmation %><br>
-  <%= f.label :password, 'パスワード' %>
-  <%= f.password_field :password, class: 'form-control' %>
-  <%= f.label :password_confirmation, 'もう一度パスワードを入力してください' %>
-  <%= f.password_field :password_confirmation, class: 'form-control' %>
+  <%= link_to "パスワード情報編集", change_password_users_user_path %>
+  <%= link_to "退会", users_user_path(current_user), method: :delete, data: {confirm: "本当に退会しますか？"} %>
   <%= f.submit "更新" %>
 <% end %>
