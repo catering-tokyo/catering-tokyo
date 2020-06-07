@@ -28,6 +28,10 @@ namespace :users do
   resources :users, only:[:show, :edit, :update, :destroy] do
     get 'favorites' => 'users#favorites', as:'favorites'
     get 'withdraw', on: :member
+    member do
+      get :change_password
+      patch :update_password
+    end
   end
   resources :informations, only:[:show]
   resources :courses, only:[:index, :show] do
