@@ -39,6 +39,7 @@ class Users::CoursesController < ApplicationController
   def confirm
     @course = Course.find(params[:course_id])
     @order = Order.new
+    @total_price = @course.price * params[:people_number].to_i
 
     if params[:radio_num] == "1"
       @postal_code = current_user.postal_code
@@ -61,7 +62,6 @@ class Users::CoursesController < ApplicationController
 
       # @sub_address = SubAddress.new(sub_address_params)
       # @sub_address = [@postal_code, @shipping_address, @delivery_name]
-
     end
   end
 

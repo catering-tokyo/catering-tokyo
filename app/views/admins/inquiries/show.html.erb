@@ -1,6 +1,12 @@
 <h1>Admins::Inquiries#show</h1>
-<%= @inquiry.shop.name %>
+
+<% if @inquiry.user.id == nil %>
+  <%= @inquiry.shop.name %>
+<% else %>
+  <%= @inquiry.user.name %>
+<% end %>
 <%= @inquiry.title %>
 <%= @inquiry.body %>
 <%= @inquiry.reply %>
 <%= link_to "詳細へ", edit_admins_inquiry_path(@inquiry) %>
+

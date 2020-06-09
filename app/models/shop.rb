@@ -27,6 +27,11 @@ class Shop < ApplicationRecord
      #scope :メソッド名 -> (引数) { SQL文 }
      #if 引数.present?をつけることで、検索フォームに値がない場合は実行されない
 
+
+  attr_accessor :average
+    def average_star
+       self.reviews.average(:star) 
+    end
          geocoded_by :address
          after_validation :geocode, if: :address_changed?
 

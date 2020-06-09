@@ -1,2 +1,57 @@
 <h1>Users::Orders#show</h1>
 <p>Find me in app/views/users/orders/show.html.erb</p>
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <div class="page-title">
+      <h1>- 予約詳細画面 -</h1>
+    </div>
+    <div class="">
+      <h2>【商品内容】</h2>
+      <table class="table">
+        <tr>
+          <th>店舗名</th>
+          <td> <%= @order.shop_name %></td>
+        </tr>
+        <tr>
+          <th>コース名</th>
+          <td> <%= @order.course_name %></td>
+        </tr>
+        <tr>
+          <th>予約人数</th>
+          <td><%= @order.people_number %> 人</td>
+        </tr>
+        <tr>
+          <th>予約時間</th>
+          <td><%= @order.reserve_date %>【<%= @order.reserve_time.strftime('%H:%M') %>〜】</td>
+        </tr>
+        <tr>
+          <th>合計料金</th>
+          <td><%= @order.price.to_s(:delimited) %> 円（税込）</td>
+        </tr>
+      </table>
+      <hr class="bottom-line">
+    </div>
+    <div>
+      <h2>【お客様情報】</h2>
+      <table class="table">
+        <tr>
+          <th>配送先のお名前</th>
+          <td> <%= @order.delivery_name %></td>
+        </tr>
+        <tr>
+          <th>配送先住所</th>
+          <td> <%= @order.postal_code %> <%= @order.delivery_address %></td>
+        </tr>
+        <tr>
+          <th>連絡先</th>
+          <td><%= @order.phone_number %></td>
+        </tr>
+        <tr>
+          <th>支払い方法</th>
+          <td><%= @order.payment %></td>
+        </tr>
+      </table>
+      <hr class="bottom-line">
+    </div>
+  </div>
+</div>

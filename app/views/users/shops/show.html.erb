@@ -12,6 +12,7 @@
 </div>
 
 <h1>店舗詳細</h1>
+<div id="star-rate-<%= @shop.id %>"></div>
 <p><%= @shop.name %></p>
 <div><%= @shop.shop_image_id%></div>
 <p><%= @shop.phonenumber %></p>
@@ -47,10 +48,25 @@
 }
 </style>
 <script>
+  // <!-- これはこれはグールマップ -->
   handler = Gmaps.build('Google');
   handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
     markers = handler.addMarkers(<%= raw @hash.to_json %>);
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
   });
+  // ---------------------
+  // これはレビュー　//
+    $('#star-rate-<%= @shop.id %>').raty({
+      size: 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      half: true,
+      readOnly: true,
+      score: '<%= @shop.reviews.average(:star).to_f.round(1) %>',
+    });
+    // -----------------
 </script>
+
+

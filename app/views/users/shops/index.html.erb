@@ -1,8 +1,27 @@
 <h1>お店一覧</h1>
+
+<td style="border-style: none;">・<%= link_to "評価トップ５", users_shops_path(:place => "top5"), class: "genre_text"; %></td>
+<td style="border-style: none;">・<%= link_to "お気に入りトップ５", users_shops_path(:place => "favo5"), class: "genre_text"; %></td>
+
 <% @shops.each do |shop| %>
     <p>----------</p>
+    <div id="star-rate-<%= shop.id %>"></div>
     <span><%= link_to shop.name , "/users/shops/#{shop.id}" %></span>
     <span><%= shop.shop_image_id %></span><br>
-<% end %>
-<%#<%= render 'users/reviews/all', reviews: @reviews %>
 
+    <div>
+        お気に入り数：<%= shop.favorites.count %>
+    </div>
+
+    <script>
+        $('#star-rate-<%= shop.id %>').raty({
+          size: 36,
+          starOff:  '<%= asset_path('star-off.png') %>',
+          starOn : '<%= asset_path('star-on.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+          half: true,
+          readOnly: true,
+          score: '<%= shop.reviews.average(:star).to_f.round(1) %>',
+        });
+    </script>
+<% end %>

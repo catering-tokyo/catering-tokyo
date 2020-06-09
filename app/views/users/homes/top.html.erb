@@ -1,24 +1,26 @@
 
-
-    <div class="search-form">
-      <%= form_with(url: search_path, method: :get, local: true) do |f| %>
-        <%= f.text_field :content %>
-
-        <%= f.select :model, [["お店", "shop"], ["コース", "course"]] %>
+  <div class="row u-home-top">
+    <div class="col-md-8 offset-md-2">
+      <div class="search-form">
+        <%= form_with(url: search_path, method: :get, local: true) do |f| %>
+          <div class="search-menu">
+            <span class= "search-select"><%= f.select :model, [["お店", "shop"], ["コース", "course"]] %></span>
+              <div class="genrezorn search-select-bar">
+                <%= f.select :shop_genre_id, ShopGenre.all.map { |shopgenre| [shopgenre.name, shopgenre.id]}, :prompt => "なんか選んでよ" %>
+              </div> 
+              <div class="pricezorn">
+                <span><%= f.select :price_gteq, [["２０００円", "2000"], ["２５００円", "2500"], ["３０００円", "3000"], ["３５００円", "3500"], ["４０００円", "4000"], ["４５００円", "4500"]], :prompt => "なんか選んでよ" %></span> 〜 <span><%= f.select :price_lteq, [["２０００円", "2000"], ["２５００円", "2500"], ["３０００円", "3000"], ["３５００円", "3500"], ["４０００円", "4000"], ["４５００円", "4500"], ["５０００円", "5000"], ["５５００円", "5500"], ["６０００円", "6000"]], :prompt => "上限なし" %></span>
+              </div>
+    
+          </div>
+          <%= f.text_field :content, class: "search-bar",placeholder: "🔍キーワード、店舗名やコース名など" %>
+          <%= f.submit '検索', class: "btn-primary search-btn" %>
+        <% end %>
+      </div> 
+      <div>
       </div>
-
-      <div class="pricezorn">
-        <%= f.select :price_gteq, [["２０００円", "2000"], ["２５００円", "2500"], ["３０００円", "3000"], ["３５００円", "3500"], ["４０００円", "4000"], ["４５００円", "4500"]], :prompt => "なんか選んでよ" %> 〜 <%= f.select :price_lteq, [["２０００円", "2000"], ["２５００円", "2500"], ["３０００円", "3000"], ["３５００円", "3500"], ["４０００円", "4000"], ["４５００円", "4500"], ["５０００円", "5000"], ["５５００円", "5500"], ["６０００円", "6000"]], :prompt => "上限なし" %>
-      </div>
-
-      <div class="genrezorn">
-        <%= f.select :shop_genre_id, ShopGenre.all.map { |shopgenre| [shopgenre.name, shopgenre.id]}, :prompt => "なんか選んでよ" %>
-      </div>
-
-        <%= f.submit '検索', class: "btn btn-primary" %>
-      <% end %>
     </div>
-
+  </div>
 
 
 
@@ -28,7 +30,6 @@
         $('.pricezorn').css('display', 'none');
         $('.genrezorn').css('display', 'block');
     });
-
 
 	$("#model").change(function() {
     var category_val = $("#model").val();
@@ -40,5 +41,6 @@
         $('.genrezorn').css('display', 'none');
     }
 });
-
 </script>
+
+
