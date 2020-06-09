@@ -9,6 +9,10 @@
 User.create(id:1, name: "大蛇丸", phonenumber: "00011112222", postal_code:"150-0041", address: "東京都渋谷区神南１丁目１９−１１　パークスクエア２ 4階", email: "orochi@maru", password: "111111")
 User.create(id:2, name: "佐野", phonenumber: "090-0000-0000", postal_code:"150-0041", address: "東京都渋谷区神南１丁目１９−１１　パークスクエア２ 4階", email: "sa@no", password: "222222")
 User.create(id:3, name: "精鋭じゃしゅ", phonenumber: "090-0000-0000", postal_code:"150-0041", address: "東京都渋谷区神南１丁目１９−１１　パークスクエア２ 4階", email: "13@13", password: "333333")
+User.create(id:4, name: "サクラ", phonenumber: "090-0000-0000", postal_code:"150-0041", address: "東京都渋谷区神南１丁目１９−１１　パークスクエア２ 4階", email: "sakura@sakura", password: "333333")
+User.create(id:5, name: "おてもと", phonenumber: "090-0000-0000", postal_code:"150-0041", address: "東京都渋谷区神南１丁目１９−１１　パークスクエア２ 4階", email: "otemoto@otemoto", password: "333333")
+User.create(id:6, name: "美人局", phonenumber: "090-0000-0000", postal_code:"150-0041", address: "東京都渋谷区神南１丁目１９−１１　パークスクエア２ 4階", email: "tutu@tutu", password: "333333")
+User.create(id:7, name: "社長", phonenumber: "090-0000-0000", postal_code:"150-0041", address: "東京都渋谷区神南１丁目１９−１１　パークスクエア２ 4階", email: "syatyo@syatyo", password: "333333")
 
 
 Admin.create(id:1, email: "admin@admin", password: "111111")
@@ -103,9 +107,6 @@ Course.find_or_create_by(id:46, shop_id:22, introduction: "ケータリングと
 Course.find_or_create_by(id:47, shop_id:23, introduction: "とにかくお団子", name: "お団子コース", maximum_people: "30", minimum_people: "5", price: "3500")
 Course.find_or_create_by(id:48, shop_id:23, introduction: "おすすめ！", name: "王道コース", maximum_people: "30", minimum_people: "5", price: "2500")
 
-
-
 Order.find_or_create_by(id:1, user_id:1, shop_id:1, delivery_name: "大蛇", shop_name: "松屋", course_name: "王道コース", delivery_address: "東京都渋谷区神南１丁目１９−１１ パークスクエア２ 4階", payment: "クレジットカード", option: "アレルギーあります。", people_number: "30", phone_number: "020-1212-1212", price: "3000", reserve_date: "2020-05-30", reserve_time: "11:00", postal_code: "1231231")
 Order.find_or_create_by(id:2, user_id:2, shop_id:1, delivery_name: "サスケ", shop_name: "長野ケーキ", course_name: "季節限定", delivery_address: "東京都練馬区谷原４丁目１１−６", payment: "着払い", option: "アレルギーありません。", people_number: "25", phone_number: "020-1212-1212", price: "3000", reserve_date: "2020-06-25", reserve_time: "12:00", postal_code: "1231231")
 Order.find_or_create_by(id:3, user_id:3, shop_id:2, delivery_name: "大蛇", shop_name: "松屋", course_name: "王道コース", delivery_address: "東京都渋谷区神南１丁目１９−１１ パークスクエア２ 4階", payment: "クレジットカード", option: "アレルギーあります。", people_number: "30", phone_number: "020-1212-1212", price: "3000", reserve_date: "2020-05-30", reserve_time: "11:00", postal_code: "1231231")
-

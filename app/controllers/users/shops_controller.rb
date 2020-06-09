@@ -1,4 +1,5 @@
 class Users::ShopsController < ApplicationController
+
   def index
     if params[:place] && params[:place] == 'top5'
       @shops = Shop.joins(:reviews).group(:id).order('(star) desc').limit(5)

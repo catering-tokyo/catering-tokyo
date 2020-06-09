@@ -81,14 +81,13 @@
         <tr>
           <th>合計金額</th>
           <td>  <%= @total_price.to_s(:delimited) %> 円 </td>
-
         </tr>
       </table>
     </div>
     <%= form_with model: @order, url: users_orders_path, local: true do |f| %>
       <%= f.hidden_field  :shop_id ,value: @course.shop.id %>
-      <%= f.hidden_field :shop_name, value: @course.shop.name %>
-      <%= f.hidden_field :course_name, value: @course.name %>
+      <%= f.hidden_field  :shop_name, value: @course.shop.name %>
+      <%= f.hidden_field  :course_name, value: @course.name %>
       <%= f.hidden_field  :delivery_name ,value: @delivery_name %>
       <%= f.hidden_field  :postal_code ,value: @postal_code %>
       <%= f.hidden_field  :delivery_address ,value: @delivery_address %>
@@ -102,18 +101,15 @@
       <% if params[:radio_num] == "3" %>
         <%= f.hidden_field  :radio ,value: params[:radio_num] %>
       <% end %>
-
       <div class="row">
         <div class="kakutei-btn">
           <%= f.submit("購入を確定する", class: "btn btn-primary") %>
         </div>
-
         <div class="modoru-btn">
-          <%= f.submit 'Back!', name: 'back' class: "btn btn-danger" %>
+          <%= link_to "ショップ選択に戻る",users_shops_path, class: "btn btn-danger"%>
         </div>
       <% end %>
-      </div>
-    
+    </div>
   </div>
 </div>
 

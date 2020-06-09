@@ -1,9 +1,14 @@
-<h1>Shops::Inquiries#new</h1>
-<%= form_for @inquiry, url: shops_inquiries_path do |inquiry| %>
-<h3>タイトル</h3>
-<%= inquiry.text_field :title %>
-<h3>内容</h3>
-<%= inquiry.text_area :body %>
-<%= inquiry.submit '送信' %>
-<% end %>
-
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h2><strong>お問い合わせ作成</strong></h2>
+      <%= form_for @inquiry, url: shops_inquiries_path do |inquiry| %>
+        <h3>タイトル</h3>
+        <%= inquiry.text_field :title %>
+        <h3>内容</h3>
+        <%= inquiry.text_area :body %>
+        <%= inquiry.submit '送信' %>
+      <% end %>
+    </div>
+  </div>
+</div>

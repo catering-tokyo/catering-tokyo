@@ -17,8 +17,29 @@
 
  @import "bootstrap";
 
-.head_all {
+ * {
+    box-sizing: border-box;
+    margin : 0;
+    padding : 0;
+ }
+
+
+header {
+  width: 100%;
+}
+footer {
+  margin-top: 100px;
+  width: 100%;
+  height: 200px;
+  background-color: gray;
+}
+
+
+
+.head-all {
 	width: 100%;
+  margin-bottom: 20px;
+  border-bottom: double;
 }
 
 .header_sub {
@@ -126,4 +147,137 @@ a.btn-c:hover span {
 
 .past {
 	background-color: gray;
+}
+
+
+
+
+/* ヘッダー */
+.head-ul{
+display: table;
+margin: 0 auto;
+padding: 0;
+width: 80%;
+text-align: center;
+}
+.head-ul li{
+display: inline-block;
+min-width: 50px;
+}
+.head-ul li a{
+display: block;
+width: 100%;
+padding: 10px 20px;
+text-decoration: none;
+color: #555;
+font-weight: bold;
+}
+.head-ul li.current{
+background-color: #DEEBF7;
+}
+.head-ul li.current a{
+color: #555;
+}
+.head-ul li a:hover{
+text-decoration: none;
+color: red;
+
+transform: translateY(-5px);
+transition-duration: 0.5s;
+}
+
+.head-image{
+  position: relative;
+  text-align: center;
+  height: 400px;
+  width: 100%;
+  background-image: url("/assets/menu-main.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.head-inner {
+}
+
+.head-image p {
+  background-color: #fff;
+  font-size: 50px;
+  top: 40%;
+  position: absolute;
+  height: 80px;
+  width: 100%;
+  border-bottom: double 2px;
+  border-top: double 2px;
+  background: rgba(255,255,255, 0.8);
+}
+
+.head-image a {
+    color: black;
+    text-decoration: none;
+    background-color: transparent;
+  }
+
+.head-image a:hover {
+    color: black;
+    text-decoration: none;
+    background-color: transparent;
+  }
+
+
+/*フッター*/
+
+.footer-box {
+  margin-top: 30px;
+}
+.foot-ul {
+display: table;
+margin: 0 auto;
+padding: 0;
+width: 80%;
+text-align: center;
+
+  li {
+   display: inline-block;
+  min-width: 50px;
+
+    a {
+     display: block;
+    width: 100%;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    }
+  }
+}
+
+/*ショップログイン リンク*/
+.shop-log-link {
+margin-left: 10%;
+padding: 0;
+text-decoration: none;
+color: #fff;
+}
+.shop-log-link:hover {
+text-decoration: none;
+color: #00ced1;
+}
+
+/*管理者ログイン リンク*/
+.admin-log-link {
+margin-left: 10%;
+padding: 0;
+text-decoration: none;
+color: #fff;
+}
+.admin-log-link:hover {
+text-decoration: none;
+color: #ff6347;
+}
+
+
+.copyright {
+  text-align: center;
+  color: #fff;
+  /*padding-top: 80px;*/
 }
