@@ -1,5 +1,6 @@
 class Users::SearchController < ApplicationController
   def search
+    @shop = 
     @model = params["model"]
     @content = params["content"]
     # binding.pry
