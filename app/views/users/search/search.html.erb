@@ -1,16 +1,39 @@
-<h1>Search#search</h1>
-<div>
-  <%= @ooo %>
-</div>
-<% if @model == 'shop' %>
-<% @datas.each do |data| %>
-<%= data.name %>
-<% end %>
+<div class="container">
+  <div class="content_shop">
+  	
+  </div>
+	<div>
+	  <%= @ooo %>
+	</div>
+	<% if @model == 'shop' %>
+	<% @datas.each do |data| %>
+	<div class="name">
+	  <div class="photo">
+		<%= attachment_image_tag @shop, :shop_image, :fill, 200, 150, format: 'jpeg', class: "img-rounded pull-left profile-img", fallback: "no_image.jpg", :size =>'200x200', :style =>'float: left;' %>
+	  </div>
+	  <div class="intro">
+		<h3><%= link_to data.name, users_shop_path(data.id) %></h3>
+		<p>住所</p><%= data.address %>
+		<p>営業時間</p><%= data.open_time %>  〜  <%= data.close_time %>  (LO <%= data.dinner_limit %>)
+		<% @shop.genres.each do |data| %>	
+		<p>このお店のコース</p><%= data.course.name %>
+	  </div>
+	  <% end %>
+	</div>
 
-<% else %>
-<% @datas.each do |data| %>
-<%= data.name %>
-<%= data.price %>
-<% end %>
-<% end %>
+	<% end %>
+
+	<% else %>
+	<% @datas.each do |data| %>
+	<%= attachment_image_tag @course, :course_image, :fill, 200, 150, format: 'jpeg', class: "img-rounded pull-left profile-img", fallback: "no_image.jpg", :size =>'200x200' %>
+	<h3><%= link_to data.name, users_course_path(data.id) %></h3>
+	<p>店名</p><%= data.shop.name %>
+	<p>価格</p><%= data.price %>
+	<p>予約可能人数</p><%= data.maximum_people %>  〜  <%= data.minimum_people %>
+	<p>コース概要</p><%= data.introduction %>
+
+	<% end %>
+	<% end %>
+</div>
+
 
