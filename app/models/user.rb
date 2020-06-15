@@ -19,8 +19,5 @@ class User < ApplicationRecord
   validates :address,  presence: true
   acts_as_paranoid
 
-  def favorited_by?(shop)
-    self.favorites.exists?(shop_id: :id)
-  end
 end
 

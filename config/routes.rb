@@ -22,12 +22,16 @@ namespace :users do
   resources :inquiries, only:[:index, :new, :create, :show]
   resources :credit_cards, only:[:index, :new, :create, :edit, :update, :destroy]
   resources :messages, only:[:index, :create, :show]
-  resources :favorites, only:[:index, :new, :create, :destroy]
+  resources :favorites, only:[:index]
   resources :addresses, only:[:index, :edit, :create, :update, :destroy]
   resources :orders, only:[:index, :new, :create, :show, :edit, :update]
   resources :users, only:[:show, :edit, :update, :destroy] do
     get 'favorites' => 'users#favorites', as:'favorites'
     get 'withdraw', on: :member
+    member do
+      get :change_password
+      patch :update_password
+    end
   end
   resources :informations, only:[:show]
   resources :courses, only:[:index, :show] do
@@ -36,7 +40,7 @@ namespace :users do
   end
   resources :shops, only:[:index, :show] do
     resources :reviews, only:[:create, :destroy]
-    resources :favorites, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
   end
 end
 

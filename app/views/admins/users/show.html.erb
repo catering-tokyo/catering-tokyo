@@ -1,42 +1,232 @@
-<div class="container">
-  <div class="row">
-      <div class="col-6">
-        <h2><strong><%= @user.name %>ユーザー情報</strong></h2>
-        <table class="table table-bordered">
-          <tr class="shop-tr">
-            <td>ID</td>
-            <td>
-              <%= @user.id %>
-            </td>
-          </tr>
-          <tr class="shop-tr">
-            <td>ユーザー名</td>
-            <td><%= @user.name %></td>
-          </tr>
-          <tr class="shop-tr">
-            <td>メールアドレス</td>
-            <td><%= @user.email %></td>
-          </tr>
-          <tr class="shop-tr">
-            <td>住所</td>
-            <td><%= @user.address %></td>
-          </tr>
-          <tr class="shop-tr">
-            <td>電話番号</td>
-            <td><%= @user.phonenumber %></td>
-          </tr>
+<div class="container user_container">
+    <div class="row oya">
+      <% if @user.deleted_at.nil? %>
+        <table class="user_table">
+            <tr>
+              <th class="popular"><span class="inner"><span class="no1">詳細</span>会員情報</span></th>
+            </tr>
+      <% else %>
+        <table class="user_table_false">
+            <tr>
+              <th class="popular"><span class="inner"><span class="no1">退会済み</span>会員情報</span></th>
+            </tr>
+          <% end %>
+            <tr>
+              <td class="popular"><span class="user_title">ID : 　</span><span class="user_body"><%= @user.id %></span></td>
+            </tr>
+            <tr>
+              <td class="popular"><span class="user_title">name :</span><span class="user_body"><%= @user.name %></span></td>
+            </tr>
+            <tr>
+              <td class="popular"><span class="user_title">email :</span><span class="user_body"><%= @user.email %></span></td>
+            </tr>
+            <tr>
+              <td><span class="user_title">TEL　:</span><span class="user_body"><%= @user.phonenumber %></span></td>
+            </tr>
+            <tr>
+              <td class="popular"><span class="user_title">address :</span><span class="user_body"><%= @user.address %></span></td>
+            </tr>
         </table>
-       <!--  <%#= form_for(@user, url:admins_user_path(@user), method: :patch) do |f| %>
-			<td><%#= f.number_field : %></td>
-			<td><%#= f.submit "変更", class:"btn btn-secondary" %></td>
-		<%# end %> -->
-
-		<% unless @user.deleted_at? %>
-          <td><%= link_to "アカウント削除", admins_user_path(@user), data: { confirm: "退会させますか?" }, method: :delete %></td>
-        <% else %>
-          <td><%= link_to "アカウント復元", user_restore_admins_user_path(@user), method: :patch %></td>
-        <% end %>
+    </div>
+    <% unless @user.deleted_at? %>
+      <div class="row">
+        <%= link_to "アカウント削除", admins_user_path(@user), data: { confirm: "退会させますか?" }, method: :delete, class: "withdraw" %>
       </div>
-  </div>
-  <%= link_to "一覧へ", admins_users_path, class:"btn btn-secondary" %><br><br>
+    <% else %>
+      <div class="row">
+        <%= link_to "アカウント復元", user_restore_admins_user_path(@user), method: :patch, class: "withdraw" %>
+      </div>
+    <% end %>
+      <div class="row">
+        <%= link_to "一覧へ", admins_users_path, class: "btn user_index" %>
+      </div>
 </div>
+
+
+<style>
+.withdraw{
+  margin-left: 75%;
+}
+
+.user_index{
+  padding: 0;
+  margin: 7% auto;
+  font-family: 'Hannotate TC','Osaka',sans-serif;
+  border: 2px solid;
+  border-radius: 10px;
+}
+
+.user_index:hover{
+  color: #000000;
+  text-decoration: none;
+  }
+
+.user_container{
+  font-family: 'Hannotate TC','Osaka',sans-serif;
+}
+
+.user_body{
+  margin: 0 0 0 2%;
+  text-align: center;
+  font-size: 20px;
+}
+
+.user_title{
+  font-size: 30px;
+  color: #ff7979;
+  margin: 0 0 0 10%;
+}
+
+.oya{
+  display: flex;
+  align-items:stretch;
+  justify-content:center;
+  flex-wrap: wrap;
+}
+
+.user_table{
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: fixed;
+  width: 70%;
+  margin: 2% 1%;
+  background-color: #fdfff0;
+}
+
+.user_table tr:last-child{
+  border-bottom:solid 1px #ddd;
+}
+
+.user_table th{
+  text-align: center;
+  padding: 7px 0;
+  border-right:solid 1px #ddd;
+  border-left:solid 1px #ddd;
+  width: 155px;
+}
+
+.user_table th:nth-child(1){
+  background-color: #fbbc5f;
+}
+
+
+.user_table td{
+  padding: 7px 0;
+  border-right:solid 1px #ddd;
+  border-left:solid 1px #ddd;
+}
+
+.user_table td a{
+  background-color: #155f02;
+  color: #ffffff;
+  padding:5px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+}
+
+.user_table .popular{
+  width: 180px;
+}
+
+.user_table th.popular{
+  position: relative;
+}
+
+.user_table th.popular span.no1{
+  position: absolute;
+  top: -10px;
+  left:calc(50% - 30px);
+  background: #cc2828;
+  width: 60px;
+  font-size: 10px;
+  border-radius: 15px;
+  line-height: 1;
+  padding: 5px;
+}
+
+.user_table th.popular span.inner{
+  position: absolute;
+  color:#ffffff;
+  background-color: #c39a26;
+  left: 0;
+  bottom: 0;
+  display: block;
+  width: 180px;
+  padding: 10px 0;
+  border-radius: 40px;
+}
+
+.user_table_false{
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: fixed;
+  width: 70%;
+  margin: 2% 1%;
+  background-color: #fff5f7;
+}
+
+.user_table_false tr:last-child{
+  border-bottom:solid 1px #ddd;
+}
+
+.user_table_false th{
+  text-align: center;
+  padding: 7px 0;
+  border-right:solid 1px #ddd;
+  border-left:solid 1px #ddd;
+  width: 155px;
+}
+
+.user_table_false th:nth-child(1){
+  background-color: #bbbbbb;
+}
+
+
+.user_table_false td{
+  padding: 7px 0;
+  border-right:solid 1px #ddd;
+  border-left:solid 1px #ddd;
+  width: 155px;
+}
+
+.user_table_false td a{
+  background-color: #61394f;
+  color: #ffffff;
+  padding:5px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+}
+
+.user_table_false .popular{
+  width: 180px;
+}
+
+.user_table_false th.popular{
+  position: relative;
+}
+
+.user_table_false th.popular span.no1{
+  position: absolute;
+  top: -10px;
+  left:calc(50% - 30px);
+  background: #b1b1b1;
+  width: 60px;
+  font-size: 10px;
+  border-radius: 15px;
+  line-height: 1;
+  padding: 5px;
+}
+
+.user_table_false th.popular span.inner{
+  position: absolute;
+  color:#ffffff;
+  background-color: #404040;
+  left: 0;
+  bottom: 0;
+  display: block;
+  width: 180px;
+  padding: 10px 0;
+  border-radius: 40px;
+}
+
+</style>

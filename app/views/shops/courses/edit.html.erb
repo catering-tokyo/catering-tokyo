@@ -1,24 +1,50 @@
-<h1>Shops::Courses#edit</h1>
-
-<h2>コース編集</h2>
-<%= form_for @course, url:"/shops/courses/#{@course.id}" do |f| %>
-<h3>コース名</h3>
-<%= f.text_field :name %>
-
-<h3>説明</h3>
-<%= f.text_field :introduction %>
-
-<h3>最大人数</h3>
-<%= f.text_field :maximum_people %>
-
-<h3>最小人数</h3>
-<%= f.text_field :minimum_people %>
-
-<h3>価格</h3>
-<%= f.text_field :price %>
-
-<%= f.submit "編集" %>
-
-<% end %>
-
-<p>Find me in app/views/shops/courses/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-11">
+      <h2><strong>コース編集</strong></h2><br>
+      <%= form_for @course, url:"/shops/courses/#{@course.id}" do |f| %>
+      <div class="row">
+        <div class="col-3">
+          <h4>コース名</h4>
+        </div>
+        <div class="col-4">
+          <%= f.text_field :name %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <h4>説明</h4>
+        </div>
+        <div class="col-4">
+          <%= f.text_field :introduction %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <h4>最大人数</h4>
+        </div>
+        <div class="col-4">
+          <%= f.text_field :maximum_people %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <h4>最小人数</h4>
+        </div>
+        <div class="col-4">
+          <%= f.text_field :minimum_people %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <h4>価格</h4>
+        </div>
+        <div class="col-4">
+          <%= f.text_field :price %>
+        </div><br><br>
+      </div>
+          <%= f.submit "編　集",class: 'col-5 btn btn-secondary' %>
+      <% end %><br>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+// Place all the styles related to the Search controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.search {
+	width: 85%;
+	margin: 0 auto;
+}
+
+.search strong {
+	color: #FF0033;
+	font-size: 30px;
+}
+
+.content_shop {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.content_shop strong {
+	font-size: 30px;
+	color: red;
+}
+
+.name {
+	width: 48%;
+	padding: 30px;
+	border: 5px solid #EDFFBE;
+	margin: 10px;
+}
+
+.photo {
+	width: 40%;
+	margin-bottom: 7px;
+}
+
+.intro {
+	width: 56%;
+	overflow: hidden;
+	padding-left: 15px;
+}
+
+.plan {
+	margin-top: 26px;
+}
+
+.shop-course {
+	margin-top: 20px;
+}
+
+.course-plan {
+    font-size: 30px;
+}
+
+.course-name {
+	width: 48%;
+    padding: 30px;
+    border: 5px solid #EDFFBE;
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
