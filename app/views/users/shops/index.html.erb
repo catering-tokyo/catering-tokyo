@@ -3,25 +3,67 @@
 <td style="border-style: none;">・<%= link_to "評価トップ５", users_shops_path(:place => "top5"), class: "genre_text"; %></td>
 <td style="border-style: none;">・<%= link_to "お気に入りトップ５", users_shops_path(:place => "favo5"), class: "genre_text"; %></td>
 
-<% @shops.each do |shop| %>
-    <p>----------</p>
-    <div id="star-rate-<%= shop.id %>"></div>
-    <span><%= link_to shop.name , "/users/shops/#{shop.id}" %></span>
-    <span><%= shop.shop_image_id %></span><br>
 
-    <div>
-        お気に入り数：<%= shop.favorites.count %>
+<div class="containar">
+  <div class="row">
+    <div class="col-md-10 offset-md-1">
+      <div class="row">
+        <article id="genre_list_area col-md-2">
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="table_category">
+                  <span>カテゴリー検索</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="border-style: none;">・<%= link_to "すべて", users_shops_path, class: "genre_text"; %></td>
+              </tr>
+              <tr>
+                <td style="border-style: none;">・<%= link_to "トップ５", users_shops_path(:place => "top5"), class: "genre_text"; %></td>
+              </tr>
+              <tr>
+                <% @shopgenres.each do |genre| %>
+                  <td style="border-style: none;">
+                    <%= link_to users_shops_path(shopgenre_id: genre.id) do %>
+                      <span class="genre_text" >・<%= genre.name %></span>
+                    <% end %>
+                  </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </article>
+        <div class="col-md-10">
+          <div clas="shop-list-box">
+            <% @shops.each do |shop| %>
+              <p>----------</p>
+              <div id="star-rate-<%= shop.id %>"></div>
+              <span><%= link_to shop.name , "/users/shops/#{shop.id}" %></span>
+              <span><%= shop.shop_image_id %></span><br>
+              <div>
+                  お気に入り数：<%= shop.favorites.count %>
+              </div>
+              <script>
+                  $('#star-rate-<%= shop.id %>').raty({
+                    size: 36,
+                    starOff:  '<%= asset_path('star-off.png') %>',
+                    starOn : '<%= asset_path('star-on.png') %>',
+                    starHalf: '<%= asset_path('star-half.png') %>',
+                    half: true,
+                    readOnly: true,
+                    score: '<%= shop.reviews.average(:star).to_f.round(1) %>',
+                  });
+              </script>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+</div>
 
-    <script>
-        $('#star-rate-<%= shop.id %>').raty({
-          size: 36,
-          starOff:  '<%= asset_path('star-off.png') %>',
-          starOn : '<%= asset_path('star-on.png') %>',
-          starHalf: '<%= asset_path('star-half.png') %>',
-          half: true,
-          readOnly: true,
-          score: '<%= shop.reviews.average(:star).to_f.round(1) %>',
-        });
-    </script>
-<% end %>
+
+
