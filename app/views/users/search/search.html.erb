@@ -1,39 +1,72 @@
-<div class="container">
-  <div class="content_shop">
-  	
-  </div>
-	<div>
-	  <%= @ooo %>
-	</div>
-	<% if @model == 'shop' %>
-	<% @datas.each do |data| %>
-	<div class="name">
-	  <div class="photo">
-		<%= attachment_image_tag @shop, :shop_image, :fill, 200, 150, format: 'jpeg', class: "img-rounded pull-left profile-img", fallback: "no_image.jpg", :size =>'200x200', :style =>'float: left;' %>
-	  </div>
-	  <div class="intro">
-		<h3><%= link_to data.name, users_shop_path(data.id) %></h3>
-		<p>住所</p><%= data.address %>
-		<p>営業時間</p><%= data.open_time %>  〜  <%= data.close_time %>  (LO <%= data.dinner_limit %>)
-		<% @shop.genres.each do |data| %>	
-		<p>このお店のコース</p><%= data.course.name %>
-	  </div>
-	  <% end %>
-	</div>
 
-	<% end %>
+<div class="search">
+	  検索結果は<strong><%= @ooo %></strong>件でした
+	<div class="content_shop">
+		<% if @model == 'shop' %>
+			<% @datas.each do |data| %>
+				<div class="name">
+					<div class="photo">
+					  <%= attachment_image_tag @shop, :shop_image, :fill, 200, 150, format: 'jpeg', class: "img-rounded pull-left profile-img", fallback: "no_image.jpg", :size =>'200x200', :style =>'float: left;' %>
+					</div>
 
-	<% else %>
-	<% @datas.each do |data| %>
-	<%= attachment_image_tag @course, :course_image, :fill, 200, 150, format: 'jpeg', class: "img-rounded pull-left profile-img", fallback: "no_image.jpg", :size =>'200x200' %>
-	<h3><%= link_to data.name, users_course_path(data.id) %></h3>
-	<p>店名</p><%= data.shop.name %>
-	<p>価格</p><%= data.price %>
-	<p>予約可能人数</p><%= data.maximum_people %>  〜  <%= data.minimum_people %>
-	<p>コース概要</p><%= data.introduction %>
+					<div class="intro">
+						<div id="star-rate-<%= data.id %>"></div>
+						<script>
+						$('#star-rate-<%= data.id %>').raty({
+						size: 36,
+						starOff:  '<%= asset_path('star-off.png') %>',
+						starOn : '<%= asset_path('star-on.png') %>',
+						starHalf: '<%= asset_path('star-half.png') %>',
+						half: true,
+						readOnly: true,
+						score: '<%= data.reviews.average(:star).to_f.round(1) %>',
+						});
+						</script>
 
-	<% end %>
-	<% end %>
+						<h3><%= link_to data.name, users_shop_path(data.id) %></h3>
+						<h4>住所</h4><%= data.address %>
+						<h4>営業時間</h4><%= data.open_time %>  〜  <%= data.close_time %>  (LO <%= data.dinner_limit %>)
+					</div>
+
+					<div class="plan">
+						<h5>こんな場面で</h5>
+							<% data.genres.each do |genre| %>
+							  <%= genre.shop_genre.name %>
+							<% end %>
+              
+                            <div class="shop-course">
+								<h5>このお店のコース</h5>
+								<% data.courses.each do |course| %>
+								  <div class="course-plan">
+								　　　<%= link_to course.name, users_course_path(course.id) %>  <%= course.price.to_s(:delimited) %>円<br>
+								  </div>
+								<% end %>
+							</div>
+					</div>
+				</div>
+
+            <% end %>
+
+		<% else %>
+
+				<% @datas.each do |data| %>
+					<div class="course-name">
+						<div class="photo">
+						  <%= attachment_image_tag @course, :course_image, :fill, 200, 150, format: 'jpeg', class: "img-rounded pull-left profile-img", fallback: "no_image.jpg", :size =>'200x200' %>
+						</div>
+
+						<div class="intro">
+							<h3><%= link_to data.name, users_course_path(data.id) %></h3>
+							<p>店名</p><%= data.shop.name %>
+							<p>価格</p><%= data.price %>
+							<p>予約可能人数</p><%= data.maximum_people %>  〜  <%= data.minimum_people %>
+							<p>コース概要</p><%= data.introduction %>
+						</div>
+					</div>
+
+				<% end %>
+		<% end %>
+    </div>
 </div>
 
 
