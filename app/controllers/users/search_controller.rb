@@ -1,6 +1,5 @@
 class Users::SearchController < ApplicationController
   def search
-    @shop = 
     @model = params["model"]
     @content = params["content"]
     # binding.pry
@@ -24,9 +23,9 @@ class Users::SearchController < ApplicationController
                             .order(price: :asc)
           end
           if @datas.present?
-            @ooo = "検索結果は#{@datas.count}件でした"
+            @ooo = "#{@datas.count}"
           else
-             @ooo = '検索結果は0件でした'
+             @ooo = '0'
              @datas = Course.where(price: from..to)
                             .order(price: :asc)
           end
@@ -45,9 +44,9 @@ class Users::SearchController < ApplicationController
           # binding.pry
           end
           if @datas.present?
-            @ooo = "検索結果は#{@datas.count}件でした"
+            @ooo = "#{@datas.count}"
           else
-             @ooo = '検索結果は0件でした'
+             @ooo = '0'
              @datas = Shop.joins(:shop_genres)
                           .merge(ShopGenre.where(id: @genre))
           end
