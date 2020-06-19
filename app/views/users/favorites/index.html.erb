@@ -1,5 +1,11 @@
-<h1>お気に入り一覧</h1>
-<% @favorites.each do |favorite| %>
-    <p>----------</p>
-    <span><%= link_to favorite.shop.name , "/users/shops/#{favorite.shop_id}" %></span>
-<% end %>
+<div class="favorite-all">
+	<h1>お気に入り一覧</h1>
+	  <div class="favorite-sub">
+		<% @favorites.each do |favorite| %>
+		  <div class="myfavorite">
+		  	<%= attachment_image_tag @shop, :shop_image, :fill, 200, 150, format: 'jpeg', class: "img-rounded pull-left profile-img", fallback: "no_image.jpg", :size =>'200x200' %>
+		    <%= link_to favorite.shop.name , "/users/shops/#{favorite.shop_id}" %>
+		  </div>
+		<% end %>
+	  </div>
+</div>

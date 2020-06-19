@@ -1,8 +1,4 @@
 class Users::CoursesController < ApplicationController
-  def index
-    @courses = Course.where(shop_id: params[:shop_id])
-    @shop = Shop.find(params[:shop_id])
-  end
 
   def show
   	@course = Course.find(params[:id])
@@ -63,9 +59,6 @@ class Users::CoursesController < ApplicationController
       # @sub_address = SubAddress.new(sub_address_params)
       # @sub_address = [@postal_code, @shipping_address, @delivery_name]
     end
-  end
-
-  def thanks
   end
 end
 

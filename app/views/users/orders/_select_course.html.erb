@@ -1,5 +1,4 @@
-<div class="row  select-course-box">
-	<div class="col-md-8 offset-md-2 select-course-area">
+     <div class="course-confirm">
 		<%= form_with url: users_course_confirm_path(course.id), method: :get, data: {remote: false} do |f| %>
 			<div>
 				<h4><%= f.hidden_field :shop_name, value: shop.name %></h4>
@@ -8,27 +7,37 @@
 				<h4><%= f.hidden_field  :course_id ,value: course.id %></h4>
 			</div>
 
-			<div class="order_reserve_date">
-				<%= month_calendar do |date|  %>
-				  <%= date.strftime("%d") %>
-				<% end %>
-			</div>
-			<div>
-				<h4><%= f.label :日にち %>:
-	          <%= f.text_field :reserve_date, placeholder: '選択してください' %></h4>
-			</div>
-			<div>
-				<h4><%= f.label :時間  %>:
-						<%= f.select :reserve_time, reserve_time, include_blank: "選択して下さい" %></h4>
-			</div>
-			<div>
-				<h4><%= f.label :人数  %>:
-						<%= f.select :people_number, @resave_people, include_blank: "選択して下さい" %>名</h4>
-			</div>
+			<div class="container">
+				<div class="row">
+					<div class="order_reserve_date col-md-7">
+						<%= month_calendar do |date|  %>
+						  <%= date.strftime("%d") %>
+						<% end %>
+					</div>
 
-			<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#sampleModal">
-				詳細入力へ
-			</button>
+					<div class="col-md-4 offset-md-1">
+					  <div class="select-select">
+						<div class="oder-select">
+							<h4><%= f.label :日にち %>:
+				          <%= f.text_field :reserve_date, placeholder: '選択してください' %></h4>
+						</div>
+						<div class="oder-select">
+							<h4><%= f.label :時間  %>:
+									<%= f.select :reserve_time, reserve_time, include_blank: "選択して下さい" %></h4>
+						</div>
+						<div class="oder-select">
+							<h4><%= f.label :人数  %>:
+									<%= f.select :people_number, @resave_people, include_blank: "選択して下さい" %>名</h4>
+						</div>
+
+						<button type="button" class="btn btn-primary btn-lg oder-select" data-toggle="modal" data-target="#sampleModal">
+							詳細入力へ
+						</button>
+					  </div>
+					</div>
+				</div>
+			</div>
+     </div>
 			<!-- モーダル・ダイアログ -->
 			<div class="modal fade" id="sampleModal" tabindex="-1">
 				<div class="modal-dialog modal-lg">
@@ -107,5 +116,3 @@
 				</div>
 			</div>
 		<% end %>
-	</div>
-</div>

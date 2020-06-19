@@ -1,9 +1,0 @@
-<h1>コース一覧</h1>
-<p><%= @shop.name %></p>
-<% @courses.each do |course| %>
-    <p>----------</p>
-    <span><%= link_to course.name , "/users/course/#{course.id}" %></span>
-    <span><%= course.course_image_id %></span><br>
-    <span><%= course.price %></span><br>
-<% end %>
-<span><%= link_to "お店一覧", users_shops_path%></span><br>

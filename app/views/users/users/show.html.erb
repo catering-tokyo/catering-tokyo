@@ -10,6 +10,7 @@
     <p><%= current_user.address %></p>
     <%= link_to "登録情報編集", edit_users_user_path(current_user.id) %>
     <%= link_to "お気に入り編集", users_favorites_path(current_user.id) %>
+    <%= link_to "オーダーへ", users_orders_path, class: "btn btn-primary rounded-pill" %>
 <% else %>
     redirect_to(root_path)
 <% end %>
