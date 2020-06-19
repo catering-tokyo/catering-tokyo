@@ -3,18 +3,19 @@ class Users::ShopsController < ApplicationController
   def index
 
     if params[:place] && params[:place] == 'top5'
-      @shops = Shop.joins(:reviews).group(:id).order('(star) desc').limit(5)
+      @shops = Shop.joins(:reviews).group(:id).order(star: "desc").limit(5)
       @shopgenres = ShopGenre.all
     elsif params[:place] && params[:place] == 'favo5'
       @shops = Shop.joins(:favorites).group(:id).order('count(shop_id) desc').limit(5)
       @shopgenres = ShopGenre.all
     elsif params[:shopgenre_id] != nil
-      @shops = Shop.where(shopgenre_id: params[:shopgenre_id]).page(params[:page]).per(16)
+      @shop = params["shopgenre_id"]
+      @shops = Shop.joins(:shop_genres)
+                    .merge(ShopGenre.where(id: @shop)).page(params[:page]).per(15)
       @shopgenres = ShopGenre.all
-      @shopgenre = ShopGenre.find(params[:shopgenre_id])
       
     else
-      @shops = Shop.all
+      @shops = Shop.all.page(params[:page]).per(15)
       @shopgenres = ShopGenre.all
     end
   end
