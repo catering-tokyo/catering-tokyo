@@ -1,24 +1,63 @@
-# README
+#  アプリ名　catering tokyo
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## バージョン
+  ruby2.5.7
+  Rails 5.2.4.1
+  vagrantを用いて開発環境を揃えています。
+## なぜこのアプリを作ったか
+    railsの勉強として上流過程の事から実装段階までを全て行う事で自分自身のスキルアップを計りたかったから。
+    また、実務に入ったときのことを想定しチームで開発を行いました。
+    Hotpepperのような作りを意識しケータリングの予約ができるアプリケーションを作成しました。
+    利用する人はuser側、shop側、admin側３つの関係になっています。
+   
+## メンバー紹介
+    山さん、キリくん、よしりん、ゆうちゃん、大蛇、ヤマノさん（山さんのシェアメイト）
+   
+## catering tokyoの機能
+###   １、条件検索機能
+    お店かコースで違った検索ができるよう実装しています。
+    お店であればジャンル検索、コースであれば価格範囲検索をすることができます。
+    もちろんキーワードも絡めた検索もできます。
+    
+###   ２、チャット機能
+    current_userが気になったshopに対して個別にチャットが出来るよう実装しました。
+    ActionCableを使うことでリアルタイムで発言が投稿できるようになっています。
+    
+###   ３、お問い合わせ機能
+    userとshopに関してはadminに対してお問い合わせができるよう実装しました。
+    また、問い合わせをした際にお問い合わせ内容を確認できるようActionMailerでメールが届く機能を実装しました。
+    
+###   ４、お気に入り機能
+    userがお気に入りのshopを登録しておける機能を実装しました。
+    また、非同期通信を実装したことで登録した際にリロードをすることなく画面上で情報が上書きされるようにしました。
+    
+###   ５、レビュー、星評価機能
+    userがshopに対してレビューと星評価をつけることができる機能を実装しました。
+    星評価は５点満点でつけることができ、JavaScriptで分かりやすく評価を付けられるようにしました。
+    
+###   ６、Google Map APIの実装
+    APIを使用することでお店の住所をGoogle Mapで表示できるよう実装しました。
+    
+##   使用したgem
+    devise
+    paranoia
+    refile
+    refile-mini_magick
+    kaminari
+    bootstrap
+    enum_help
+    geocoder
+    simple_calendar
+    
+##   さいごに
+    ここまでご覧いただきありがとうございます。
+    今回のこのプロジェクトでメンバー全員がさらに成長でき、
+    尚且つ楽しんで開発をすることが出来ました。
+    この経験をしっかりと活かしてプログラマーとして社会に出て全員が活躍していければいいなと思っています。
+    また、繰り返しにはなりますが、ここまでご覧いただきありがとうございました。
+    
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+    プログラミングには関係のない話にはなりますが、この繋がりは今後すごく大事な財産になってくると思っているので
+    今後も大事にしていこうと思っています。
+    山さん
+    
