@@ -5,3 +5,41 @@
 .fa-heart {
     color: red;
 }
+
+.shop-box {
+  width: 100%;
+  /*display: flex;*/
+/*  flex-wrap: wrap;*/
+}
+
+.profile-img {
+  height: 200px;
+}
+
+.shop-content {
+  margin-left: 25px;
+  margin-bottom: 40px;
+  float: left;
+}
+
+.shop-page {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.shops-all {
+  margin-top: 50px;
+}
+
+.comeicon {
+  margin-left: 5px;
+}
+
+.review-ave {
+  margin-left: 2px;
+  color: red;
+}
+
+.favocount {
+  margin-left: 5px;
+}

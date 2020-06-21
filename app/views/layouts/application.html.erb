@@ -37,7 +37,7 @@
           <nav>
             <ul class=head-ul>
               <li><%= link_to "MyPage", users_user_path(current_user.id), class: "head-list" %></li>
-              <li><%= link_to "About", homes_about_path, class: "head-list" %></li>
+              <li><%= link_to "お店一覧", users_shops_path, class: "head-list" %></li>
               <li><%= link_to "予約履歴", users_orders_path, class: "head-list" %></li>
               <li><%= link_to "お気に入り", users_favorites_path %></li>
               <li><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "head-list" %></li>
@@ -53,9 +53,6 @@
               <span><li class="nav-list"><%= link_to "Logout", destroy_admin_session_path, method: :delete, class: "btn btn-c" %></li></span>
             </ul>
           </nav>
-
-          
-
           <% else %>
             <ul class=head-ul>
               <li class="nav-list"><%= link_to "About", homes_about_path, class: "head-list" %></li>
