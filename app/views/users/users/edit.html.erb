@@ -1,12 +1,49 @@
-<%= form_with model: @user ,url: users_user_path(current_user), local: true do |f| %>
-  <h4>お名前</h4>
-  <%= f.text_field :name %>
-  <span><%= f.label :電話番号 %><%= f.text_field :phonenumber %></span><br>
-  <%= f.label :メールアドレス %>
-  <%= f.email_field :email %><br>
-  <%= f.label :住所 %>
-  <%= f.text_area :address %><br>
-  <%= link_to "パスワード情報編集", change_password_users_user_path %>
-  <%= link_to "退会", users_user_path(current_user), method: :delete, data: {confirm: "本当に退会しますか？"} %>
-  <%= f.submit "更新" %>
-<% end %>
+<div class="container-fluid">
+  <div class="col-md-12 border-top border-bottom rounded text-center" style="background-color:rgb(255, 255, 128);"><h2>登録情報編集</h2></div><br>
+    <%= form_with model: @user, html: { class: "form-horizontal col-xs-6" },url: users_user_path(current_user), local: true do |f| %>
+      <div class="form-group row justify-content-center">
+        <div class="col-md-2">
+          <%= f.label :お名前 %>
+        </div>
+        <div class="col-md-6 text-center">
+          <%= f.text_field :name, class: "form-control" %><br>
+        </div>
+      </div>
+      <div class="form-group row justify-content-center">
+        <div class="col-md-2">
+          <%= f.label :電話番号 %><br>
+        </div>
+        <div class="col-md-6 text-center">
+          <%= f.text_field :phonenumber, class: "form-control" %><br>
+        </div>
+      </div>
+      <div class="form-group row justify-content-center">
+        <div class="col-md-2">
+          <%= f.label :メールアドレス %><br>
+        </div>
+        <div class="col-md-6 text-center">
+          <%= f.email_field :email, class: "form-control" %><br>
+        </div>
+      </div>
+      <div class="form-group row justify-content-center">
+        <div class="col-md-2">
+          <%= f.label :住所 %><br>
+        </div>
+        <div class="col-md-6 text-center">
+          <%= f.text_area :address, size: "7x5", class: "form-control" %><br>
+        </div>
+      </div>
+      <div class="text-center">
+        <%= f.submit "更新", class: 'btn btn-outline-success btn-block text-center' %><br><br>
+      </div>
+      <div class="text-center">
+        <%= link_to "パスワード情報編集", change_password_users_user_path, class: 'btn btn-outline-warning btn-block' %><br><br>
+      </div>
+      <div class="text-center">
+        <%= link_to "クレジットカード情報編集", edit_users_credit_card_path(current_user.id), class: 'btn btn-outline-warning btn-block' %><br><br>
+      </div>
+      <div class="text-center">
+        <%= link_to "退会", users_user_path(current_user), method: :delete, data: {confirm: "本当に退会しますか？"}, class: 'btn btn-outline-danger btn-block' %><br><br>
+      </div>
+    <% end %>
+</div>
