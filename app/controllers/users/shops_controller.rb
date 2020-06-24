@@ -48,11 +48,11 @@ class Users::ShopsController < ApplicationController
 
     # binding.pry
 
-    # @hash = Gmaps4rails.build_markers(@shop) do |place, marker|
-    #   marker.lat place.latitude
-    #   marker.lng place.longitude
-    #   marker.infowindow place.name
-    # end
+    @hash = Gmaps4rails.build_markers(@shop) do |place, marker|
+       marker.lat place.latitude
+       marker.lng place.longitude
+       marker.infowindow place.name
+    end
   end
 
 end

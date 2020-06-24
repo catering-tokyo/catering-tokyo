@@ -8,43 +8,53 @@
 		<div class="col-md-6 offset-md-3">
 			<%= render 'users/reviews/new', shop: @shop, review: @review %>
 		</div>
-	</div>
+	</div><br>
+
+  <div class="col-md-6 offset-md-3"><h1>店舗詳細</h1></div>
+  <div class="col-md-6 offset-md-3 shop-details" id="star-rate-<%= @shop.id %>"></div>
+  <div class="col-md-6 offset-md-3 shop-details">店舗名</div>
+  <div class="col-md-6 offset-md-3 shop-contents"><%= @shop.name %></div>
+  <div class="col-md-6 offset-md-3 shop-contents"><%= @shop.shop_image_id%></div>
+  <div class="col-md-6 offset-md-3 shop-details">電話番号</div>
+  <div class="col-md-6 offset-md-3 shop-contents"><%= @shop.phonenumber %></div>
+  <div class="col-md-6 offset-md-3 shop-details">店舗住所</div>
+  <div class="col-md-6 offset-md-3 shop-contents"><%= @shop.postal_code %></div>
+  <div class="col-md-6 offset-md-3 shop-contents"><%= @shop.address %></div>
+  <div class="col-md-6 offset-md-3 shop-details">開店時間</div>
+  <div class="col-md-6 offset-md-3 shop-contents">
+    <p><%= @shop.open_time %>~<%= @shop.close_time %></p>
+  </div>
+  <div class="col-md-6 offset-md-3">
+   <% @courses.each do |course| %>
+    <div class="row">
+      <div class="col-12 my-2">
+        <span><%= link_to course.name , users_course_path(course.id), class: 'col-12 text-center' %></span>
+      </div>
+    </div>
+    <div class="col-12 my-2">
+      <span><%= attachment_image_tag course, :course_image_id, format: 'jpeg', class: "img-rounded pull-left profile-img item_img img_hover ", fallback: "no_image.jpg" %></span>
+    </div>
+   <% end %>
+   </ul>
+  </div><br>
+  <div class="col-md-6 offset-md-3 favorites-button" id="favorites_buttons_<%= @shop.id %>">
+      <%= render partial: 'users/favorites/favorite', locals: { shop: @shop} %>
+  </div><br>
+  <div class="fixed_btn">
+    <%= link_to users_room_path(@shop.id) do %>
+      <div class="rounded-circle" ><img src="/assets/chat-icon.png" width="80"　height="80" border-radius: 50%;　class="img-fluid" alt=""></div>
+    <% end %>
+  </div>
+  <div class="text-center">
+    <%= link_to "お店一覧", users_shops_path, class: 'btn btn-outline-warning btn-block' %><br><br>
+  </div>
+
+  <h2>店舗所在地</h2>
+  <div id='map'></div>
 </div>
-
-<h1>店舗詳細</h1>
-<div id="star-rate-<%= @shop.id %>"></div>
-<p><%= @shop.name %></p>
-<div><%= @shop.shop_image_id%></div>
-<p><%= @shop.phonenumber %></p>
-<p><%= @shop.postal_code %></p>
-<p><%= @shop.address %></p>
-<div>
-<p>開店時間</p>
-<p><%= @shop.open_time %>~<%= @shop.close_time %></p>
-</div>
-<div>
-<% @courses.each do |course| %>
-    <p>----------</p>
-    <span><%= link_to course.name , users_course_path(course.id) %></span><br>
-    <span><%= course.course_image_id %></span>
-<% end %>
-</div>
-<span><%= link_to "コース一覧", users_courses_path(shop_id: params[:id]) %></span><br>
-<span><%= link_to "お店一覧", users_shops_path%></span>
-
-<div id="favorites_buttons_<%= @shop.id %>">
-    <%= render partial: 'users/favorites/favorite', locals: { shop: @shop} %>
-</div>
-
-<%= link_to "チャットする", users_room_path(@shop.id) %>
-
-
-<h2>店舗所在地</h2>
-<div id='map'></div>
-
 <style>
 #map{
-  height: 400px;
+  height: 600px;
 }
 </style>
 <script>

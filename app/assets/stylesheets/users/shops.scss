@@ -43,3 +43,25 @@
 .favocount {
   margin-left: 5px;
 }
+
+.fixed_btn {
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+}
+
+.shop-details {
+  display: flex;
+  margin: 10px 0 10px 0;
+  font-weight:bold; color:orange;
+}
+
+.shop-contents {
+  display: flex;
+  margin: 10px 0 10px 0;
+  font-weight:bold; font-size:150%;
+}
+.favorites-button {
+  margin: 10px 0 10px 0;
+  font-weight:bold; font-size:200%;
+}
