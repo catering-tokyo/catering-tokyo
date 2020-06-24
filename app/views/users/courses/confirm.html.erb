@@ -106,7 +106,8 @@
           <%= f.submit("購入を確定する", class: "btn btn-primary") %>
         </div>
         <div class="modoru-btn">
-          <%= link_to "ショップ選択に戻る",users_shops_path, class: "btn btn-danger"%>
+          <%#= link_to "戻る", :back, class: "btn btn-danger rounded-pill" %>
+          <%= link_to "戻る", users_course_path(@course), class: "btn btn-danger rounded-pill" %>
         </div>
       <% end %>
     </div>

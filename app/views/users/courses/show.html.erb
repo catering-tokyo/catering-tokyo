@@ -1,35 +1,37 @@
 
-<%= form_with url: users_orders_path ,local: true do |f| %>
-
-
-<%#= f.time_select :order {|shop| [start_hour:open_time, end_hour:close_time]} %>
-
-<% end %>
-
 <div class="container">
 	<div class="row">
 		<div class="course_image col-md-4">
-	       <%= attachment_image_tag @course, :course_image, :fill, 200, 150, format: 'jpeg', class: "img-rounded pull-left profile-img", fallback: "no_image.jpg", :size =>'200x200' %>	
+	       <%= attachment_image_tag @course, :course_image, :fill, 200, 150, format: 'jpeg', class: "img-rounded pull-left profile-img", fallback: "no_image.jpg", :size =>'400x400' %>	
 	    </div>
-		<table class="table course_table col-md-7">
-			<tr>
-				<th>コース説明</th>
-				<th><%= @course.introduction %></th>
-				<th>コース詳細</th>
-				<td><%= @course.name %>  <%= @course.people_number %></td>
-				<th>最大予約人数</th>
-				<td><%= @course.maximum_people %></td>
-				<th>最低予約人数</th>
-				<td><%= @course.minimum_people %></td>
-				<th>価格</th>
-				<td><%= @course.price %> / 人</td>
-			</tr>
-		</table>
+	    <div class="course_table col-md-7 offset-md-1">
+			<table class="table">
+				<tr>
+					<th>コース説明</th>
+					<th><%= @course.introduction %></th>
+				<tr>
+					<th>コース詳細</th>
+					<td><%= @course.name %>  <%= @course.people_number %></td>
+				</tr>
+				<tr>
+					<th>最大予約人数</th>
+					<td><%= @course.maximum_people %></td>
+				</tr>
+				<tr>
+					<th>最低予約人数</th>
+					<td><%= @course.minimum_people %></td>
+				</tr>
+				<tr>
+					<th>価格</th>
+					<td><%= @course.price %> / 人</td>
+				</tr>
+			</table>
+
+			<div class="return_button">
+				<%= link_to "戻る", search_path(@datas), class: "btn btn-danger rounded-pill" %>
+			</div>
+		</div>
 	</div>
 </div>
-	<span><%= link_to "オーダーへ", users_orders_path %></span><br>
-	<span><%= link_to "お店一覧", users_shops_path%></span><br>
-	<span><%= link_to "コース一覧", users_courses_path(shop_id: params[:shop_id])%></span>
-
 
 <%= render 'users/orders/select_course', course: @course, order: @order, shop: @shop, reserve_time: @reserve_time %>
