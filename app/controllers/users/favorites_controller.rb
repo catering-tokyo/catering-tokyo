@@ -9,33 +9,22 @@ class Users::FavoritesController < ApplicationController
     @favorite = Favorite.create(user_id: current_user.id, shop_id: params[:shop_id])
     @shop = Shop.find(params[:shop_id])
     @favorites = Favorite.where(shop_id: params[:shop_id])
-    flash[:success] = "お気に入り登録しました。"
-    #@favorite = Favorite.new
-    #binding.pry
-    #@favorite.user_id = current_user.id
-    #@favorite.shop_id = params[:shop_id]
-    #if  @favorite.save
-      #flash[:success] = "お気に入りに登録しました。"
-    #else
-      #flash.now[:danger] = "エラーです"
-    #end
+    #flash[:success] = "お気に入り登録しました。"
   end
 
   def destroy
-    @favorite = Favorite.find_by(user_id: current_user.id, shop_id: params[:shop_id])
-    @shop = Shop.find(params[:shop_id])
-    @favorite.destroy
-    @favorites = Favorite.where(shop_id: params[:shop_id])
-    flash[:success] = "お気に入り削除しました。"
-
-    #favorite = Favorite.find_by(user_id: params[:user_id])
-    #favorite = Favorite.find_by(shop_id: params[:shop_id])
-    #if current_user.id != favorite.user.id
-      #redirect_to root_path
-    #else
-      #favorite.destroy
-      #flash[:success] = "１件のお気に入りを削除しました"
-    #end
+    if params[:type] == 'default'
+      @favorite = Favorite.find_by(user_id: current_user.id, shop_id: params[:shop_id])
+      @shop = Shop.find(params[:shop_id])
+      @favorite.destroy
+      redirect_to request.referer
+    else
+      @favorite = Favorite.find_by(user_id: current_user.id, shop_id: params[:shop_id])
+      @shop = Shop.find(params[:shop_id])
+      @favorite.destroy
+      @favorites = Favorite.where(shop_id: params[:shop_id])
+      #flash[:success] = "お気に入り削除しました。"
+    end
   end
 
   private

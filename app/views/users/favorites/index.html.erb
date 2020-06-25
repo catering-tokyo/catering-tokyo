@@ -1,11 +1,17 @@
-<div class="favorite-all">
-	<h1>お気に入り一覧</h1>
-	  <div class="favorite-sub">
-		<% @favorites.each do |favorite| %>
-		  <div class="myfavorite">
-		  	<%= attachment_image_tag @shop, :shop_image, :fill, 200, 150, format: 'jpeg', class: "img-rounded pull-left profile-img", fallback: "no_image.jpg", :size =>'200x200' %>
-		    <%= link_to favorite.shop.name , "/users/shops/#{favorite.shop_id}" %>
-		  </div>
-		<% end %>
-	  </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3 my-5">
+      <h1>お気に入り一覧</h1>
+    </div>
+  </div>
+  <% @favorites.each do |favorite| %>
+    <div class="row">
+      <div class="col-6 shop_name">
+        <%= link_to favorite.shop.name , "/users/shops/#{favorite.shop_id}" %>
+      </div>
+    <div class="col-6 favorites-button">
+      <%= link_to "解除", users_shop_favorites_path(user_id: favorite.user_id, shop_id: favorite.shop_id, type: "default"), method: :delete, class: 'btn-sm btn-outline-danger' %>
+    </div>
+  </div>
+  <% end %>
 </div>
