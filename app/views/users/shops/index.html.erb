@@ -40,21 +40,21 @@
               <% @shops.each.with_index(1) do |shop, i| %>
                 <div class="shop-content">
                   <h1>第  <%= i %> 位</h1>
-                  <div><%= link_to shop.name , "/users/shops/#{shop.id}" %></div>
-                  <span><%= attachment_image_tag shop, :shop_image, format: 'jpeg', class: "img-rounded pull-left profile-img item_img img_hover ", fallback: "no_image.jpg" %></span><br>
-                  <a id="star-rate-<%= shop.id %>"></a><span class="review-ave"><%= shop.reviews.average(:star).to_f.round(2) %></span><i class="fas fa-comment-dots comeicon"></i> <a><%= shop.reviews.count %>件</a>
+                  <div><%= link_to shop[1].name, "/users/shops/#{shop[1].id}" %></div>
+                  <span><%= attachment_image_tag shop[1], :shop_image, format: 'jpeg', class: "img-rounded pull-left profile-img item_img img_hover ", fallback: "no_image.jpg" %></span><br>
+                  <a id="star-rate-<%= shop[1].id %>"></a><span class="review-ave"><%= shop[1].reviews.average(:star).to_f.round(2) %></span><i class="fas fa-comment-dots comeicon"></i> <a><%= shop[1].reviews.count %>件</a>
                   <div>
-                    <i class="fas fa-heart"></i><a class="favocount"><%= shop.favorites.count %></a>件
+                    <i class="fas fa-heart"></i><a class="favocount"><%= shop[1].favorites.count %></a>件
                   </div>
                   <script>
-                      $('#star-rate-<%= shop.id %>').raty({
+                      $('#star-rate-<%= shop[1].id %>').raty({
                         size: 36,
                         starOff:  '<%= asset_path('star-off.png') %>',
                         starOn : '<%= asset_path('star-on.png') %>',
                         starHalf: '<%= asset_path('star-half.png') %>',
                         half: true,
                         readOnly: true,
-                        score: '<%= shop.reviews.average(:star).to_f.round(1) %>',
+                        score: '<%= shop[1].reviews.average(:star).to_f.round(1) %>',
                       });
                   </script>
                 </div>
